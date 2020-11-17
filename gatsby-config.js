@@ -42,7 +42,7 @@ module.exports = {
         typeName: "WPGraphQL",
         fieldName: "wpgraphql",
         // GraphQL endpoint, relative to your WordPress home URL.
-        url: "https://www.desdecrespo.com.ar/graphql",
+        url: "",
         // GraphQL endpoint using env variable
        // url: "${process.env.WORDPRESS_URL}/graphql",
       },
