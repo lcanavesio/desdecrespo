@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "gatsby-desdecrespo",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Semanario diario",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Lucas Canavesio - Renzo Percara",
   "dependencies": {
     "@material-ui/core": "^4.11.0",
     "@material-ui/icons": "^4.9.1",
@@ -20,9 +20,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "react-helmet": "^6.1.0",
-    "react-swipeable-views": "^0.13.9",
-    "react-swipeable-views-utils": "^0.14.0-alpha.0"
+    "react-helmet": "^6.1.0"
   },
   "devDependencies": {
     "prettier": "2.1.2"
