@@ -26,55 +26,17 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const sections = [
-  { title: "Inicio", url: "#" },
-  { title: "Crespo", url: "#" },
-  { title: "Provinciales", url: "#" },
-  { title: "Nacionales", url: "#" },
-  { title: "Internacionales", url: "#" },
-  { title: "Deportes", url: "#" },
-  { title: "Policiales", url: "#" },
-  { title: "Rurales", url: "#" },
-  { title: "Salud", url: "#" },
-  { title: "Otros", url: "#" },
+  { title: "Inicio", url: "/" },
+  { title: "Crespo", url: "crespo" },
+  { title: "Provinciales", url: "provinciales" },
+  { title: "Nacionales", url: "nacionales" },
+  { title: "Internacionales", url: "internacionales" },
+  { title: "Deportes", url: "deportes" },
+  { title: "Policiales", url: "policiales" },
+  { title: "Rurales", url: "rurales" },
+  { title: "Salud", url: "salud" },
+  { title: "Otros", url: "otros" },
 ]
-
-const mainFeaturedPost = {
-  title: "Title of a longer featured blog post",
-  description:
-    "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
-  image: "https://source.unsplash.com/random",
-  imgText: "main image description",
-  linkText: "Continue reading…",
-}
-
-const featuredPosts = [
-  {
-    title: "Featured post",
-    date: "Nov 12",
-    description:
-      "This is a wider card with supporting text below as a natural lead-in to additional content.",
-    image: "https://source.unsplash.com/random",
-    imageText: "Image Text",
-  },
-  {
-    title: "Post title",
-    date: "Nov 11",
-    description:
-      "This is a wider card with supporting text below as a natural lead-in to additional content.",
-    image: "https://source.unsplash.com/random",
-    imageText: "Image Text",
-  },
-  {
-    title: "Post title",
-    date: "Nov 11",
-    description:
-      "This is a wider card with supporting text below as a natural lead-in to additional content.",
-    image: "https://source.unsplash.com/random",
-    imageText: "Image Text",
-  },
-]
-
-const posts = [post1, post2, post3]
 
 const sidebar = {
   title: "About",
@@ -129,26 +91,38 @@ const IndexPage = () => {
       }
     }
   `)
-
-  console.log("data", data)
-  let rows = []
-  let edges = (data.wpgraphql && data.wpgraphql.posts.edges) || []
-  rows = edges.map(edge => edge.node)
+  const posts = data?.wpgraphql?.posts?.edges?.map(edge => edge.node) || [];
   return (
     <>
       <SEO title="Using TypeScript" />
       <CssBaseline />
-      <Container maxWidth="lg">
-        <Header title="Desde Crespo" sections={sections} />
-        <main>
-          <MainFeaturedPost post={mainFeaturedPost} />
-          <Grid container spacing={4}>
-            {featuredPosts.map(post => (
-              <FeaturedPost key={post.title} post={post} />
-            ))}
+      <Header sections={sections} ultimo={["Test"]} />
+      <Container maxWidth="lg">        
+        <main>          
+          <Grid container>
+            <Grid lg={9}>
+              <MainFeaturedPost post={posts[0]} />
+              <Grid container lg={12}>
+                <Grid lg={4}>
+                <FeaturedPost key={posts[0].title} post={posts[0]}/>
+                </Grid>
+                <Grid lg={4}>
+                <FeaturedPost key={posts[1].title} post={posts[1]}/>
+                </Grid>
+                <Grid lg={4}>
+                <FeaturedPost key={posts[2].title} post={posts[2]}/>
+                </Grid>
+              </Grid>
+              
+            </Grid>
+            <Grid lg={3}>
+              
+            </Grid>
           </Grid>
+
+          
           <Grid container spacing={5} className={classes.mainGrid}>
-            <Main title="Post" posts={posts} />
+            {/* <Main title="Post" posts={posts} /> */}
             <Sidebar
               title={sidebar.title}
               description={sidebar.description}
@@ -162,7 +136,7 @@ const IndexPage = () => {
         title="Desde Crespo"
         description="Semanario Diario"
       />
-      <pre>{JSON.stringify(rows, null, 4)}</pre>
+      <pre>{JSON.stringify(posts, null, 4)}</pre>
       <Link to="/">Go back to the homepage</Link>
     </>
   )

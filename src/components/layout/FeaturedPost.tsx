@@ -9,47 +9,49 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Hidden from '@material-ui/core/Hidden';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
+  post: {
+    position: 'relative'
+  },
   card: {
-    display: 'flex',
+    paddingLeft: 10,
+    paddingRig: 10,
   },
-  cardDetails: {
-    flex: 1,
-  },
-  cardMedia: {
-    width: 260,
-  },
-  
-});
+}));
 
-export default function FeaturedPost(props) {
+type Post = {
+  id: string;
+  date: string;
+  title: string;
+  slug: string;
+  featuredImage: any;
+};
+
+type Props = {
+  post: Post;
+};
+
+
+export default function FeaturedPost(props: Props) {
   const classes = useStyles();
   const { post } = props;
 
   return (
-    <Grid item xs={12} md={3}>
-      <CardActionArea component="a" href="#">
-        <Card className={classes.card}>
-          <div className={classes.cardDetails}>
-            <CardContent>
-            <Typography component="h2" variant="h5">
-                {post.title}
-              </Typography>
-              <Typography variant="subtitle1" color="textSecondary">
-                {post.date}
-              </Typography>
-          
-              <Typography variant="subtitle1" color="primary">
-                Continue reading...
-              </Typography>
-            </CardContent>
-          </div>
-          <Hidden xsDown>
-            <CardMedia className={classes.cardMedia} image={post.image} title={post.imageTitle} />
-          </Hidden>
-        </Card>
+    <Card className={classes.card}>
+      <CardActionArea>
+        <CardMedia
+          component="img"
+          alt="Contemplative Reptile"
+          image={post.featuredImage?.node?.mediaItemUrl}
+          title="Contemplative Reptile"
+        />
+        <CardContent>
+          <Typography gutterBottom variant="h5" component="h2">
+            {post.title}
+          </Typography>
+        </CardContent>
       </CardActionArea>
-    </Grid>
+    </Card>
   );
 }
 
