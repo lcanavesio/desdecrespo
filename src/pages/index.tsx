@@ -1,19 +1,19 @@
 // If you don't want to use TypeScript you can delete this file!
 import { Container, CssBaseline, Grid, makeStyles } from "@material-ui/core"
+import FacebookIcon from "@material-ui/icons/Facebook"
+import GitHubIcon from "@material-ui/icons/GitHub"
+import TwitterIcon from "@material-ui/icons/Twitter"
 import { graphql, Link, useStaticQuery } from "gatsby"
 import React from "react"
+import Radio from "../components/radio/radio"
+import FeaturedPost from "../components/layout/FeaturedPost"
 import Footer from "../components/layout/Footer"
 import Header from "../components/layout/Header"
-import Main from "../components/layout/Main"
 import MainFeaturedPost from "../components/layout/MainFeaturedPost"
-import FeaturedPost from "../components/layout/FeaturedPost"
-
 import Sidebar from "../components/layout/Sidebar"
 //import { Link } from "gatsby"
 import SEO from "../components/seo"
-import GitHubIcon from "@material-ui/icons/GitHub"
-import FacebookIcon from "@material-ui/icons/Facebook"
-import TwitterIcon from "@material-ui/icons/Twitter"
+
 
 const post1 = "hola como estas "
 const post2 = ""
@@ -100,9 +100,13 @@ const IndexPage = () => {
       <Container maxWidth="lg">        
         <main>          
           <Grid container>
+         
             <Grid lg={9}>
+           
               <MainFeaturedPost post={posts[0]} />
+             
               <Grid container lg={12}>
+            
                 <Grid lg={4}>
                 <FeaturedPost key={posts[0].title} post={posts[0]}/>
                 </Grid>
@@ -116,7 +120,7 @@ const IndexPage = () => {
               
             </Grid>
             <Grid lg={3}>
-              
+            <Radio /> 
             </Grid>
           </Grid>
 
