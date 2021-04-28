@@ -25,7 +25,10 @@ const useStyles = makeStyles(theme => ({
   },
   container: {
     paddingTop: 10,
-  }
+  },
+  card: {
+    padding: 10
+  },
 }))
 
 const sections = [
@@ -77,29 +80,29 @@ const IndexPage = ({ data }) => {
       <SEO title="Using TypeScript" />
       <CssBaseline />
       <Header sections={sections} ultimo={["Test"]} />
-      <Container maxWidth="lg">        
-        <main>          
+      <Container maxWidth="lg">
+        <main>
           <Grid container className={classes.container}>
-            <Grid lg={9}>              
+            <Grid lg={9}>
               <Grid container lg={12}>
-            
-                <Grid lg={4}>
-                <FeaturedPost key={posts[0].title} post={posts[0]}/>
+
+                <Grid lg={4} className={classes.card}>
+                  <FeaturedPost key={posts[0].title} post={posts[0]} />
                 </Grid>
-                <Grid lg={4}>
-                <FeaturedPost key={posts[1].title} post={posts[1]}/>
+                <Grid lg={4} className={classes.card}>
+                  <FeaturedPost key={posts[1].title} post={posts[1]} />
                 </Grid>
-                <Grid lg={4}>
-                <FeaturedPost key={posts[2].title} post={posts[2]}/>
+                <Grid lg={4} className={classes.card}>
+                  <FeaturedPost key={posts[2].title} post={posts[2]} />
                 </Grid>
-              </Grid>              
+              </Grid>
             </Grid>
             <Grid lg={3}>
-            <Radio /> 
+              <Radio />
             </Grid>
           </Grid>
 
-          
+
           <Grid container spacing={5} className={classes.mainGrid}>
             {/* <Main title="Post" posts={posts} /> */}
             <Sidebar

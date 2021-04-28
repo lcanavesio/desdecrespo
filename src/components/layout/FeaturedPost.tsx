@@ -14,9 +14,33 @@ const useStyles = makeStyles((theme) => ({
     position: 'relative'
   },
   card: {
-    paddingLeft: 10,
-    paddingRig: 10,
+    height: '100%',    
+    '&:hover': {   
+      "& $cardMedia": {
+        transform: "scale3d(1.05, 1.05, 1)"
+      }
+    },
   },
+  cardMedia: {
+    transition: '0.3s',
+    height: 200,
+    margin: 0
+  },
+  details: {
+    display: "flex",
+    flexDirection: "column",
+  },
+  title: {
+    fontFamily: 'Barlow',
+    fontSize: 21,
+    fontWeight: 700,
+    height: '100%',
+
+    overflow: "hidden",
+    display: "-webkit-box",
+    WebkitLineClamp: 3,
+    WebkitBoxOrient: "vertical"
+  }
 }));
 
 type Post = {
@@ -37,21 +61,24 @@ export default function FeaturedPost(props: Props) {
   const { post } = props;
 
   return (
-    <Card className={classes.card}>
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          alt="Contemplative Reptile"
-          image={post.featuredImage?.node?.mediaItemUrl}
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
-            {post.title}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+    <>
+      <Card className={classes.card}>
+        <CardActionArea>
+          <CardMedia
+            className={classes.cardMedia}
+            component="img"
+            alt={post.title}
+            image={post.featuredImage?.node?.mediaItemUrl}
+            title={post.title}
+          />
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="h2" className={classes.title}>
+              {post.title}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    </>
   );
 }
 
