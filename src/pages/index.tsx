@@ -3,16 +3,16 @@ import { Container, CssBaseline, Grid, makeStyles } from "@material-ui/core"
 import FacebookIcon from "@material-ui/icons/Facebook"
 import GitHubIcon from "@material-ui/icons/GitHub"
 import TwitterIcon from "@material-ui/icons/Twitter"
-import { graphql, Link, useStaticQuery } from "gatsby"
+import { graphql, Link } from "gatsby"
 import React from "react"
-import Radio from "../components/radio/radio"
 import FeaturedPost from "../components/layout/FeaturedPost"
 import Footer from "../components/layout/Footer"
 import Header from "../components/layout/Header"
-import MainFeaturedPost from "../components/layout/MainFeaturedPost"
 import Sidebar from "../components/layout/Sidebar"
+import Radio from "../components/radio/radio"
 //import { Link } from "gatsby"
 import SEO from "../components/seo"
+import { Loading } from "../utils/Loading"
 
 
 const post1 = "hola como estas "
@@ -65,36 +65,13 @@ const sidebar = {
   ],
 }
 
-const IndexPage = () => {
+const IndexPage = ({ data }) => {
   const classes = useStyles()
-  const data = useStaticQuery(graphql`
-    query GET_POST {
-      wpgraphql {
-        posts(
-          first: 10
-          where: {
-            orderby: { field: DATE, order: DESC }
-            categoryName: "locales"
-          }
-        ) {
-          edges {
-            node {
-              id
-              date
-              title
-              slug
-              featuredImage {
-                node {
-                  mediaItemUrl
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  `)
-  const posts = data?.wpgraphql?.posts?.edges?.map(edge => edge.node) || [];
+  let posts = []
+  if (!data || !data.wpgraphql) {
+    return <Loading />
+  }
+   posts = data.wpgraphql.posts.edges.map(edge => edge.node) || [];
   return (
     <>
       <SEO title="Using TypeScript" />
@@ -146,25 +123,27 @@ const IndexPage = () => {
 
 export default IndexPage
 
-// export const query = graphql`
-//   query GET_POST {
-//     wpgraphql {
-//     posts(first: 10, where: {orderby: {field: DATE, order: DESC},
-//       categoryName: "locales"}) {
-//       edges {
-//         node {
-//           id
-//           date
-//           title
-//           slug
-//           featuredImage {
-//             node {
-//               mediaItemUrl
-//             }
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
-// `
+export const query = graphql`
+  {
+    wpgraphql {
+      posts(
+        first: 10
+        where: {orderby: {field: DATE, order: DESC}, categoryName: "locales"}
+      ) {
+        edges {
+          node {
+            id
+            date
+            title
+            slug
+            featuredImage {
+              node {
+                mediaItemUrl
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`

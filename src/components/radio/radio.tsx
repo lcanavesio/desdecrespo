@@ -35,9 +35,6 @@ const Radio = () => {
 
   return (
     <div className="radio">
-  
-
-
           <AudioPlayer
             autoPlay
             src="http://example.com/audio.mp3"
