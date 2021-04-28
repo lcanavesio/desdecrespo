@@ -7,13 +7,24 @@ import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
+import { Box, Divider, Grid } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
+  bannerContainer: {
+    marginLeft: 308,
+    marginRight: 308,
+    maxWidth: 1287,
+    display: 'block'
+  },
+  banner: {
+    paddingLeft: 15,
+    paddingRight: 15,
+  },
   headerContainer: {
     maxWidth: 1287,
-    display: 'block', 
-    marginLeft: 308,    
+    display: 'block',
+    marginLeft: 308,
     marginRight: 308,
     color: 'white'
   },
@@ -27,13 +38,25 @@ const useStyles = makeStyles((theme) => ({
     background: 'linear-gradient(20deg, #b91b0c 0%, #e28f12 100%)'
   },
   toolbarLink: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(2),
     flexShrink: 0,
-    fontFamily: 'Helvetica',
-    fontSize: 18,
+    fontFamily: 'Roboto',
+    fontSize: 13,
     fontWeight: 500,
-    textTransform: 'uppercase'
+    textTransform: 'uppercase',
+    backgroundOrigin: 'padding-box',
+    boxSizing: 'border-box',
+    transition: '0.3s',
+    '&:hover': { 
+      boxShadow: 'inset 0 0 100px 100px rgba(255, 255, 255, 0.1)',
+      textDecoration: 'none'
+     },
   },
+  dividerVertical: {
+    background: '#dadada',
+    marginTop: 12,
+    marginBottom: 12,
+  }
 }));
 
 export default function Header(props) {
@@ -60,20 +83,32 @@ export default function Header(props) {
           Ver en VIVO
         </Button>
       </Toolbar>
-      <img src="./images/banner-desktop.jpg" width="100%" />
+
+      <div className={classes.bannerContainer}>
+        <Grid item md={12} lg={12} className={classes.banner}>
+          <a rel="home" href="https://www.desdecrespo.com.ar/">
+            <img src="./images/banner-desktop.jpg" width="100%" />
+          </a>
+        </Grid>
+      </div>
+
       <header className={classes.header}>
         <div className={classes.headerContainer}>
           <Toolbar component="nav" variant="dense">
+            <Divider orientation="vertical" flexItem className={classes.dividerVertical}/>
             {sections.map((section) => (
-              <Link
-                color="inherit"
-                noWrap
-                key={section.title}
-                href={section.url}
-                className={classes.toolbarLink}
-              >
-                {section.title}
-              </Link>
+              <>
+                <Link
+                  color="inherit"
+                  noWrap
+                  key={section.title}
+                  href={section.url}
+                  className={classes.toolbarLink}
+                >
+                  {section.title}
+                </Link>
+                <Divider orientation="vertical" flexItem className={classes.dividerVertical}/>
+              </>
             ))}
           </Toolbar>
         </div>

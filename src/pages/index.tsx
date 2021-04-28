@@ -23,6 +23,9 @@ const useStyles = makeStyles(theme => ({
   mainGrid: {
     marginTop: theme.spacing(3),
   },
+  container: {
+    paddingTop: 10,
+  }
 }))
 
 const sections = [
@@ -99,9 +102,8 @@ const IndexPage = () => {
       <Header sections={sections} ultimo={["Test"]} />
       <Container maxWidth="lg">        
         <main>          
-          <Grid container>
-            <Grid lg={9}>
-              <MainFeaturedPost post={posts[0]} />
+          <Grid container className={classes.container}>
+            <Grid lg={9}>              
               <Grid container lg={12}>
                 <Grid lg={4}>
                 <FeaturedPost key={posts[0].title} post={posts[0]}/>
@@ -112,8 +114,7 @@ const IndexPage = () => {
                 <Grid lg={4}>
                 <FeaturedPost key={posts[2].title} post={posts[2]}/>
                 </Grid>
-              </Grid>
-              
+              </Grid>              
             </Grid>
             <Grid lg={3}>
               
