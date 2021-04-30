@@ -7,7 +7,6 @@ import SlidePosts from "../components/post/SlidePosts"
 import Radio from "../components/radio/radio"
 //import { Link } from "gatsby"
 import SEO from "../components/seo"
-import { Loading } from "../utils/Loading"
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -69,7 +68,7 @@ const Index = (props: Props) => {
           <Grid lg={9}>
             <Grid container lg={12}>
               <Grid item lg={12}>
-                <SlidePosts key={posts[0].title} posts={[posts[0]]} />
+                <SlidePosts key={posts[0].title} posts={posts} />
               </Grid>
             </Grid>
             <Grid container lg={12}>
