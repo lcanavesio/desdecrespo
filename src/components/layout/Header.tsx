@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
+import { Divider, Grid } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import SearchIcon from '@material-ui/icons/Search';
+import { makeStyles } from '@material-ui/core/styles';
+import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
-import { Box, Divider, Grid } from '@material-ui/core';
+import SearchIcon from '@material-ui/icons/Search';
+import { Link } from 'gatsby-material-ui-components';
+import PropTypes from 'prop-types';
+import React from 'react';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -47,10 +47,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundOrigin: 'padding-box',
     boxSizing: 'border-box',
     transition: '0.3s',
-    '&:hover': { 
+    '&:hover': {
       boxShadow: 'inset 0 0 100px 100px rgba(255, 255, 255, 0.1)',
       textDecoration: 'none'
-     },
+    },
   },
   dividerVertical: {
     background: '#dadada',
@@ -95,19 +95,19 @@ export default function Header(props) {
       <header className={classes.header}>
         <div className={classes.headerContainer}>
           <Toolbar component="nav" variant="dense">
-            <Divider orientation="vertical" flexItem className={classes.dividerVertical}/>
+            <Divider orientation="vertical" flexItem className={classes.dividerVertical} />
             {sections.map((section) => (
               <>
                 <Link
                   color="inherit"
                   noWrap
                   key={section.title}
-                  href={section.url}
+                  to={section.url}
                   className={classes.toolbarLink}
                 >
                   {section.title}
                 </Link>
-                <Divider orientation="vertical" flexItem className={classes.dividerVertical}/>
+                <Divider orientation="vertical" flexItem className={classes.dividerVertical} />
               </>
             ))}
           </Toolbar>
