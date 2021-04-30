@@ -7,6 +7,7 @@ import SlidePosts from "../components/post/SlidePosts"
 import Radio from "../components/radio/radio"
 //import { Link } from "gatsby"
 import SEO from "../components/seo"
+import { Loading } from "../utils/Loading"
 
 const useStyles = makeStyles(theme => ({
   container: {
