@@ -1,12 +1,20 @@
-import { Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link, navigate } from "gatsby";
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
 
-const useStyles = makeStyles((theme) => ({  
+const useStyles = makeStyles((theme) => ({    
+  carousel: {        
+    marginLeft: 10,
+    marginRight: 10,    
+  },  
   image: {
     position: 'relative',
-    width: '100%',    
+    height: 436,
+    width: '100%',
+    objectFit: 'cover',
+    margin: 0,
+    borderRadius: 5
   },
   postTitle: {
     position: 'absolute',
@@ -40,17 +48,17 @@ const SlidePosts = (props: Props) => {
 
   return (
     <>
-      <Carousel>
+      <Carousel className={classes.carousel}>
         {
           posts.map((post) => (
-            <Paper>
-              <img src={post.featuredImage?.node?.mediaItemUrl} className={classes.image}/>
-              <a href="https://www.desdecrespo.com.ar/crespo-registro-una-decena-de-casos-de-covid-19-este-jueves/"></a>
+            <div>
+              <img src={post.featuredImage?.node?.mediaItemUrl} className={classes.image} onClick={() => navigate(post.slug)}/>              
               <h3 className={classes.postTitle}>
-                <a href="https://www.desdecrespo.com.ar/crespo-registro-una-decena-de-casos-de-covid-19-este-jueves/" className={classes.link}>
-                  Crespo registró una decena de casos de Covid-19 este jueves </a>
+                <Link to={post.slug} className={classes.link}>
+                  Crespo registró una decena de casos de Covid-19 este jueves
+                 </Link>
               </h3>
-            </Paper>
+            </div>
           ))
         }
       </Carousel>

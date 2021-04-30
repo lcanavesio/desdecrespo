@@ -33,7 +33,6 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 21,
     fontWeight: 700,
     height: '100%',
-
     overflow: "hidden",
     display: "-webkit-box",
     WebkitLineClamp: 3,
