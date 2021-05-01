@@ -27,6 +27,7 @@
     "react-h5-audio-player": "^3.7.0",
     "react-helmet": "^6.1.0",
     "react-material-ui-carousel": "^2.2.4",
+    "react-player": "^2.9.0",
     "react-typography": "^0.16.19",
     "typography": "^0.16.19"
   },

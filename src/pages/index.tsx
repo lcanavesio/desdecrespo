@@ -1,6 +1,7 @@
 import { CssBaseline, Grid, makeStyles } from "@material-ui/core"
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
+import TV from "../components/tv/TV"
 import Layout from "../components/layout/Layout"
 import FeaturedPost from "../components/post/FeaturedPost"
 import SlidePosts from "../components/post/SlidePosts"
@@ -84,6 +85,7 @@ const Index = (props: Props) => {
             </Grid>
           </Grid>
           <Grid lg={3}>
+            <TV />
             <Radio />
           </Grid>
         </Grid>
