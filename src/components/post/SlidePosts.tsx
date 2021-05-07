@@ -46,16 +46,18 @@ const SlidePosts = (props: Props) => {
   const classes = useStyles();
   const { posts } = props;
 
+
+
   return (
     <>
       <Carousel className={classes.carousel}>
         {
           posts.map((post) => (
             <div>
-              <img src={post.featuredImage?.node?.mediaItemUrl} className={classes.image} onClick={() => navigate(post.slug)}/>              
+              <img src={post.featuredImage?.node?.mediaItemUrl} className={classes.image} onClick={() => navigate(`post/${post.slug}/${post.id}`)}/>              
               <h3 className={classes.postTitle}>
-                <Link to={post.slug} className={classes.link}>
-                  Crespo registró una decena de casos de Covid-19 este jueves
+                <Link to={`post/${post.slug}/${post.id}`} className={classes.link}>
+                  {post.title}
                  </Link>
               </h3>
             </div>

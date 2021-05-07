@@ -58,5 +58,11 @@ module.exports = {
        // url: "${process.env.WORDPRESS_URL}/graphql",
       },
     },
+    {
+      resolve: 'gatsby-plugin-apollo',
+      options: {
+        uri: 'https://www.desdecrespo.com.ar/index.php?graphql'
+      }
+    },
   ],
 }

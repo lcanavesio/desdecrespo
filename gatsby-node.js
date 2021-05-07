@@ -1,3 +1,5 @@
+const path = require('path');
+
 /**
  * Implement Gatsby's Node APIs in this file.
  *
@@ -5,3 +7,17 @@
  */
 
 // You can delete this file if you're not using it
+
+
+exports.onCreatePage = async ({ page, actions }) => {
+    const { createPage } = actions
+  
+    // page.matchPath is a special key that's used for matching pages
+    // only on the client.
+    if (page.path.match(/^\/post/)) {
+      page.matchPath = "/post/*"
+  
+      // Update the page.
+      createPage(page)
+    }
+  }

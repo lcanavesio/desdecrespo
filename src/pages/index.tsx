@@ -1,11 +1,10 @@
+import { gql, useQuery } from '@apollo/client'
 import { CssBaseline, Grid, makeStyles } from "@material-ui/core"
-import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import Layout from "../components/layout/Layout"
 import FeaturedPost from "../components/post/FeaturedPost"
 import SlidePosts from "../components/post/SlidePosts"
 import Radio from "../components/radio/radio"
-//import { Link } from "gatsby"
 import SEO from "../components/seo"
 
 const useStyles = makeStyles(theme => ({
@@ -30,56 +29,56 @@ interface Props {
 
 const Index = (props: Props) => {
   const classes = useStyles();
-  const data = useStaticQuery(graphql`
-  query GET_POST {
-    wpgraphql {
-      posts(
-        first: 10
-        where: {
-          orderby: { field: DATE, order: DESC }
-          categoryName: "locales"
-        }
-      ) {
-        edges {
-          node {
-            id
-            date
-            title
-            slug
-            featuredImage {
-              node {
-                mediaItemUrl
-              }
+  const getPosts = gql`
+  query getPosts {
+    posts(
+      first: 10
+      where: {
+        orderby: { field: DATE, order: DESC }
+        categoryName: "locales"
+      }
+    ) {
+      edges {
+        node {
+          id
+          date
+          title
+          slug
+          featuredImage {
+            node {
+              mediaItemUrl
             }
           }
         }
       }
     }
   }
-`);
+`;
 
-  const posts = data?.wpgraphql?.posts?.edges?.map(edge => edge.node) || [];
+  const { loading, error, data } = useQuery(getPosts);
+  const posts = data?.posts?.edges?.map(edge => edge.node) || null;
+  if(!posts) return null;
   return (
     <Layout location={window.location} title="Test">
       <section className={classes.container}>
-        <SEO title="Inicio" />
+        <SEO  title="Inicio" />
         <CssBaseline />
         <Grid container className={classes.container}>
           <Grid lg={9}>
             <Grid container lg={12}>
               <Grid item lg={12}>
-                <SlidePosts key={posts[0].title} posts={posts} />
+                <SlidePosts key={posts[0]?.title} posts={posts} />
               </Grid>
             </Grid>
             <Grid container lg={12}>
               <Grid item lg={4} className={classes.card}>
-                <FeaturedPost key={posts[0].title} post={posts[0]} />
+                <FeaturedPost key={posts[0]?.title} post={posts[0]} />
               </Grid>
               <Grid item lg={4} className={classes.card}>
-                <FeaturedPost key={posts[1].title} post={posts[1]} />
+                <FeaturedPost key={posts[1]?.title} post={posts[1]} />
               </Grid>
               <Grid item lg={4} className={classes.card}>
-                <FeaturedPost key={posts[2].title} post={posts[2]} />
+                <FeaturedPost key={posts[2]?.title} post={posts[2]} />
               </Grid>
             </Grid>
           </Grid>
