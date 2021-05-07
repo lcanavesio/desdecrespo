@@ -1,10 +1,18 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
+  
   siteMetadata: {
     title: `Desde Crespo`,
     description: `Diario`,
     author: `@gatsbyjs`,
   },
   plugins: [
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
      // `gatsby-plugin-typescript` is automatically included in gatsby
     // You only need to explicitly define it here if you need to configure
     // specific options in it
@@ -61,7 +69,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-apollo',
       options: {
-        uri: 'https://www.desdecrespo.com.ar/index.php?graphql'
+        uri: process.env.GATSBY_GCMS_URL
       }
     },
   ],

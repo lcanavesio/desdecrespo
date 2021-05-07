@@ -6,9 +6,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
 import { Link } from 'gatsby-material-ui-components';
+import { StaticImage } from "gatsby-plugin-image";
 import PropTypes from 'prop-types';
 import React from 'react';
-
 
 const useStyles = makeStyles((theme) => ({
   bannerContainer: {
@@ -63,7 +63,7 @@ export default function Header(props) {
   const classes = useStyles();
   const { sections, title } = props;
 
-  return (
+  return (    
     <React.Fragment>
       <Toolbar className={classes.toolbar}>
         <Button size="small">Lo último</Button>
@@ -87,7 +87,10 @@ export default function Header(props) {
       <div className={classes.bannerContainer}>
         <Grid item md={12} lg={12} className={classes.banner}>
           <a rel="home" href="https://www.desdecrespo.com.ar/">
-            <img src="./images/banner-desktop.jpg" width="100%" />
+            <StaticImage 
+              src="../../images/banner-desktop.jpg"
+              alt="Banner - Desde Crespo"
+              style={{ width: "100%" }}/>
           </a>
         </Grid>
       </div>

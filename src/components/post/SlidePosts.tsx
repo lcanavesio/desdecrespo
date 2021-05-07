@@ -3,11 +3,11 @@ import { Link, navigate } from "gatsby";
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
 
-const useStyles = makeStyles((theme) => ({    
-  carousel: {        
+const useStyles = makeStyles((theme) => ({
+  carousel: {
     marginLeft: 10,
-    marginRight: 10,    
-  },  
+    marginRight: 10,
+  },
   image: {
     position: 'relative',
     height: 436,
@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   },
   link: {
     color: 'white',
-    textDecoration: 'none',    
+    textDecoration: 'none',
   }
 }));
 
@@ -52,14 +52,14 @@ const SlidePosts = (props: Props) => {
     <>
       <Carousel className={classes.carousel}>
         {
-          posts.map((post) => (
+          posts.map((post) => (            
             <div>
-              <img src={post.featuredImage?.node?.mediaItemUrl} className={classes.image} onClick={() => navigate(`post/${post.slug}/${post.id}`)}/>              
-              <h3 className={classes.postTitle}>
-                <Link to={`post/${post.slug}/${post.id}`} className={classes.link}>
+              <Link to={`post/${post.slug}/${post.id}`} className={classes.link}>
+                <img src={post.featuredImage?.node?.mediaItemUrl} className={classes.image} onClick={() => navigate(`post/${post.slug}/${post.id}`)} />
+                <h3 className={classes.postTitle}>
                   {post.title}
-                 </Link>
-              </h3>
+                </h3>
+              </Link>
             </div>
           ))
         }
