@@ -1,9 +1,9 @@
 import Breadcrumbs from '@material-ui/core/Breadcrumbs';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import AssignmentIcon from '@material-ui/icons/Assignment';
+import { default as SvgIcon } from '@material-ui/icons/Assignment';
 import HomeIcon from '@material-ui/icons/Home';
-import WhatshotIcon from '@material-ui/icons/Whatshot';
+import ReceiptIcon from '@material-ui/icons/Receipt';
 import { Link } from 'gatsby-material-ui-components';
 import React from 'react';
 import { Category } from 'src/interfaces/category.interface';
@@ -41,11 +41,11 @@ const Breadcrumb = (props: Props) => {
         href={category.url}
         className={classes.link}
       >
-        <WhatshotIcon className={classes.icon} />
+        <SvgIcon component={category.icon} className={classes.icon}/>
         {category.title}
       </Link>
-      <Typography color="textPrimary" className={classes.link}>
-        <AssignmentIcon className={classes.icon} />
+      <Typography className={classes.link}>
+        <ReceiptIcon className={classes.icon} />
         {props.label}
       </Typography>
     </Breadcrumbs>
