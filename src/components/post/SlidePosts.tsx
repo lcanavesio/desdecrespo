@@ -50,7 +50,9 @@ const SlidePosts = (props: Props) => {
 
   return (
     <>
-      <Carousel className={classes.carousel}>
+      <Carousel 
+        className={classes.carousel}
+        animation={'slide'}>
         {
           posts.map((post) => (            
             <div>

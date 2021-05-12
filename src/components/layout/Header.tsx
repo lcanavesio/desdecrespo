@@ -9,6 +9,7 @@ import { Link } from 'gatsby-material-ui-components';
 import { StaticImage } from "gatsby-plugin-image";
 import PropTypes from 'prop-types';
 import React from 'react';
+import Ultimo from '../ultimo/ultimo';
 
 const useStyles = makeStyles((theme) => ({
   bannerContainer: {
@@ -66,7 +67,7 @@ export default function Header(props) {
   return (    
     <React.Fragment>
       <Toolbar className={classes.toolbar}>
-        <Button size="small">Lo último</Button>
+        <Ultimo/>
         <Typography
           component="h2"
           variant="h5"
