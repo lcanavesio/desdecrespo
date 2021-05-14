@@ -46,8 +46,6 @@ const SlidePosts = (props: Props) => {
   const classes = useStyles();
   const { posts } = props;
 
-
-
   return (
     <>
       <Carousel 
@@ -56,7 +54,7 @@ const SlidePosts = (props: Props) => {
         {
           posts.map((post) => (            
             <div>
-              <Link to={`post/${post.slug}/${post.id}`} className={classes.link}>
+              <Link to={`/post/${post.slug}/${post.id}`} className={classes.link}>
                 <img src={post.featuredImage?.node?.mediaItemUrl} className={classes.image} onClick={() => navigate(`post/${post.slug}/${post.id}`)} />
                 <h3 className={classes.postTitle}>
                   {post.title}

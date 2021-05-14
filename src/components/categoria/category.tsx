@@ -1,12 +1,12 @@
 import { gql, useQuery } from '@apollo/client';
 import { CssBaseline, GridList, GridListTile } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import * as queryString from "query-string";
 import React from 'react';
 import { Category } from 'src/interfaces/category.interface';
 import { Constants } from "../../utils/constants";
 import FeaturedPost from '../post/FeaturedPost';
 import SEO from '../seo';
+import InfiniteScrollComponent from './infiniteScroll';
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -49,26 +49,6 @@ const CategoryComponent = (props: Props) => {
   }
 `;
 
-const getInfinityScroll = gql`
-  query streetNames($first: Int, $after: String) {
-    streetNames(first: $first, after: $after) {
-      pageInfo {
-        endCursor
-        hasNextPage
-      }
-      edges {
-        cursor
-        node {
-          index
-          streetName
-          hash
-        }
-      }
-    }
-  }
-`;
-
-  const query: any = queryString.parse(location.search);
   const category: Category = Constants.CATEGORIES.find(c => c.url === location.pathname);
   if (!category) {
     return null;
@@ -89,10 +69,11 @@ const getInfinityScroll = gql`
       <GridList cellHeight={288} cols={2}>
         {posts.map((post) => (
           <GridListTile key={`gridList-${category.title}-${post?.title}`}>
-            <FeaturedPost key={`${category.title}-${post?.title}`} post={post} />  
+            <FeaturedPost key={`${category.title}-${post?.title}`} post={post} />
           </GridListTile>
         ))}
       </GridList>
+      <InfiniteScrollComponent/>
     </section>
   );
 }

@@ -32,6 +32,7 @@
     "react-material-ui-carousel": "^2.2.4",
     "react-player": "^2.9.0",
     "react-typography": "^0.16.19",
+    "react-waypoint": "^10.1.0",
     "typography": "^0.16.19"
   },
   "devDependencies": {
