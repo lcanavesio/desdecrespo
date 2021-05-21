@@ -38,15 +38,30 @@ const Breadcrumb = (props: Props) => {
         Inicio
       </Link>
 
-      <Link
-        color="inherit"
-        href={category.url}
-        className={classes.link}
-      >
-        <SvgIcon component={category.icon} className={classes.icon} />
-        {category.title}
-      </Link>
-      { props.label ? 
+      {
+        props.label
+          ? <Link
+            color="inherit"
+            onClick={(event) => event.preventDefault()}
+            href={category.url}
+            className={classes.link}
+          >
+            <SvgIcon component={category.icon} className={classes.icon} />
+            {category.title}
+          </Link>
+          : <Link
+            color="inherit"
+            onClick={(event) => event.preventDefault()}
+            href={category.url}
+            className={classes.link}
+          >
+            <SvgIcon component={category.icon} className={classes.icon} />
+            {category.title}
+          </Link>
+      }
+
+
+      { props.label ?
         <Typography className={classes.link}>
           <ReceiptIcon className={classes.icon} />
           {props.label}
@@ -54,7 +69,7 @@ const Breadcrumb = (props: Props) => {
         :
         null
       }
-      
+
     </Breadcrumbs>
   );
 }
