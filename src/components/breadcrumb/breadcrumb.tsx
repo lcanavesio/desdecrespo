@@ -27,6 +27,7 @@ type Props = {
 
 const Breadcrumb = (props: Props) => {
   const classes = useStyles();
+  console.log(props.category);
   const category: Category = Constants.CATEGORIES.find(c => c.databaseName === props.category);
   
   if (!category) return null;
