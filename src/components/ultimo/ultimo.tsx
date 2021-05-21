@@ -87,7 +87,7 @@ const Ultimo = () => {
       >
         {
           posts.map((post) => (
-              <Link to={`post/${post.slug}/${post.id}`} className={classes.link}>
+              <Link to={`/post/${post.slug}/${post.id}`} className={classes.link}>
                 {post.title}
               </Link>
           ))

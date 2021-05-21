@@ -55,7 +55,7 @@ const SlidePosts = (props: Props) => {
           posts.map((post) => (            
             <div>
               <Link to={`/post/${post.slug}/${post.id}`} className={classes.link}>
-                <img src={post.featuredImage?.node?.mediaItemUrl} className={classes.image} onClick={() => navigate(`post/${post.slug}/${post.id}`)} />
+                <img src={post.featuredImage?.node?.mediaItemUrl} className={classes.image} onClick={() => navigate(`/post/${post.slug}/${post.id}`)} />
                 <h3 className={classes.postTitle}>
                   {post.title}
                 </h3>

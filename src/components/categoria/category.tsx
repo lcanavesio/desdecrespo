@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import { Category } from 'src/interfaces/category.interface';
 import { Constants } from "../../utils/constants";
+import Breadcrumb from '../breadcrumb/breadcrumb';
 import FeaturedPost from '../post/FeaturedPost';
 import SEO from '../seo';
 import InfiniteScrollComponent from './infiniteScroll';
@@ -66,6 +67,7 @@ const CategoryComponent = (props: Props) => {
     <section className={classes.container}>
       <SEO title="Inicio" />
       <CssBaseline />
+      <Breadcrumb category={category.databaseName} label={data?.post?.title} />
       <GridList cellHeight={288} cols={2}>
         {posts.map((post) => (
           <GridListTile key={`gridList-${category.title}-${post?.title}`}>

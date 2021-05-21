@@ -4,6 +4,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import { navigate } from "gatsby";
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -60,8 +61,8 @@ export default function FeaturedPost(props: Props) {
   return (
     <>
       <Card className={classes.card}>
-        <CardActionArea>
-          <CardMedia
+        <CardActionArea onClick={() => navigate(`/post/${post.slug}/${post.id}`)}>
+          <CardMedia 
             className={classes.cardMedia}
             component="img"
             alt={post.title}

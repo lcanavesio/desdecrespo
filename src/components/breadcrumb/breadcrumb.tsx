@@ -27,8 +27,9 @@ type Props = {
 
 const Breadcrumb = (props: Props) => {
   const classes = useStyles();
+  console.log(props.category);
   const category: Category = Constants.CATEGORIES.find(c => c.databaseName === props.category);
-  
+
   if (!category) return null;
   return (
     <Breadcrumbs aria-label="breadcrumb">
@@ -36,18 +37,39 @@ const Breadcrumb = (props: Props) => {
         <HomeIcon className={classes.icon} />
         Inicio
       </Link>
-      <Link
-        color="inherit"
-        href={category.url}
-        className={classes.link}
-      >
-        <SvgIcon component={category.icon} className={classes.icon}/>
-        {category.title}
-      </Link>
-      <Typography className={classes.link}>
-        <ReceiptIcon className={classes.icon} />
-        {props.label}
-      </Typography>
+
+      {
+        props.label
+          ? <Link
+            color="inherit"
+            onClick={(event) => event.preventDefault()}
+            href={category.url}
+            className={classes.link}
+          >
+            <SvgIcon component={category.icon} className={classes.icon} />
+            {category.title}
+          </Link>
+          : <Link
+            color="inherit"
+            onClick={(event) => event.preventDefault()}
+            href={category.url}
+            className={classes.link}
+          >
+            <SvgIcon component={category.icon} className={classes.icon} />
+            {category.title}
+          </Link>
+      }
+
+
+      { props.label ?
+        <Typography className={classes.link}>
+          <ReceiptIcon className={classes.icon} />
+          {props.label}
+        </Typography>
+        :
+        null
+      }
+
     </Breadcrumbs>
   );
 }
