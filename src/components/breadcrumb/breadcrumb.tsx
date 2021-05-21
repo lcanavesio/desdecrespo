@@ -42,7 +42,6 @@ const Breadcrumb = (props: Props) => {
         props.label
           ? <Link
             color="inherit"
-            onClick={(event) => event.preventDefault()}
             href={category.url}
             className={classes.link}
           >
