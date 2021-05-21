@@ -1,10 +1,11 @@
-import { Divider, Grid } from '@material-ui/core';
+import { Dialog, DialogActions, DialogContent, DialogTitle, Divider, Grid, TextField } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
+import { navigate } from 'gatsby';
 import { Link } from 'gatsby-material-ui-components';
 import { StaticImage } from "gatsby-plugin-image";
 import PropTypes from 'prop-types';
@@ -63,11 +64,59 @@ const useStyles = makeStyles((theme) => ({
 export default function Header(props) {
   const classes = useStyles();
   const { sections, title } = props;
+  const [open, setOpen] = React.useState(false);
+  const [keyword, setKeyword] = React.useState("");
 
-  return (    
+  const handleClickOpen = () => {
+    setOpen(true);
+    setKeyword("");
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setKeyword("");
+  };
+
+  const handleFormSubmit = (e: any) => {
+    e.preventDefault();
+    navigate(`/busqueda?keyword=${keyword}`);
+    setOpen(false);
+  }
+
+  return (
     <React.Fragment>
+      
+        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+        <form onSubmit={handleFormSubmit}>
+          <DialogTitle id="form-dialog-title">Buscar</DialogTitle>
+          <DialogContent>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="search"
+              type="text"
+              label="¿Qué estás buscando?"
+              onChange={e => setKeyword(e.target.value)}
+              value={keyword}              
+              fullWidth
+              required
+              autoComplete="none"
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Cancelar
+          </Button>
+            <Button type="submit" color="primary">
+              Buscar
+          </Button>
+          </DialogActions>
+          </form>
+        </Dialog>
+      
+
       <Toolbar className={classes.toolbar}>
-        <Ultimo/>
+        <Ultimo />
         <Typography
           component="h2"
           variant="h5"
@@ -77,7 +126,7 @@ export default function Header(props) {
           className={classes.toolbarTitle}
         >
         </Typography>
-        <IconButton>
+        <IconButton onClick={handleClickOpen}>
           <SearchIcon />
         </IconButton>
         <Button variant="outlined" size="small" color="secondary">
@@ -88,10 +137,10 @@ export default function Header(props) {
       <div className={classes.bannerContainer}>
         <Grid item md={12} lg={12} className={classes.banner}>
           <a rel="home" href="https://www.desdecrespo.com.ar/">
-            <StaticImage 
+            <StaticImage
               src="../../images/banner-desktop.jpg"
               alt="Banner - Desde Crespo"
-              style={{ width: "100%" }}/>
+              style={{ width: "100%" }} />
           </a>
         </Grid>
       </div>

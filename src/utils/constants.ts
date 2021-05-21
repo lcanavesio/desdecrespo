@@ -13,11 +13,13 @@ export abstract class Constants {
         { title: "Crespo", databaseName: "Locales", url: "/categoria/crespo", icon: AssignmentIcon },
         { title: "Provinciales", databaseName: "Provinciales", url: "/categoria/provinciales", icon: AssignmentIcon },
         { title: "Nacionales", databaseName: "Nacionales", url: "/categoria/nacionales", icon: AssignmentIcon },
-        { title: "Internacionales", databaseName: "Internacionales", url: "/categoria/internacionales", icon: PublicIcon },
-        { title: "Deportes", databaseName: "Deportes", url: "/categoria/deportes", icon: SportsBasketballIcon },
+        { title: "Internacionales", databaseName: "Internacionales", url: "/categoria/internacionales", icon: PublicIcon },        
         { title: "Policiales", databaseName: "Policiales", url: "/categoria/policiales", icon: LocalTaxiIcon },
         { title: "Rurales", databaseName: "Rurales", url: "/categoria/rurales", icon: PetsIcon },
         { title: "Clasificados", databaseName: "Clasificados", url: "/categoria/clasificados", icon: PageviewIcon },
         { title: "Necrológicas", databaseName: "Necrológica", url: "/categoria/otros", icon: SentimentDissatisfiedIcon },
+        { title: "Deportes", databaseName: "Deportes", url: "/categoria/deportes", icon: SportsBasketballIcon },
+        { title: "Deportes", databaseName: "Básquet", url: "/categoria/deportes", icon: SportsBasketballIcon },
+        //Agregar todas las categorias, en databaseName van las individuales, y en title y URL a que categoria lo llevaria el breadcrumb
     ];
 }
