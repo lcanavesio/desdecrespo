@@ -61,8 +61,8 @@ export default function FeaturedPost(props: Props) {
   return (
     <>
       <Card className={classes.card}>
-        <CardActionArea>
-          <CardMedia
+        <CardActionArea onClick={() => navigate(`/post/${post.slug}/${post.id}`)}>
+          <CardMedia 
             className={classes.cardMedia}
             component="img"
             alt={post.title}
