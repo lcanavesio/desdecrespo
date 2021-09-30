@@ -1,28 +1,28 @@
-import { gql, useQuery } from '@apollo/client';
-import { CircularProgress, CssBaseline, List, ListItem } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import {gql, useQuery} from '@apollo/client';
+import {CircularProgress, CssBaseline, List, ListItem} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
 import React from 'react';
-import { Waypoint } from 'react-waypoint';
-import { Category } from 'src/interfaces/category.interface';
-import { Constants } from "../../utils/constants";
-import PostCard from '../post/postCard';
+import {Waypoint} from 'react-waypoint';
+import {Category} from '../../interfaces/category.interface';
+import NotFoundPage from '../../pages/404';
+import {Constants} from '../../utils/constants';
+import PostCard from '../post/PostCard.';
 import SEO from '../seo';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     paddingTop: 10,
     paddingLeft: 15,
     paddingRight: 15,
   },
-}))
+}));
 
 type Props = {
-  path: string;
-  location: string;
+  path?: string;
+  location?: string;
 };
 
 const InfiniteScrollComponent = (props: Props) => {
-
   const getPosts = gql`
   query getPosts ($first:Int, $cursor:String) {
     posts(
@@ -51,19 +51,22 @@ const InfiniteScrollComponent = (props: Props) => {
   }
 `;
 
-  const category: Category = Constants.CATEGORIES.find(c => c.url === location.pathname);
+  const category: Category = Constants.CATEGORIES
+      .find((c) => c.url === location.pathname);
   if (!category) {
     return null;
-    //return 404
+    // return 404
   }
 
-  const { loading, error, data, fetchMore, networkStatus } = useQuery(getPosts, {
-    variables: { first: 10, cursor: null }
+  const {loading, error, data, fetchMore, networkStatus} = useQuery(getPosts, {
+    variables: {first: 10, cursor: null},
   });
   const edges = data?.posts?.edges || null;
   const classes = useStyles();
 
-  if (!edges) return <CircularProgress/>;
+  if (error) return <NotFoundPage/>;
+  if (!edges) return <div>Sin datos</div>;
+  if (loading) return <CircularProgress/>;
   return (
     <section className={classes.container}>
       <SEO title="Inicio" />
@@ -78,26 +81,27 @@ const InfiniteScrollComponent = (props: Props) => {
               </ListItem>
               {i === edges.length - 2 &&
                 (<Waypoint onEnter={() => {
-                  fetchMore({                  
-                  variables: {
-                    first: 5,
-                    cursor: edges[edges.length - 1].cursor
-                  },
-                  updateQuery: (pv, { fetchMoreResult }) => {
-                    if (!fetchMoreResult) {
-                      return pv;
-                    }
-
-                    return {
-                      posts: {
-                        edges: [
-                          ...pv.posts.edges,
-                          ...fetchMoreResult.posts.edges
-                        ]
+                  fetchMore({
+                    variables: {
+                      first: 5,
+                      cursor: edges[edges.length - 1].cursor,
+                    },
+                    updateQuery: (pv, {fetchMoreResult}) => {
+                      if (!fetchMoreResult) {
+                        return pv;
                       }
-                    }
-                  }
-                })}} />
+
+                      return {
+                        posts: {
+                          edges: [
+                            ...pv.posts.edges,
+                            ...fetchMoreResult.posts.edges,
+                          ],
+                        },
+                      };
+                    },
+                  });
+                }} />
                 )}
             </React.Fragment>
           ))}
@@ -105,5 +109,5 @@ const InfiniteScrollComponent = (props: Props) => {
       </List>
     </section>
   );
-}
+};
 export default InfiniteScrollComponent;

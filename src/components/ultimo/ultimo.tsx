@@ -1,10 +1,11 @@
-import { gql, useQuery } from '@apollo/client';
-import { Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import {gql, useQuery} from '@apollo/client';
+import {CircularProgress, Grid} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
 import FlashOnIcon from '@material-ui/icons/FlashOn';
-import { Link } from "gatsby";
+import {Link} from 'gatsby';
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
+import NotFoundPage from '../../pages/404';
 
 const useStyles = makeStyles((theme) => ({
   carousel: {
@@ -13,8 +14,7 @@ const useStyles = makeStyles((theme) => ({
     width: '80%',
     height: 30,
     textAlign: 'center',
-    paddingTop: 5
-
+    paddingTop: 5,
   },
   image: {
     position: 'relative',
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     objectFit: 'cover',
     margin: 0,
-    borderRadius: 5
+    borderRadius: 5,
   },
   postTitle: {
     position: 'absolute',
@@ -42,37 +42,37 @@ const Ultimo = () => {
 
   const getPosts = gql`
     query getPosts {
-      posts(
-        first: 5
-        where: {
-          orderby: { field: DATE, order: DESC }
-        }
-      ) {
+      posts(first: 5, where: { orderby: { field: DATE, order: DESC } }) {
         edges {
           node {
             id
             title
-            slug            
+            slug
           }
         }
       }
     }
-    `;
+  `;
 
-  const { loading, error, data } = useQuery(getPosts);
-  const posts = data?.posts?.edges?.map(edge => edge.node) || null;
-  if (posts === null) return null;
+  const {loading, error, data} = useQuery(getPosts);
+  const posts = data?.posts?.edges?.map((edge) => edge.node) || null;
+
+  if (error) return <NotFoundPage />;
+  if (!posts) return <div>Sin datos</div>;
+  if (loading) return <CircularProgress />;
+
   return (
-
     <Grid
       container
       direction="row"
       style={{width: '90%', maxWidth: 1700}}
       justify="center"
-      alignItems="center">        
-      <FlashOnIcon style={{color: 'red'}}/>
+      alignItems="center"
+    >
+      <FlashOnIcon style={{color: 'red'}} />
       <h5 style={{paddingTop: 21}}>LO ÚLTIMO</h5>
-      <Carousel className={classes.carousel}
+      <Carousel
+        className={classes.carousel}
         indicators={false}
         navButtonsAlwaysVisible={true}
         animation={'slide'}
@@ -81,20 +81,18 @@ const Ultimo = () => {
             height: 5,
             width: 5,
             marginTop: 7,
-            textAlign: 'right' 
-          }
-      }} 
+            textAlign: 'right',
+          },
+        }}
       >
-        {
-          posts.map((post) => (
-              <Link to={`/post/${post.slug}/${post.id}`} className={classes.link}>
-                {post.title}
-              </Link>
-          ))
-        }
+        {posts.map((post, index) => (
+          <Link key={index}
+            to={`/post/${post.slug}/${post.id}`} className={classes.link}>
+            {post.title}
+          </Link>
+        ))}
       </Carousel>
     </Grid>
-
   );
-}
+};
 export default Ultimo;

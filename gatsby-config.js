@@ -69,7 +69,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-apollo',
       options: {
-        uri: process.env.GATSBY_GCMS_URL
+        uri: "https://www.desdecrespo.com.ar/graphql"
       }
     },
   ],

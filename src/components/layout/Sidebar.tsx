@@ -1,6 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -16,9 +15,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Sidebar(props) {
+export type Archives = { url: string; title: string }
+export type social = { name: string; icon: string }
+
+type Props = {
+  title: string
+  description: string
+  archives: Archives[]
+  social: social[]
+}
+
+export default function Sidebar(props: Props) {
   const classes = useStyles();
-  const { archives, description, social, title } = props;
+  const {archives, description, social, title} = props;
 
   return (
     <Grid item xs={12} md={4}>
@@ -32,7 +41,12 @@ export default function Sidebar(props) {
         Archives
       </Typography>
       {archives.map((archive) => (
-        <Link display="block" variant="body1" href={archive.url} key={archive.title}>
+        <Link
+          display="block"
+          variant="body1"
+          href={archive.url}
+          key={archive.title}
+        >
           {archive.title}
         </Link>
       ))}
@@ -40,7 +54,7 @@ export default function Sidebar(props) {
         Social
       </Typography>
       {social.map((network) => (
-        <Link display="block" variant="body1" href="#" key={network}>
+        <Link display="block" variant="body1" href="#" key={'network'}>
           <Grid container direction="row" spacing={1} alignItems="center">
             <Grid item>
               <network.icon />
@@ -52,10 +66,3 @@ export default function Sidebar(props) {
     </Grid>
   );
 }
-
-Sidebar.propTypes = {
-  archives: PropTypes.array,
-  description: PropTypes.string,
-  social: PropTypes.array,
-  title: PropTypes.string,
-};

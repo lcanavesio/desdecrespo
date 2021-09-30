@@ -1,71 +1,71 @@
-import { Card, CardContent, Grid, makeStyles, Theme } from "@material-ui/core"
-import React, { useEffect, useState } from "react"
-import AudioPlayer, { RHAP_UI } from "react-h5-audio-player"
-import "react-h5-audio-player/lib/styles.css"
-import { getRadios, TRadios } from "../../utils/radiosConfig"
+import {Grid, makeStyles, Theme} from '@material-ui/core';
+import React, {useEffect, useState} from 'react';
+import AudioPlayer, {RHAP_UI} from 'react-h5-audio-player';
+import 'react-h5-audio-player/lib/styles.css';
+import {getRadios, TRadios} from '../../utils/radiosConfig';
 
 const useStyles = makeStyles((theme: Theme) => ({
   radio: {
-    maxWidth: "60em",
-    width: "100%;",
+    maxWidth: '60em',
+    width: '100%;',
   },
 
   root: {
-    "& > *": {
+    '& > *': {
       margin: theme.spacing(1),
     },
-    width: "auto",
-    height: "61px",
-    display: "flex",
+    'width': 'auto',
+    'height': '61px',
+    'display': 'flex',
   },
   grid: {
- 
-    display: "flex",
-    padding: "1%",
-    borderRadius: "10px",
-    wordBreak: "break-word",
-    whiteSpace: "normal",
-    border: "1px solid rgb(191 190 191)",
+
+    display: 'flex',
+    padding: '1%',
+    borderRadius: '10px',
+    wordBreak: 'break-word',
+    whiteSpace: 'normal',
+    border: '1px solid rgb(191 190 191)',
   },
 
 
   img: {
-    display: "block",
-    width: "3.5em",
-    height: "3.5em",
-    borderRadius: "50%",
-    border: "2px solid rgb(32 28 37)",
-    margin: "0 0.25em",
+    'display': 'block',
+    'width': '3.5em',
+    'height': '3.5em',
+    'borderRadius': '50%',
+    'border': '2px solid rgb(32 28 37)',
+    'margin': '0 0.25em',
 
-    "&:hover": {
-      borderColor: "green",
+    '&:hover': {
+      borderColor: 'green',
     },
   },
   name: {
-    width: "100%",
-    textAlign: "center",
-    fontFamily: "Architects Daughter,  cursive",
+    width: '100%',
+    textAlign: 'center',
+    fontFamily: 'Architects Daughter,  cursive',
   },
 
- 
-}))
+
+}));
 
 const Radio = () => {
-  const classes = useStyles()
+  const classes = useStyles();
 
-  const [stations, setStations] = useState<TRadios[]>()
-  const [stationFilter, setStationFilter] = useState()
+  const [stations, setStations] = useState<TRadios[]>();
+  const [stationFilter, setStationFilter] = useState();
 
   useEffect(() => {
-    const dataRadios = getRadios()
-    setStations(dataRadios)
-  }, [stationFilter])
+    const dataRadios = getRadios();
+    setStations(dataRadios);
+  }, [stationFilter]);
 
-  const filters = ["fmPasion", "latina", "libertad", "universo"]
+  // const filters = ['fmPasion', 'latina', 'libertad', 'universo'];
 
-  const setDefaultSrc = event => {
-    event.target.src = "/images/defaultRadio.png"
-  }
+  const setDefaultSrc = (event) => {
+    event.target.src = '/images/defaultRadio.png';
+  };
 
   return (
     <>
@@ -81,27 +81,27 @@ const Radio = () => {
                   onError={setDefaultSrc}
                 />
               </Grid>
-            
+
               <Grid item xs={12} md={4}>
-              <div className={classes.name}>{station.title}</div>
+                <div className={classes.name}>{station.title}</div>
 
               </Grid>
               <Grid item xs={12} md={6}>
                 <AudioPlayer
                   style={{
-                    backgroundColor: "rgb(238 236 241)",
-                    display: "flex",
-                    justifyItems: "center",
-                    padding: "0.25em 0.75em",
-                    borderRadius: "10px",
+                    backgroundColor: 'rgb(238 236 241)',
+                    display: 'flex',
+                    justifyItems: 'center',
+                    padding: '0.25em 0.75em',
+                    borderRadius: '10px',
                   }}
-                
+
                   src={station.streamUrl}
                   showJumpControls={false}
                   layout="stacked"
                   customProgressBarSection={[]}
                   autoPlayAfterSrcChange={false}
-                  preload={"metadata"}
+                  preload={'metadata'}
                   customControlsSection={[
                     RHAP_UI.MAIN_CONTROLS,
                     RHAP_UI.VOLUME_CONTROLS,
@@ -109,10 +109,10 @@ const Radio = () => {
                 />
               </Grid>
             </Grid>
-          )
+          );
         })}
     </>
-  )
-}
+  );
+};
 
-export default Radio
+export default Radio;
