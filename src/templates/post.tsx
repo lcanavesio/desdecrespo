@@ -1,16 +1,12 @@
-import { graphql } from 'gatsby';
+import {graphql} from 'gatsby';
 import React from 'react';
 
 interface Props {
-  post: any;
+  post: any
 }
 
-const PostPage: React.FC<Props> = ({ post }) => {
-  return (
-    <>
-      {post.content}
-    </>
-  );
+const PostPage: React.FC<Props> = ({post}) => {
+  return <>{post.content}</>;
 };
 
 export const query = graphql`
@@ -34,14 +30,14 @@ export const query = graphql`
 
 interface HocProp {
   data: {
-    wpgraphql: Props;
-  };
+    wpgraphql: Props
+  }
 }
 
 const selector = (
-  Component: React.FC<Props>,
+    Component: React.FC<Props>,
 ): React.FC<HocProp> => // eslint-disable react/display-name
-  function Selector({ data, ...props }) {
+  function Selector({data, ...props}) {
     return <Component {...props} post={data.wpgraphql.post} />;
   };
 
