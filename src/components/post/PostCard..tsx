@@ -3,7 +3,7 @@ import {Card,
   CardMedia,
   Divider,
   makeStyles,
-  Typography} from '@material-ui/core';
+  Typography} from '@mui/material';
 import {Link} from 'gatsby';
 import React from 'react';
 // import { Tags } from '@tryghost/helpers-gatsby'

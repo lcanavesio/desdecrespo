@@ -1,9 +1,9 @@
-require("dotenv").config({
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 module.exports = {
-  
+
   siteMetadata: {
     title: `Desde Crespo`,
     description: `Diario`,
@@ -13,7 +13,7 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-     // `gatsby-plugin-typescript` is automatically included in gatsby
+    // `gatsby-plugin-typescript` is automatically included in gatsby
     // You only need to explicitly define it here if you need to configure
     // specific options in it
     {
@@ -24,15 +24,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-theme-material-ui`,
-      options: {
-        stylesConfig: {
-          // disableAutoprefixing: true,
-           disableMinification: true
-        },
-      },
-    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -51,26 +42,27 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/gatsby-icon.png`,
+        // This path is relative to the root of the site.
       },
     },
     {
-      resolve: "gatsby-source-graphql",
+      resolve: 'gatsby-source-graphql',
       options: {
-        typeName: "WPGraphQL",
-        fieldName: "wpgraphql",
+        typeName: 'WPGraphQL',
+        fieldName: 'wpgraphql',
         // GraphQL endpoint, relative to your WordPress home URL.
-        url: "https://www.desdecrespo.com.ar/graphql",
+        url: 'https://www.desdecrespo.com.ar/graphql',
         // `${process.env.WORDPRESS_URL}/graphql`,
         // GraphQL endpoint using env variable
-       // url: "${process.env.WORDPRESS_URL}/graphql",
+        // url: "${process.env.WORDPRESS_URL}/graphql",
       },
     },
     {
       resolve: 'gatsby-plugin-apollo',
       options: {
-        uri: "https://www.desdecrespo.com.ar/graphql"
-      }
+        uri: 'https://www.desdecrespo.com.ar/graphql',
+      },
     },
   ],
-}
+};

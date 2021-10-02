@@ -1,5 +1,5 @@
 import { gql, useQuery } from '@apollo/client';
-import { CssBaseline, GridList, GridListTile, makeStyles } from "@material-ui/core";
+import { CssBaseline, GridList, GridListTile, makeStyles } from "@mui/material";
 import { navigate } from 'gatsby';
 import React from "react";
 import Layout from "../components/layout/Layout";

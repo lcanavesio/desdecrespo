@@ -1,11 +1,12 @@
 import React from 'react';
-import {makeStyles} from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Link from '@material-ui/core/Link';
+import {makeStyles} from '@mui/styles';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Link from '@mui/material/Link';
+import {Theme} from '@mui/material/styles';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme:Theme) => ({
   sidebarAboutBox: {
     padding: theme.spacing(2),
     backgroundColor: theme.palette.grey[200],

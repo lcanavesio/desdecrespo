@@ -1,12 +1,14 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import {makeStyles} from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import Link from '@material-ui/core/Link';
+import React from 'react';
 
-const useStyles = makeStyles((theme) => ({
+import makeStyles from '@mui/styles/makeStyles';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import Link from '@mui/material/Link';
+import {Theme} from '@mui/material/styles';
+
+const useStyles = makeStyles((theme: Theme) => ({
   mainFeaturedPost: {
     position: 'relative',
     backgroundColor: theme.palette.grey[800],

@@ -5,7 +5,9 @@ interface Props {
   post: any
 }
 
+// eslint-disable-next-line react/prop-types
 const PostPage: React.FC<Props> = ({post}) => {
+  // eslint-disable-next-line react/prop-types
   return <>{post.content}</>;
 };
 
@@ -37,7 +39,9 @@ interface HocProp {
 const selector = (
     Component: React.FC<Props>,
 ): React.FC<HocProp> => // eslint-disable react/display-name
+  // eslint-disable-next-line react/prop-types
   function Selector({data, ...props}) {
+    // eslint-disable-next-line react/prop-types
     return <Component {...props} post={data.wpgraphql.post} />;
   };
 

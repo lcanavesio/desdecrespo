@@ -1,6 +1,6 @@
 import {gql, useQuery} from '@apollo/client';
-import {CircularProgress, CssBaseline, List, ListItem} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
+import {CircularProgress, CssBaseline, List, ListItem} from '@mui/material';
+import {makeStyles} from '@mui/styles';
 import React from 'react';
 import {Waypoint} from 'react-waypoint';
 import {Category} from '../../interfaces/category.interface';

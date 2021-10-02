@@ -1,12 +1,9 @@
 import {gql, useQuery} from '@apollo/client';
-import {
-  CircularProgress,
-  CssBaseline,
-  GridList,
-  GridListTile,
-} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
 import React from 'react';
+import {CircularProgress, CssBaseline} from '@mui/material';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import {makeStyles} from '@mui/styles';
 import {Category} from '../../interfaces/category.interface';
 import NotFoundPage from '../../pages/404';
 import {Constants} from '../../utils/constants';
@@ -14,7 +11,6 @@ import Breadcrumb from '../breadcrumb/breadcrumb';
 import FeaturedPost from '../post/FeaturedPost';
 import SEO from '../seo';
 import InfiniteScrollComponent from './infiniteScroll';
-
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -78,16 +74,16 @@ const CategoryComponent = (props: Props) => {
       <SEO title="Inicio" />
       <CssBaseline />
       <Breadcrumb category={category.databaseName} label={data?.post?.title} />
-      <GridList cellHeight={288} cols={2}>
+      <ImageList rowHeight={288} cols={2}>
         {posts.map((post) => (
-          <GridListTile key={`gridList-${category.title}-${post?.title}`}>
+          <ImageListItem key={`gridList-${category.title}-${post?.title}`}>
             <FeaturedPost
               key={`${category.title}-${post?.title}`}
               post={post}
             />
-          </GridListTile>
+          </ImageListItem>
         ))}
-      </GridList>
+      </ImageList>
       <InfiniteScrollComponent />
     </section>
   );

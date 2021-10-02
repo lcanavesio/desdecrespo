@@ -4,7 +4,7 @@ import React from 'react';
 import Carousel from 'react-material-ui-carousel';
 import {useStylesGlobal} from '../../utils/GlobalStyle';
 import NotFoundPage from '../../pages/404';
-import {CircularProgress, Grid} from '@material-ui/core';
+import {CircularProgress, Grid} from '@mui/material';
 
 const SlidePosts = () => {
   const classesGlobal = useStylesGlobal();

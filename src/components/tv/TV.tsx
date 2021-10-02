@@ -1,11 +1,11 @@
-import {Grid, Theme, Typography} from '@material-ui/core';
+import {Grid, Theme, Typography} from '@mui/material';
 import ReactPlayer from 'react-player';
 import React from 'react';
 
 /* eslint-disable quote-props */
-import {makeStyles} from '@material-ui/styles';
+import {makeStyles} from '@mui/styles';
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles((theme:Theme) => ({
   radio: {
     maxWidth: '60em',
     width: '100%;',

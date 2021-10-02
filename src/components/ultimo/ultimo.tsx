@@ -1,7 +1,7 @@
 import {gql, useQuery} from '@apollo/client';
-import {CircularProgress, Grid} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
-import FlashOnIcon from '@material-ui/icons/FlashOn';
+import {CircularProgress, Grid} from '@mui/material';
+import {makeStyles} from '@mui/styles';
+import FlashOnIcon from '@mui/icons-material/FlashOn';
 import {Link} from 'gatsby';
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';

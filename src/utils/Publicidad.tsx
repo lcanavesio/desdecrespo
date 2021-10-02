@@ -1,4 +1,4 @@
-import {Grid, makeStyles} from '@material-ui/core';
+import {Grid, makeStyles} from '@mui/material';
 import React from 'react';
 
 const useStyles = makeStyles((theme) => ({

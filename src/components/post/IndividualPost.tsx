@@ -1,6 +1,6 @@
 import {gql, useQuery} from '@apollo/client';
-import {CircularProgress, CssBaseline, Grid} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
+import {CircularProgress, CssBaseline, Grid} from '@mui/material';
+import {makeStyles} from '@mui/styles';
 
 import React from 'react';
 import NotFoundPage from '../../pages/404';

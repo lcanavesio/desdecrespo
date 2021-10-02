@@ -1,11 +1,11 @@
-import Divider from '@material-ui/core/Divider';
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import Divider from '@mui/material/Divider';
+import Grid from '@mui/material/Grid';
+import {makeStyles} from '@mui/styles';
+import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 import React from 'react';
-
-const useStyles = makeStyles((theme) => ({
+import {Theme} from '@mui/material/styles';
+const useStyles = makeStyles((theme: Theme) => ({
   markdown: {
     ...theme.typography.body2,
     padding: theme.spacing(3, 0),
@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Main(props) {
   const classes = useStyles();
-  const { posts, title } = props;
+  const {posts, title} = props;
 
   return (
     <Grid item xs={12} md={8}>

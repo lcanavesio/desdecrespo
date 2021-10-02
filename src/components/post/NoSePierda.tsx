@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import {gql, useQuery} from '@apollo/client';
-import {CircularProgress, Grid} from '@material-ui/core';
+import {CircularProgress, Grid} from '@mui/material';
 import React from 'react';
 import {useStylesGlobal} from '../../utils/GlobalStyle';
 import NotFoundPage from '../../pages/404';

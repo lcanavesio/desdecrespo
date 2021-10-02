@@ -6,20 +6,21 @@ import {
   Divider,
   Grid,
   TextField,
-} from '@material-ui/core';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import {makeStyles} from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import SearchIcon from '@material-ui/icons/Search';
-import {navigate} from 'gatsby';
-import {Link} from 'gatsby-material-ui-components';
-import {StaticImage} from 'gatsby-plugin-image';
+} from '@mui/material';
 import React from 'react';
+import Button from '@mui/material/Button';
+import IconButton from '@mui/material/IconButton';
+import {makeStyles} from '@mui/styles';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import SearchIcon from '@mui/icons-material/Search';
+import {navigate} from 'gatsby';
+import Link from '@mui/material/Link';
+import {StaticImage} from 'gatsby-plugin-image';
 import Ultimo from '../ultimo/ultimo';
 
-const useStyles = makeStyles((theme) => ({
+
+const useStyles = makeStyles(() => ({
   bannerContainer: {
     marginLeft: 308,
     marginRight: 308,
@@ -38,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     color: 'white',
   },
   toolbar: {
-    borderBottom: `1px solid ${theme.palette.divider}`,
+    borderBottom: `1px solid`,
   },
   toolbarTitle: {
     flex: 1,
@@ -47,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
     background: 'linear-gradient(20deg, #b91b0c 0%, #e28f12 100%)',
   },
   toolbarLink: {
-    'padding': theme.spacing(2),
+    'padding': 2,
     'flexShrink': 0,
     'fontFamily': 'Roboto',
     'fontSize': 13,
@@ -168,11 +169,10 @@ export default function Header(props: Props) {
             {sections.map((section, index) => (
               <div key={index}>
                 <Link
-
                   color="inherit"
                   noWrap
                   key={section.title}
-                  to={section.url}
+                  href={section.url}
                   className={classes.toolbarLink}
                 >
                   {section.title}

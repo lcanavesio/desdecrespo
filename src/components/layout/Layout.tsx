@@ -1,8 +1,8 @@
-import {makeStyles} from '@material-ui/core';
 import React from 'react';
 import {Constants} from '../../utils/constants';
 import Footer from './Footer';
 import Header from './Header';
+import {makeStyles} from '@mui/styles';
 
 
 interface Props {
