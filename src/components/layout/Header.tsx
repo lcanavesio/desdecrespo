@@ -1,14 +1,21 @@
-import { Dialog, DialogActions, DialogContent, DialogTitle, Divider, Grid, TextField } from '@material-ui/core';
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Divider,
+  Grid,
+  TextField,
+} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
-import { navigate } from 'gatsby';
-import { Link } from 'gatsby-material-ui-components';
-import { StaticImage } from "gatsby-plugin-image";
-import PropTypes from 'prop-types';
+import {navigate} from 'gatsby';
+import {Link} from 'gatsby-material-ui-components';
+import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
 import Ultimo from '../ultimo/ultimo';
 
@@ -17,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 308,
     marginRight: 308,
     maxWidth: 1287,
-    display: 'block'
+    display: 'block',
   },
   banner: {
     paddingLeft: 15,
@@ -28,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     display: 'block',
     marginLeft: 308,
     marginRight: 308,
-    color: 'white'
+    color: 'white',
   },
   toolbar: {
     borderBottom: `1px solid ${theme.palette.divider}`,
@@ -37,56 +44,62 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
   },
   header: {
-    background: 'linear-gradient(20deg, #b91b0c 0%, #e28f12 100%)'
+    background: 'linear-gradient(20deg, #b91b0c 0%, #e28f12 100%)',
   },
   toolbarLink: {
-    padding: theme.spacing(2),
-    flexShrink: 0,
-    fontFamily: 'Roboto',
-    fontSize: 13,
-    fontWeight: 500,
-    textTransform: 'uppercase',
-    backgroundOrigin: 'padding-box',
-    boxSizing: 'border-box',
-    transition: '0.3s',
+    'padding': theme.spacing(2),
+    'flexShrink': 0,
+    'fontFamily': 'Roboto',
+    'fontSize': 13,
+    'fontWeight': 500,
+    'textTransform': 'uppercase',
+    'backgroundOrigin': 'padding-box',
+    'boxSizing': 'border-box',
+    'transition': '0.3s',
     '&:hover': {
       boxShadow: 'inset 0 0 100px 100px rgba(255, 255, 255, 0.1)',
-      textDecoration: 'none'
+      textDecoration: 'none',
     },
   },
   dividerVertical: {
     background: '#dadada',
     marginTop: 12,
     marginBottom: 12,
-  }
+  },
 }));
-
-export default function Header(props) {
+type Props = {
+  sections: [{title: string, url:string}]
+}
+export default function Header(props: Props) {
+  const {sections} = props;
   const classes = useStyles();
-  const { sections, title } = props;
+
   const [open, setOpen] = React.useState(false);
-  const [keyword, setKeyword] = React.useState("");
+  const [keyword, setKeyword] = React.useState('');
 
   const handleClickOpen = () => {
     setOpen(true);
-    setKeyword("");
+    setKeyword('');
   };
 
   const handleClose = () => {
     setOpen(false);
-    setKeyword("");
+    setKeyword('');
   };
 
   const handleFormSubmit = (e: any) => {
     e.preventDefault();
     navigate(`/busqueda?keyword=${keyword}`);
     setOpen(false);
-  }
+  };
 
   return (
-    <React.Fragment>
-      
-        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+    <>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+      >
         <form onSubmit={handleFormSubmit}>
           <DialogTitle id="form-dialog-title">Buscar</DialogTitle>
           <DialogContent>
@@ -96,8 +109,8 @@ export default function Header(props) {
               id="search"
               type="text"
               label="¿Qué estás buscando?"
-              onChange={e => setKeyword(e.target.value)}
-              value={keyword}              
+              onChange={(e) => setKeyword(e.target.value)}
+              value={keyword}
               fullWidth
               required
               autoComplete="none"
@@ -106,14 +119,13 @@ export default function Header(props) {
           <DialogActions>
             <Button onClick={handleClose} color="primary">
               Cancelar
-          </Button>
+            </Button>
             <Button type="submit" color="primary">
               Buscar
-          </Button>
+            </Button>
           </DialogActions>
-          </form>
-        </Dialog>
-      
+        </form>
+      </Dialog>
 
       <Toolbar className={classes.toolbar}>
         <Ultimo />
@@ -124,8 +136,7 @@ export default function Header(props) {
           align="center"
           noWrap
           className={classes.toolbarTitle}
-        >
-        </Typography>
+        ></Typography>
         <IconButton onClick={handleClickOpen}>
           <SearchIcon />
         </IconButton>
@@ -138,9 +149,10 @@ export default function Header(props) {
         <Grid item md={12} lg={12} className={classes.banner}>
           <a rel="home" href="https://www.desdecrespo.com.ar/">
             <StaticImage
-              src="../../images/banner-desktop.jpg"
+              src="../images/banner.jpg"
               alt="Banner - Desde Crespo"
-              style={{ width: "100%" }} />
+              style={{width: '100%'}}
+            />
           </a>
         </Grid>
       </div>
@@ -148,10 +160,15 @@ export default function Header(props) {
       <header className={classes.header}>
         <div className={classes.headerContainer}>
           <Toolbar component="nav" variant="dense">
-            <Divider orientation="vertical" flexItem className={classes.dividerVertical} />
-            {sections.map((section) => (
-              <>
+            <Divider
+              orientation="vertical"
+              flexItem
+              className={classes.dividerVertical}
+            />
+            {sections.map((section, index) => (
+              <div key={index}>
                 <Link
+
                   color="inherit"
                   noWrap
                   key={section.title}
@@ -160,17 +177,16 @@ export default function Header(props) {
                 >
                   {section.title}
                 </Link>
-                <Divider orientation="vertical" flexItem className={classes.dividerVertical} />
-              </>
+                <Divider
+                  orientation="vertical"
+                  flexItem
+                  className={classes.dividerVertical}
+                />
+              </div>
             ))}
           </Toolbar>
         </div>
       </header>
-    </React.Fragment>
+    </>
   );
 }
-
-Header.propTypes = {
-  sections: PropTypes.array,
-  ultimo: PropTypes.array
-};

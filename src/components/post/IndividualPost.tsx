@@ -60,7 +60,7 @@ const IndividualPost = (props: Props) => {
       <CssBaseline />
       <Grid container className={classes.container}>
         <Grid lg={9}>
-          <Grid container lg={12}>
+          <Grid container>
             <Grid item lg={12}>
               <Breadcrumb category={category} label={data?.post?.title} />
               <div dangerouslySetInnerHTML={{__html: data?.post?.content}} />

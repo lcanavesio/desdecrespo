@@ -75,36 +75,33 @@ const PolicialesProvinciales = () => {
   if (loading || loadingProvinciales) return <CircularProgress />;
   return (
     <>
-      <Grid container className={classesGlobal.container}>
-        <Grid lg={6}>
-          <div>
+      <Grid container className={classesGlobal.container} key="firstgrid">
+        <Grid item lg={6} key="policiales">
+          <div key="titulo1">
             <h2 className={classesGlobal.titulo}>
               <span className={classesGlobal.tituloSpan}>POLICIALES </span>
             </h2>
           </div>
-          <Grid container lg={12}>
+          <Grid container>
             {postsPoliciales.map((post, index) => (
-              <>
-                <Grid item lg={6} className={classesGlobal.card}>
-                  <FeaturedPost key={index} post={post} />
-                </Grid>
-              </>
+              <Grid item key={index} lg={6} className={classesGlobal.card}>
+                <FeaturedPost key={index} post={post} />
+              </Grid>
             ))}
           </Grid>
         </Grid>
-        <Grid lg={6}>
-          <div>
+        <Grid item lg={6} key="provinciales">
+          <div key="titulo2">
             <h2 className={classesGlobal.titulo}>
               <span className={classesGlobal.tituloSpan}>PROVINCIALES </span>
             </h2>
           </div>
-          <Grid container lg={12}>
+          <Grid container>
             {postsProvinciales.map((post, index) => (
-              <>
-                <Grid item lg={6} className={classesGlobal.card}>
-                  <FeaturedPost key={index} post={post} />
-                </Grid>
-              </>
+              <Grid key={index} item lg={6} className={classesGlobal.card}>
+                <FeaturedPost key={index} post={post} />
+              </Grid>
+
             ))}
           </Grid>
         </Grid>

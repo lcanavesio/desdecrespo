@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
 export const PublicidadPrincipal = () => {
   const classes = useStyles();
   return (
-    <Grid container lg={12}>
+    <Grid container>
       <Grid item lg={3} className={classes.card}>
         <img src={process.env.PUBLICIDAD2} />
       </Grid>
@@ -38,7 +38,7 @@ export const PublicidadGenerico = (props: PublicidadGenerico) => {
   const {href} = props;
   const classes = useStyles();
   return (
-    <Grid container lg={12}>
+    <Grid container>
       <Grid item lg={12} className={classes.card}>
         <img src={href} />
       </Grid>

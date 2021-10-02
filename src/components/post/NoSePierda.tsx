@@ -82,25 +82,21 @@ const NoSePierda = () => {
         </h2>
       </div>
       <Grid container className={classesGlobal.container}>
-        <Grid lg={6}>
-          <Grid container lg={12}>
+        <Grid item lg={6}>
+          <Grid container >
             {postsVarios.map((post, index) => (
-              <>
-                <Grid item lg={12} className={classesGlobal.card}>
-                  <FeaturedPost key={index} post={post} />
-                </Grid>
-              </>
+              <Grid key={index} item lg={12} className={classesGlobal.card}>
+                <FeaturedPost key={index} post={post} />
+              </Grid>
             ))}
           </Grid>
         </Grid>
-        <Grid lg={6}>
-          <Grid container lg={12}>
+        <Grid item lg={6}>
+          <Grid container >
             {postsEducacion.map((post, index) => (
-              <>
-                <Grid item lg={6} className={classesGlobal.card}>
-                  <FeaturedPost key={index} post={post} />
-                </Grid>
-              </>
+              <Grid item key={index} lg={6} className={classesGlobal.card}>
+                <FeaturedPost key={index} post={post} />
+              </Grid>
             ))}
           </Grid>
         </Grid>

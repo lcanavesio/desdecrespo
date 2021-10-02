@@ -43,4 +43,27 @@ export const useStylesGlobal = makeStyles((theme) => ({
       height: '100%',
     },
   },
+  carousel: {
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  image: {
+    position: 'relative',
+    height: 436,
+    width: '100%',
+    objectFit: 'cover',
+    margin: 0,
+    borderRadius: 5,
+  },
+  postTitle: {
+    position: 'absolute',
+    top: '80%',
+    left: '5%',
+    fontSize: 26,
+    fontWeight: 600,
+  },
+  link: {
+    color: 'white',
+    textDecoration: 'none',
+  },
 }));
