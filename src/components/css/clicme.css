@@ -1,0 +1,165 @@
+
+    div.crespo {
+      text-align: center;
+    }
+    
+    
+    /*Ignore me, I'm just page styling*/
+    html {font-family: 'Roboto', sans-serif;font-size:16px;line-height:1em;height:100%;}
+    body {
+      background: #ffffff;
+      background: -moz-linear-gradient(-45deg, #ffffff 0%, #ffffff 50%, #F2F2F2 50%, #F2F2F2 50%, #F2F2F2 100%);
+      background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#ffffff), color-stop(50%,#ffffff), color-stop(50%,#F2F2F2), color-stop(50%,#F2F2F2), color-stop(100%,#F2F2F2));
+      background: -webkit-linear-gradient(-45deg, #ffffff 0%,#ffffff 50%,#F2F2F2 50%,#F2F2F2 50%,#F2F2F2 100%);
+      background: -o-linear-gradient(-45deg, #ffffff 0%,#ffffff 50%,#F2F2F2 50%,#F2F2F2 50%,#F2F2F2 100%);
+      background: -ms-linear-gradient(-45deg, #ffffff 0%,#ffffff 50%,#F2F2F2 50%,#F2F2F2 50%,#F2F2F2 100%);
+      background: linear-gradient(135deg, #ffffff 0%,#ffffff 50%,#F2F2F2 50%,#F2F2F2 50%,#F2F2F2 100%);
+    }
+    
+    h1 {font-size:1.5em;margin-bottom:55px;}
+    
+    #social-platforms {
+      top:100px;
+      top:25vh;
+      font-size:1rem;
+      text-align:center;
+      overflow:hidden;
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    
+    .btn {
+      clear:both;
+      white-space:nowrap;
+      font-size:.8em;
+      display:inline-block;
+      border-radius:5px;
+      margin:2px;
+      -webkit-transition:all .5s;
+      -moz-transition:all .5s;
+      transition:all .5s;
+      overflow:hidden
+    }spa
+    
+    .btn:focus {
+      box-shadow: 0 3px 10px 0 rgba(0, 0, 0, 0.4);
+    }
+    
+    .btn > span,.btn-icon > i {
+      float:left;
+      padding:13px;
+      -webkit-transition:all .5s;
+      -moz-transition:all .5s;
+      transition:all .5s;
+      line-height:1em
+    }
+    
+    .btn > span {
+      padding:14px 18px 16px;
+      white-space:nowrap;
+      color:#FFF;
+      background:#b8b8b8
+    }
+    
+    .btn:focus > span {
+      background:#9a9a9a
+    }
+    
+    .btn-icon > i {
+      border-radius:5px 0 0 5px;
+      width:40px;
+      text-align:center;
+      font-size:1.25em;
+      color:#fff;
+      background:#212121
+    }
+    
+    .btn-icon > i:after {
+      content:"";
+      border:8px solid;
+      border-color:transparent transparent transparent #222;
+      position:absolute;
+      top:13px;
+      right:-15px
+    }
+    
+    .btn-icon:hover > i,.btn-icon:focus > i {
+      color:#FFF
+    }
+    
+    .btn-icon > span {
+      border-radius:0 5px 5px 0;
+      min-width: 261px !important;
+    }
+    
+    /*Facebook*/
+    .btn-facebook:hover {
+        background: rgb(0 200 255 / 0%)
+    }
+    
+    .btn-facebook:hover > i,.btn-facebook:focus > i {
+      color:#3b5998
+    }
+    
+    .btn-facebook {
+      background: rgb(0 200 255 / 0%);
+    }
+    
+    .btn-facebook > span {
+      background:#3b5998
+    }
+    
+    /*Instagram*/
+    .btn-instagram:hover {
+        background: rgb(0 200 255 / 0%)
+    }
+    
+    .btn-instagram {
+      background: rgb(0 200 255 / 0%);
+    }
+    
+    .btn-instagram:hover > i,.btn-instagram:focus > i {
+      color:#f09433
+    }
+    
+    .btn-instagram > span { 
+        background: #f09433; 
+        background: -moz-linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); 
+        background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+        background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%); 
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f09433', endColorstr='#bc1888',GradientType=1 );
+    }
+    
+    /*Whatsapp*/
+    .btn-whatsapp:hover {
+        background: rgb(0 200 255 / 0%)
+    }
+    
+    .btn-whatsapp {
+      background: rgb(0 200 255 / 0%);
+    }
+    
+    .btn-whatsapp:hover > i,.btn-whatsapp:focus > i {
+      color:#25D366
+    }
+    
+    .btn-whatsapp > span {
+      background:#25D366
+    }
+    
+    /*Globe*/
+    .btn-globe:hover {
+        background: rgb(0 200 255 / 0%)
+    }
+    
+    .btn-globe {
+      background: rgb(0 200 255 / 0%);
+    }
+    
+    .btn-globe:hover > i,.btn-globe:focus > i {
+      color:#cb2028
+    }
+    
+    .btn-globe > span {
+      background:#cb2028
+    }

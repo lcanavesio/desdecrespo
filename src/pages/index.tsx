@@ -1,5 +1,7 @@
-import {CssBaseline, Grid} from '@material-ui/core';
+/* eslint-disable max-len */
 import React from 'react';
+
+import {CssBaseline, Grid} from '@material-ui/core';
 import Layout from '../components/layout/Layout';
 import NoSePierda from '../components/post/NoSePierda';
 import PolicialesProvinciales from '../components/post/PolicialesProvinciales';
@@ -10,6 +12,9 @@ import SlidePosts from '../components/post/SlidePosts';
 import Radio from '../components/radio/radio';
 import SEO from '../components/seo';
 import TV from '../components/tv/TV';
+import Whater from '../components/Whater';
+import ClicMe from '../components/inmobiliaria/ClicMe';
+
 // NOTE Layout
 import {useStylesGlobal} from '../utils/GlobalStyle';
 // NOTE Publicity
@@ -76,7 +81,10 @@ const Index = () => {
           </Grid>
           <Grid item lg={3}>
             <TV />
+            <Whater />
             <Radio />
+            <ClicMe />
+
           </Grid>
         </Grid>
       </section>

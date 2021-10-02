@@ -43,7 +43,6 @@ const SlidePosts = () => {
   return (
     <>
       <Grid container className={classesGlobal.container}>
-
         <Grid item lg={12}>
           <Carousel className={classesGlobal.carousel} animation={'slide'}>
             {posts.map((post, index) => (

@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
@@ -37,17 +37,31 @@ const useStyles = makeStyles((theme) => ({
 
 export default function MainFeaturedPost(props) {
   const classes = useStyles();
-  const { post } = props;
+  const {post} = props;
 
   return (
-    <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(${post.image})` }}>
+    <Paper
+      className={classes.mainFeaturedPost}
+      style={{backgroundImage: `url(${post.image})`}}
+    >
       {/* Increase the priority of the hero background image */}
-      {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
+      {
+        <img
+          style={{display: 'none'}}
+          src={post.image}
+          alt={post.imageText}
+        />
+      }
       <div className={classes.overlay} />
       <Grid container>
-      <Grid item xs={false} sm={4} md={9}>
+        <Grid item xs={false} sm={4} md={9}>
           <div className={classes.mainFeaturedPostContent}>
-            <Typography component="h1" variant="h3" color="inherit" gutterBottom>
+            <Typography
+              component="h1"
+              variant="h3"
+              color="inherit"
+              gutterBottom
+            >
               {post.title}
             </Typography>
             <Typography variant="h5" color="inherit" paragraph>
@@ -58,9 +72,9 @@ export default function MainFeaturedPost(props) {
             </Link>
           </div>
         </Grid>
-         <Grid item xs={12} sm={8} md={3} component={Paper} elevation={6} square>
-           TV
-         </Grid>
+        <Grid item xs={12} sm={8} md={3} component={Paper} elevation={6} square>
+          TV
+        </Grid>
       </Grid>
     </Paper>
   );

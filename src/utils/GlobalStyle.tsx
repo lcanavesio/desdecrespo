@@ -1,25 +1,58 @@
-import {
-  makeStyles,
-} from '@material-ui/core';
+/* eslint-disable quote-props */
+import {makeStyles} from '@material-ui/styles';
 
-export const useStylesGlobal = makeStyles((theme) => ({
+export const useStylesGlobal = makeStyles(() => ({
   container: {
     paddingTop: 10,
   },
   card: {
     padding: 10,
+    '&:hover': {
+      opacity: '0.9',
+    },
   },
-  titulo: {
-    marginLeft: '10px',
-    borderBottom: '2px solid #fc4a00',
+  cardFeaturedPost: {
+    'height': '100%',
+    '&:hover': {
+      '& $cardMedia': {
+        transform: 'scale3d(1.05, 1.05, 1)',
+      },
+    },
   },
+  cardMedia: {
+    transition: '0.3s',
+    height: 200,
+    margin: 0,
+  },
+  details: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  title: {
+    fontFamily: 'Barlow',
+    fontSize: 21,
+    fontWeight: 700,
+    height: '100%',
+    overflow: 'hidden',
+    display: '-webkit-box',
+    WebkitLineClamp: 3,
+    WebkitBoxOrient: 'vertical',
+    '&:hover': {
+      color: 'red',
+    },
+  },
+  post: {
+    position: 'relative',
+  },
+
+  // NOTE titulo posts
   tituloSpan: {
-    'padding': '0 12px',
-    'position': 'relative',
-    'background': '#fc4a00',
-    'color': 'white',
-    'display': 'inline-block',
-    'top': '2px',
+    padding: '0 12px',
+    position: 'relative',
+    background: '#fc4a00',
+    color: 'white',
+    display: 'inline-block',
+    top: '2px',
     '&:before': {
       position: 'absolute',
       content: '',
@@ -43,9 +76,13 @@ export const useStylesGlobal = makeStyles((theme) => ({
       height: '100%',
     },
   },
+  // NOTE SlidePost
   carousel: {
     marginLeft: 10,
     marginRight: 10,
+    '&:hover': {
+      opacity: '0.9',
+    },
   },
   image: {
     position: 'relative',
@@ -65,5 +102,23 @@ export const useStylesGlobal = makeStyles((theme) => ({
   link: {
     color: 'white',
     textDecoration: 'none',
+
+  },
+
+  // NOTE Loading
+  loadingShadingMui: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    background: 'rgba(255, 255, 255, .3)',
+  },
+
+  loadingIconMui: {
+    position: 'absolute',
+    fontSize: '20px',
+    top: 'calc(45% - 10px)',
+    left: 'calc(50% - 10px)',
   },
 }));

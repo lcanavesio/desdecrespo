@@ -78,7 +78,7 @@ const PolicialesProvinciales = () => {
       <Grid container className={classesGlobal.container} key="firstgrid">
         <Grid item lg={6} key="policiales">
           <div key="titulo1">
-            <h2 className={classesGlobal.titulo}>
+            <h2 className={classesGlobal.title}>
               <span className={classesGlobal.tituloSpan}>POLICIALES </span>
             </h2>
           </div>
@@ -92,7 +92,7 @@ const PolicialesProvinciales = () => {
         </Grid>
         <Grid item lg={6} key="provinciales">
           <div key="titulo2">
-            <h2 className={classesGlobal.titulo}>
+            <h2 className={classesGlobal.title}>
               <span className={classesGlobal.tituloSpan}>PROVINCIALES </span>
             </h2>
           </div>

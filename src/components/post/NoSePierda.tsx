@@ -77,7 +77,7 @@ const NoSePierda = () => {
   return (
     <>
       <div>
-        <h2 className={classesGlobal.titulo}>
+        <h2 className={classesGlobal.title}>
           <span className={classesGlobal.tituloSpan}>NO SE PIERDA </span>
         </h2>
       </div>

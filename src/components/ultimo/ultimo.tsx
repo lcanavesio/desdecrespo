@@ -66,7 +66,7 @@ const Ultimo = () => {
       container
       direction="row"
       style={{width: '90%', maxWidth: 1700}}
-      justify="center"
+      justifyContent="center"
       alignItems="center"
     >
       <FlashOnIcon style={{color: 'red'}} />
