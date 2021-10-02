@@ -50,9 +50,10 @@ const IndividualPost = (props: Props) => {
   const category = data?.post?.categories?.nodes[0]?.name;
 
   const classes = useStyles();
+  if (loading) return <CircularProgress />;
   if (error) return <NotFoundPage />;
   if (!category) return <div>Sin datos</div>;
-  if (loading) return <CircularProgress />;
+
 
   return (
     <section className={classes.container}>

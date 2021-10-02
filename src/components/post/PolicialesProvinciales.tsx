@@ -70,9 +70,10 @@ const PolicialesProvinciales = () => {
   const postsProvinciales =
     dataProvinciales?.posts?.edges?.map((edge) => edge.node) || null;
 
+  if (loading || loadingProvinciales) return <CircularProgress />;
   if (error || errorProvinciales) return <NotFoundPage />;
   if (!postsPoliciales || !postsProvinciales) return <div>Sin datos</div>;
-  if (loading || loadingProvinciales) return <CircularProgress />;
+
   return (
     <>
       <Grid container className={classesGlobal.container} key="firstgrid">

@@ -64,9 +64,10 @@ const InfiniteScrollComponent = (props: Props) => {
   const edges = data?.posts?.edges || null;
   const classes = useStyles();
 
+  if (loading) return <CircularProgress/>;
   if (error) return <NotFoundPage/>;
   if (!edges) return <div>Sin datos</div>;
-  if (loading) return <CircularProgress/>;
+
   return (
     <section className={classes.container}>
       <SEO title="Inicio" />

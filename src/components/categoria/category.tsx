@@ -1,6 +1,5 @@
 import {gql, useQuery} from '@apollo/client';
 import {
-  CircularProgress,
   CssBaseline,
   GridList,
   GridListTile,
@@ -13,6 +12,7 @@ import {Constants} from '../../utils/constants';
 import Breadcrumb from '../breadcrumb/breadcrumb';
 import FeaturedPost from '../post/FeaturedPost';
 import SEO from '../seo';
+import {Loading} from '../../utils/Loading';
 import InfiniteScrollComponent from './infiniteScroll';
 
 
@@ -70,9 +70,10 @@ const CategoryComponent = (props: Props) => {
   const posts = data?.posts?.edges?.map((edge) => edge.node) || null;
   const classes = useStyles();
 
+  if (loading) return <Loading />;
   if (error) return <NotFoundPage />;
   if (!posts) return <div>Sin datos</div>;
-  if (loading) return <CircularProgress />;
+
   return (
     <section className={classes.container}>
       <SEO title="Inicio" />

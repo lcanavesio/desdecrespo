@@ -61,9 +61,10 @@ const PostGenerico = (props: Props) => {
   });
   const posts = data?.posts?.edges?.map((edge) => edge.node) || null;
 
+  if (loading) return <CircularProgress />;
   if (error) return <NotFoundPage />;
   if (!posts) return <div>Sin datos</div>;
-  if (loading) return <CircularProgress />;
+
   return (
     <>
       <Grid container

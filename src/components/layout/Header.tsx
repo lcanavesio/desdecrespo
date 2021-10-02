@@ -68,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 type Props = {
-  sections: [{title: string, url:string}]
+  sections: any
 }
 export default function Header(props: Props) {
   const {sections} = props;
