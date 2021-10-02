@@ -149,7 +149,7 @@ export default function Header(props: Props) {
         <Grid item md={12} lg={12} className={classes.banner}>
           <a rel="home" href="https://www.desdecrespo.com.ar/">
             <StaticImage
-              src="../images/banner.jpg"
+              src="../../images/banner-desktop.jpg"
               alt="Banner - Desde Crespo"
               style={{width: '100%'}}
             />
