@@ -69,7 +69,7 @@ const BusquedaPage = (props: Props) => {
   
   if (!posts) return null;
   return (
-    <Layout location={window.location} title="Test">
+    <Layout title="Busqueda">
       <section className={classes.container}> 
         <SEO title="Busqueda"/>
         <CssBaseline />

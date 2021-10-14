@@ -1,6 +1,6 @@
-import {makeStyles} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 import React from 'react';
-import {Constants} from '../../utils/constants';
+import { Constants } from '../../utils/constants';
 import Footer from './Footer';
 import Header from './Header';
 
@@ -14,13 +14,13 @@ const useStyles = makeStyles((theme) => ({
   content: {
     maxWidth: 1287,
     display: 'block',
-    marginLeft: 308,
-    marginRight: 308,
+    marginLeft: 'auto',
+    marginRight: 'auto',
   },
 
 }));
 
-const Layout = ({location, title, children}: Props) => {
+const Layout = ({title, children}: Props) => {
   const classes = useStyles();
   return (
     <div className="layout">

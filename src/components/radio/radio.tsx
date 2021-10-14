@@ -1,8 +1,8 @@
-import {Grid, makeStyles, Theme} from '@material-ui/core';
-import React, {useEffect, useState} from 'react';
-import AudioPlayer, {RHAP_UI} from 'react-h5-audio-player';
+import { Grid, makeStyles, Theme } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import {getRadios, TRadios} from '../../utils/radiosConfig';
+import { getRadios, TRadios } from '../../utils/radiosConfig';
 
 const useStyles = makeStyles((theme: Theme) => ({
   radio: {
@@ -18,14 +18,15 @@ const useStyles = makeStyles((theme: Theme) => ({
     'height': '61px',
     'display': 'flex',
   },
-  grid: {
-
-    display: 'flex',
-    padding: '1%',
-    borderRadius: '10px',
-    wordBreak: 'break-word',
-    whiteSpace: 'normal',
-    border: '1px solid rgb(191 190 191)',
+  gridContainer: {
+    'marginTop': 5,
+    'marginBottom': 10,
+    'padding': 5,
+    'borderRadius': '10px',
+    'wordBreak': 'break-word',
+    'whiteSpace': 'normal',
+    'border': '3px solid rgb(191 190 191)',
+    '-webkit-align-items': 'center',
   },
 
 
@@ -44,7 +45,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   name: {
     width: '100%',
     textAlign: 'center',
-    fontFamily: 'Architects Daughter,  cursive',
   },
 
 
@@ -72,8 +72,8 @@ const Radio = () => {
       {stations &&
         stations.map((station, index) => {
           return (
-            <Grid container className={classes.grid} key={index}>
-              <Grid item xs={12} md={2}>
+            <Grid container className={classes.gridContainer} key={index}>
+              <Grid item xs={12} md={3}>
                 <img
                   className={classes.img}
                   src={station.imgLogo}
@@ -81,12 +81,10 @@ const Radio = () => {
                   onError={setDefaultSrc}
                 />
               </Grid>
-
               <Grid item xs={12} md={4}>
-                <div className={classes.name}>{station.title}</div>
-
+                <label className={classes.name}>{station.title}</label>
               </Grid>
-              <Grid item xs={12} md={6}>
+              <Grid item xs={12} md={5}>
                 <AudioPlayer
                   style={{
                     backgroundColor: 'rgb(238 236 241)',

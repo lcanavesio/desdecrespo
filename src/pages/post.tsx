@@ -5,7 +5,7 @@ import IndividualPost from "../components/post/IndividualPost";
 
 const Post = () => (
   
-  <Layout location={window.location} title="Test">    
+  <Layout title="Test">    
     <Router>
       <IndividualPost path="/post/:slug/:id" />
     </Router>

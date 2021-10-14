@@ -5,24 +5,24 @@ import {
   DialogTitle,
   Divider,
   Grid,
-  TextField,
+  TextField
 } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
-import {navigate} from 'gatsby';
-import {Link} from 'gatsby-material-ui-components';
-import {StaticImage} from 'gatsby-plugin-image';
+import { navigate } from 'gatsby';
+import { Link } from 'gatsby-material-ui-components';
+import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 import Ultimo from '../ultimo/ultimo';
 
 const useStyles = makeStyles((theme) => ({
   bannerContainer: {
-    marginLeft: 308,
-    marginRight: 308,
+    marginLeft: 'auto',
+    marginRight: 'auto',
     maxWidth: 1287,
     display: 'block',
   },
@@ -33,8 +33,8 @@ const useStyles = makeStyles((theme) => ({
   headerContainer: {
     maxWidth: 1287,
     display: 'block',
-    marginLeft: 308,
-    marginRight: 308,
+    marginLeft: 'auto',
+    marginRight: 'auto',
     color: 'white',
   },
   toolbar: {
@@ -166,7 +166,7 @@ export default function Header(props: Props) {
               className={classes.dividerVertical}
             />
             {sections.map((section, index) => (
-              <div key={index}>
+              <><div key={index}>
                 <Link
 
                   color="inherit"
@@ -177,12 +177,11 @@ export default function Header(props: Props) {
                 >
                   {section.title}
                 </Link>
-                <Divider
-                  orientation="vertical"
-                  flexItem
-                  className={classes.dividerVertical}
-                />
               </div>
+              <Divider
+                orientation="vertical"
+                flexItem
+                className={classes.dividerVertical} /></>
             ))}
           </Toolbar>
         </div>
