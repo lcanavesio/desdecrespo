@@ -5,6 +5,7 @@ import React from 'react';
 import {useStylesGlobal} from '../../utils/GlobalStyle';
 import NotFoundPage from '../../pages/404';
 import FeaturedPost from './FeaturedPost';
+import HeaderTitle from '../common/HeaderTitle';
 
 const NoSePierda = () => {
   const classesGlobal = useStylesGlobal();
@@ -76,11 +77,8 @@ const NoSePierda = () => {
   if (loading || loadingEducacion) return <CircularProgress />;
   return (
     <>
-      <div>
-        <h2 className={classesGlobal.title}>
-          <span className={classesGlobal.tituloSpan}>NO SE PIERDA </span>
-        </h2>
-      </div>
+      <HeaderTitle title="NO SE PIERDA" />
+
       <Grid container className={classesGlobal.container}>
         <Grid item lg={6}>
           <Grid container >

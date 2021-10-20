@@ -1,9 +1,12 @@
-import { makeStyles } from '@material-ui/core/styles';
-import { Link, navigate } from "gatsby";
-import React from 'react';
-import Carousel from 'react-material-ui-carousel';
+import { gql, useQuery } from '@apollo/client'
+import { CircularProgress } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import { Link, navigate } from 'gatsby'
+import React from 'react'
+import Carousel from 'react-material-ui-carousel'
+import NotFoundPage from '../../pages/404'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   carousel: {
     marginLeft: 10,
     marginRight: 10,
@@ -14,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     objectFit: 'cover',
     margin: 0,
-    borderRadius: 5
+    borderRadius: 5,
   },
   postTitle: {
     position: 'absolute',
@@ -26,46 +29,61 @@ const useStyles = makeStyles((theme) => ({
   link: {
     color: 'white',
     textDecoration: 'none',
-  }
-}));
+  },
+}))
 
-type Post = {
-  id: string;
-  date: string;
-  title: string;
-  slug: string;
-  featuredImage: any;
-};
+const SlidePosts = () => {
+  const classes = useStyles()
+  const getPosts = gql`
+    query getPosts {
+      posts(
+        first: 8
+        where: {
+          orderby: { field: DATE, order: DESC }
+          categoryName: "Destacadas, Destacados"
+        }
+      ) {
+        edges {
+          node {
+            id
+            date
+            title
+            slug
+            featuredImage {
+              node {
+                mediaItemUrl
+              }
+            }
+          }
+        }
+      }
+    }
+  `
 
-type Props = {
-  posts: Post[];
-};
+  const { loading, error, data } = useQuery(getPosts)
+  const posts = data?.posts?.edges?.map(edge => edge.node) || null
 
+  if (loading) return <CircularProgress />
+  if (error) return <NotFoundPage />
+  if (!posts) return <div>Sin datos</div>
 
-const SlidePosts = (props: Props) => {
-  const classes = useStyles();
-  const { posts } = props;
-  if (!posts)
-    return null;
   return (
     <>
-      <Carousel
-        className={classes.carousel}
-        animation={'slide'}>
-        {
-          posts.map((post) => (
-            <div>
-              <Link to={`/post/${post.slug}/${post.id}`} className={classes.link}>
-                <img src={post.featuredImage?.node?.mediaItemUrl} className={classes.image} onClick={() => navigate(`/post/${post.slug}/${post.id}`)} />
-                <h3 className={classes.postTitle}>
-                  {post.title}
-                </h3>
-              </Link>
-            </div>
-          ))
-        }
+      <Carousel className={classes.carousel} animation={'slide'}>
+        {posts.map((post, index) => (
+          <div key={index}>
+            <Link to={`/post/${post.slug}/${post.id}`} className={classes.link}>
+              <img
+                src={post.featuredImage?.node?.mediaItemUrl}
+                className={classes.image}
+                onClick={() => navigate(`/post/${post.slug}/${post.id}`)}
+              />
+              <h3 className={classes.postTitle}>{post.title}</h3>
+            </Link>
+          </div>
+        ))}
       </Carousel>
     </>
-  );
+  )
 }
-export default SlidePosts;
+export default SlidePosts
