@@ -89,29 +89,29 @@ query getPostsByCategory ($categoryName:String!) {
   }
 }
 `;
-  const {loading, error, data} = useQuery(getPosts);
-  const {data: localData} = useQuery(getPostsByCategory, {
-    variables: {categoryName: 'Locales'},
+  const { loading, error, data } = useQuery(getPosts);
+  const { data: localData } = useQuery(getPostsByCategory, {
+    variables: { categoryName: 'Locales' },
   });
   const localPosts = localData?.posts?.edges?.map((edge) => edge.node) || [];
 
-  const {data: policeData} = useQuery(getPostsByCategory, {
-    variables: {categoryName: 'Policiales'},
+  const { data: policeData } = useQuery(getPostsByCategory, {
+    variables: { categoryName: 'Policiales' },
   });
   const policePosts = policeData?.posts?.edges?.map((edge) => edge.node) || [];
 
-  const {data: provintialData} = useQuery(getPostsByCategory, {
-    variables: {categoryName: 'Provinciales'},
+  const { data: provintialData } = useQuery(getPostsByCategory, {
+    variables: { categoryName: 'Provinciales' },
   });
   const provintialPosts = provintialData?.posts?.edges?.map((edge) => edge.node) || [];
 
-  const {data: nationalData} = useQuery(getPostsByCategory, {
-    variables: {categoryName: 'Nacionales'},
+  const { data: nationalData } = useQuery(getPostsByCategory, {
+    variables: { categoryName: 'Nacionales' },
   });
   const nationalPosts = nationalData?.posts?.edges?.map((edge: { node: any; }) => edge.node) || [];
 
-  const {data: internationalData} = useQuery(getPostsByCategory, {
-    variables: {categoryName: 'Internacionales'},
+  const { data: internationalData } = useQuery(getPostsByCategory, {
+    variables: { categoryName: 'Internacionales' },
   });
   const internationalPosts = internationalData?.posts?.edges?.map((edge) => edge.node) || [];
 

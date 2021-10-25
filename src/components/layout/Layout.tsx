@@ -1,6 +1,7 @@
 import { makeStyles } from '@material-ui/core';
 import React from 'react';
 import { Constants } from '../../utils/constants';
+import ActiveRadio from '../radio/activeRadio';
 import Footer from './Footer';
 import Header from './Header';
 
@@ -33,6 +34,7 @@ const Layout = ({title, children}: Props) => {
         description="Semanario Diario"
 
       />
+      <ActiveRadio />
     </div>
   );
 };
