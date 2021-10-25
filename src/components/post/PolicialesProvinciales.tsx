@@ -4,6 +4,7 @@ import React from 'react';
 import {useStylesGlobal} from '../../utils/GlobalStyle';
 import NotFoundPage from '../../pages/404';
 import FeaturedPost from './FeaturedPost';
+import HeaderTitle from '../common/HeaderTitle';
 
 const PolicialesProvinciales = () => {
   const classesGlobal = useStylesGlobal();
@@ -78,11 +79,8 @@ const PolicialesProvinciales = () => {
     <>
       <Grid container className={classesGlobal.container} key="firstgrid">
         <Grid item lg={6} key="policiales">
-          <div key="titulo1">
-            <h2 className={classesGlobal.title}>
-              <span className={classesGlobal.tituloSpan}>POLICIALES </span>
-            </h2>
-          </div>
+          <HeaderTitle title="POLICIALES" />
+
           <Grid container>
             {postsPoliciales.map((post, index) => (
               <Grid item key={index} lg={6} className={classesGlobal.card}>
@@ -92,11 +90,7 @@ const PolicialesProvinciales = () => {
           </Grid>
         </Grid>
         <Grid item lg={6} key="provinciales">
-          <div key="titulo2">
-            <h2 className={classesGlobal.title}>
-              <span className={classesGlobal.tituloSpan}>PROVINCIALES </span>
-            </h2>
-          </div>
+          <HeaderTitle title="PROVINCIALES" />
           <Grid container>
             {postsProvinciales.map((post, index) => (
               <Grid key={index} item lg={6} className={classesGlobal.card}>

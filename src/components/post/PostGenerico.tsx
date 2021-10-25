@@ -6,7 +6,7 @@ import NotFoundPage from '../../pages/404';
 import FeaturedPost from './FeaturedPost';
 
 type Props = {
-  titulo: string
+  titulo?: string
   categoryName: string
   first: number
 }
@@ -70,11 +70,11 @@ const PostGenerico = (props: Props) => {
       <Grid container
         className={classesGlobal.container}
         key="postgenericogrid">
-        <div key="postgenericodiv">
+        {titulo && <> <div key="postgenericodiv">
           <h2 className={classesGlobal.titulo}>
             <span className={classesGlobal.tituloSpan}>{titulo} </span>
           </h2>
-        </div>
+        </div> </>}
         <Grid container>
           {posts.map((post, index) => (
             <Grid

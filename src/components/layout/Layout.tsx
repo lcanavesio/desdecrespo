@@ -6,7 +6,7 @@ import Footer from './Footer';
 import Header from './Header';
 
 interface Props {
-  location: Location
+  location?: Location
   title: string
   children?: any
 }

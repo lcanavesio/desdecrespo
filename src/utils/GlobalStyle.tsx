@@ -121,4 +121,5 @@ export const useStylesGlobal = makeStyles(() => ({
     top: 'calc(45% - 10px)',
     left: 'calc(50% - 10px)',
   },
+  titulo: {},
 }));
