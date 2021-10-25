@@ -8,6 +8,9 @@ import { getRadioList } from '../../utils/radiosConfig';
 const useStyles = makeStyles((theme: Theme) => ({
   player: {
     '@global': {
+      '.music-player-panel': {
+        backgroundImage: 'linear-gradient(20deg,#b91b0c 0%,#e28f12 100%)',
+      },
       '.music-player-panel > .panel-content > .progress-bar-content > .audio-main > .duration': {
         display: 'none',
       },
