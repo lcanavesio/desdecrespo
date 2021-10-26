@@ -1,5 +1,5 @@
 import {gql, useQuery} from '@apollo/client';
-import {CircularProgress, Grid} from '@material-ui/core';
+import {CircularProgress, Grid, useMediaQuery} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import FlashOnIcon from '@material-ui/icons/FlashOn';
 import {Link} from 'gatsby';
@@ -35,11 +35,14 @@ const useStyles = makeStyles((theme) => ({
     color: 'black',
     textDecoration: 'none',
   },
+  mobileItem: {
+    display: 'flex',
+  },
 }));
 
 const Ultimo = () => {
   const classes = useStyles();
-
+  const matches = useMediaQuery('(min-width:900px)');
   const getPosts = gql`
     query getPosts {
       posts(first: 5, where: { orderby: { field: DATE, order: DESC } }) {
@@ -62,6 +65,8 @@ const Ultimo = () => {
   if (!posts) return <div>Sin datos</div>;
 
   return (
+    <>
+      {matches ?
     <Grid
       container
       direction="row"
@@ -92,7 +97,40 @@ const Ultimo = () => {
           </Link>
         ))}
       </Carousel>
-    </Grid>
+    </Grid> :
+    <><Grid
+      container
+      direction="row"
+    >
+      <Grid item key="ultimoMobile" className={classes.mobileItem}>
+
+        <FlashOnIcon style={{color: 'red'}} />
+        <h5 style={{fontSize: '12px', display: 'inline'}}>LO ÚLTIMO</h5>
+        <Carousel
+          className={classes.carousel}
+          indicators={false}
+          navButtonsAlwaysVisible={true}
+          animation={'slide'}
+          navButtonsProps={{
+            style: {
+              height: 5,
+              width: 5,
+              marginTop: 7,
+              textAlign: 'right',
+            },
+          }}
+        >
+          {posts.map((post, index) => (
+            <Link key={index}
+              to={`/post/${post.slug}/${post.id}`} className={classes.link}>
+              {post.title}
+            </Link>
+          ))}
+        </Carousel>
+
+      </Grid>
+    </Grid></>}
+    </>
   );
 };
 export default Ultimo;

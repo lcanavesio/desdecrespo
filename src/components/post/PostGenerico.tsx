@@ -4,9 +4,10 @@ import React from 'react';
 import {useStylesGlobal} from '../../utils/GlobalStyle';
 import NotFoundPage from '../../pages/404';
 import FeaturedPost from './FeaturedPost';
+import HeaderTitle from '../common/headerTitle';
 
 type Props = {
-  titulo?: string
+  titulo: string
   categoryName: string
   first: number
 }
@@ -67,27 +68,19 @@ const PostGenerico = (props: Props) => {
 
   return (
     <>
-      <Grid container
-        className={classesGlobal.container}
-        key="postgenericogrid">
-        {titulo && <> <div key="postgenericodiv">
-          <h2 className={classesGlobal.titulo}>
-            <span className={classesGlobal.tituloSpan}>{titulo} </span>
-          </h2>
-        </div> </>}
-        <Grid container>
-          {posts.map((post, index) => (
-            <Grid
-              item
-              key={index}
-              lg={gridValue}
-              className={classesGlobal.card}
-            >
-              <FeaturedPost key={index} post={post} />
-            </Grid>
+      <Grid container>
+        <HeaderTitle title={titulo} />
+        {posts.map((post, index) => (
+          <Grid
+            item
+            key={index}
+            lg={gridValue}
+            className={classesGlobal.card}
+          >
+            <FeaturedPost key={index} post={post} />
+          </Grid>
 
-          ))}
-        </Grid>
+        ))}
       </Grid>
     </>
   );

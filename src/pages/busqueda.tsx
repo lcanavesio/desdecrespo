@@ -1,19 +1,18 @@
-import { gql, useQuery } from '@apollo/client';
-import { CssBaseline, GridList, GridListTile, makeStyles } from "@material-ui/core";
-import { navigate } from 'gatsby';
-import React from "react";
-import Layout from "../components/layout/Layout";
+import {gql, useQuery} from '@apollo/client';
+import {CssBaseline, GridList, GridListTile, makeStyles} from '@material-ui/core';
+import {navigate} from 'gatsby';
+import React from 'react';
 import FeaturedPost from '../components/post/FeaturedPost';
-import SEO from "../components/seo";
+import SEO from '../components/seo';
 
-const useStyles = makeStyles(theme => ({  
+const useStyles = makeStyles((theme) => ({
   container: {
     paddingTop: 10,
   },
   card: {
-    padding: 10
+    padding: 10,
   },
-}))
+}));
 
 interface Props {
   data: {
@@ -57,32 +56,32 @@ const BusquedaPage = (props: Props) => {
   const classes = useStyles();
 
   const search: string = location?.search;
-  const keyword: string = new URLSearchParams(search).get('keyword');;
-  
+  const keyword: string = new URLSearchParams(search).get('keyword'); ;
+
   if (!keyword) navigate(`/`);
 
-  const { loading, error, data } = useQuery(getPostsSearch, {
-    variables: { keyword: keyword }
+  const {loading, error, data} = useQuery(getPostsSearch, {
+    variables: {keyword: keyword},
   });
-  const posts = data?.posts?.edges?.map(edge => edge.node) || null;
-  console.log("posts", posts)
-  
+  const posts = data?.posts?.edges?.map((edge) => edge.node) || null;
+  console.log('posts', posts);
+
   if (!posts) return null;
   return (
     <Layout title="Busqueda">
-      <section className={classes.container}> 
+      <section className={classes.container}>
         <SEO title="Busqueda"/>
         <CssBaseline />
         <GridList cellHeight={288} cols={2}>
-        {posts.map((post) => (
-          <GridListTile key={`gridList-${post.title}-${post?.title}`}>
-            <FeaturedPost key={`${post.title}-${post?.title}`} post={post} />
-          </GridListTile>
-        ))}
-      </GridList>
+          {posts.map((post) => (
+            <GridListTile key={`gridList-${post.title}-${post?.title}`}>
+              <FeaturedPost key={`${post.title}-${post?.title}`} post={post} />
+            </GridListTile>
+          ))}
+        </GridList>
       </section>
     </Layout>
-  )
-}
+  );
+};
 
-export default BusquedaPage
+export default BusquedaPage;
