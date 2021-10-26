@@ -1,15 +1,11 @@
-import { makeStyles } from '@material-ui/core';
-import React from 'react';
-import { Constants } from '../../utils/constants';
+import {makeStyles, useMediaQuery} from '@material-ui/core';
+import React, {useState} from 'react';
+import {Constants} from '../../utils/constants';
 import ActiveRadio from '../radio/activeRadio';
 import Footer from './Footer';
 import Header from './Header';
-
-interface Props {
-  location?: Location
-  title: string
-  children?: any
-}
+import HeaderMobile from './HeaderMobile';
+import NavigatorMobile from './NavigatorMobile';
 
 const useStyles = makeStyles((theme) => ({
   content: {
@@ -20,22 +16,55 @@ const useStyles = makeStyles((theme) => ({
   },
 
 }));
+const drawerWidth = 200;
 
-const Layout = ({title, children}: Props) => {
+type Layout ={
+  children: React.ReactNode
+}
+const Layout = (props: Layout) => {
+  const {children} = props;
   const classes = useStyles();
-  return (
-    <div className="layout">
-      <Header sections={Constants.CATEGORIES} />
-      <div className={classes.content}>
-        <main>{children}</main>
-      </div>
-      <Footer
-        title="Desde Crespo"
-        description="Semanario Diario"
+  const matches = useMediaQuery('(min-width:900px)');
+  const [mobileOpen, setMobileOpen] = useState(false);
 
-      />
-      <ActiveRadio />
-    </div>
+  const handleDrawerToggle = () => {
+    setMobileOpen(!mobileOpen);
+  };
+
+  return (
+    <>
+      {matches ? <div className="layout">
+        <Header sections={Constants.CATEGORIES} />
+        <div className={classes.content}>
+          <main>{children}</main>
+        </div>
+        <Footer
+          title="Desde Crespo"
+          description="Semanario Diario"
+
+        />
+        <ActiveRadio />
+      </div> :
+      <>
+        <NavigatorMobile
+          PaperProps={{style: {width: drawerWidth}}}
+          variant="temporary"
+          open={mobileOpen}
+          onClose={handleDrawerToggle}
+        />
+        <HeaderMobile onDrawerToggle={handleDrawerToggle}/>
+        <div className={classes.content}>
+          <main>{children}</main>
+        </div>
+        <Footer
+          title="Desde Crespo"
+          description="Semanario Diario"
+
+        />
+      </>
+      }
+
+    </>
   );
 };
 

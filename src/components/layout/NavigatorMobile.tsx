@@ -1,24 +1,22 @@
+import {List} from '@material-ui/core';
 import Drawer, {DrawerProps} from '@material-ui/core/Drawer';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import {
+  createStyles,
+  createTheme,
+  makeStyles,
+  Theme,
+  ThemeProvider,
+} from '@material-ui/core/styles';
 import clsx from 'clsx';
 import React, {memo} from 'react';
+import {Constants} from '../../utils/constants';
+import {Link} from 'gatsby-material-ui-components';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    categoryHeader: {
-      paddingTop: theme.spacing(2),
-      paddingBottom: theme.spacing(2),
-    },
-    categoryHeaderPrimary: {
-      color: theme.palette.common.white,
-    },
     item: {
-      'paddingTop': 1,
-      'paddingBottom': 1,
       'color': 'rgba(255, 255, 255, 0.7)',
       'paddingLeft': theme.spacing(3),
       'textDecoration': 'none',
@@ -29,39 +27,12 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     itemCategory: {
       boxShadow: '0 -1px 0 #404854 inset',
-      paddingTop: theme.spacing(2),
-      paddingBottom: theme.spacing(2),
+      paddingBottom: theme.spacing(1),
       paddingLeft: theme.spacing(1),
     },
-    firebase: {
-      fontSize: 24,
-      color: theme.palette.common.white,
-    },
-    itemActiveItem: {
-      color: '#4fc3f7',
-    },
-    itemPrimary: {
-      fontSize: 'inherit',
-    },
-    itemIcon: {
-      minWidth: 'auto',
-      marginRight: theme.spacing(2),
-    },
+
     divider: {
       marginTop: theme.spacing(2),
-    },
-    // add
-    vinculo: {
-      color: 'white',
-      liststyle: 'none',
-      textdecoration: 'none',
-      display: 'flex',
-      alignitems: 'center',
-    },
-    titulo: {
-      fontSize: theme.typography.pxToRem(25),
-      fontWeight: theme.typography.fontWeightBold,
-      textAlign: 'center',
     },
   }),
 );
@@ -73,23 +44,67 @@ function NavigatorMobile(props: NavigatorProps) {
   const classes = useStyles();
 
   return (
-    <Drawer variant="permanent" {...other}>
-      <a onClick={() => console.log()}>
-        <ListItem className={clsx(classes.item, classes.itemCategory)}>
-          <ListItemIcon className={classes.itemIcon}>
-          Menu 1
-          </ListItemIcon>
-          <ListItemText
-            classes={{
-              primary: classes.itemPrimary,
-            }}
-          >
-          </ListItemText>
-        </ListItem>
-      </a>
+    <ThemeProvider theme={theme}>
+      <Drawer variant="permanent" {...other}>
+        <List disablePadding style={{background: '#2b2b2b'}}>
+          <ListItem className={clsx(classes.item, classes.itemCategory)}>
+            <ListItemText style={{color: 'white'}}>Desde Crespo</ListItemText>
+          </ListItem>
 
-    </Drawer>
+          {Constants.CATEGORIES.map((item, index) => (
+            <div key={index}>
+              <ListItem className={clsx(classes.item, classes.itemCategory)}>
+                <ListItemText style={{color: 'white'}}>
+                  <Link
+                    color="inherit"
+                    noWrap
+                    key={item.title}
+                    to={item.url}
+                  >
+                    {item.title}
+                  </Link>
+                </ListItemText>
+              </ListItem>
+            </div>
+          ))}
+        </List>
+      </Drawer>
+    </ThemeProvider>
   );
 }
 
 export default memo(NavigatorMobile);
+
+let theme = createTheme({
+  typography: {
+    h5: {
+      fontWeight: 500,
+      fontSize: 26,
+      letterSpacing: 0.5,
+    },
+  },
+  shape: {
+    borderRadius: 8,
+  },
+  props: {
+    MuiTab: {
+      disableRipple: true,
+    },
+  },
+  mixins: {
+    toolbar: {
+      minHeight: 48,
+    },
+  },
+});
+
+theme = {
+  ...theme,
+  overrides: {
+    MuiDrawer: {
+      paper: {
+        backgroundColor: '#2b2b2b',
+      },
+    },
+  },
+};
