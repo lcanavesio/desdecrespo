@@ -1,17 +1,19 @@
-import {gql, useQuery} from '@apollo/client';
-import {CircularProgress, Grid, GridSize} from '@material-ui/core';
+import { gql, useQuery } from '@apollo/client';
+import { Grid, GridSize } from '@material-ui/core';
+import { Skeleton } from '@material-ui/lab';
 import React from 'react';
-import {useStylesGlobal} from '../../utils/GlobalStyle';
 import NotFoundPage from '../../pages/404';
+import { useStylesGlobal } from '../../utils/GlobalStyle';
+import HeaderTitle from '../common/headerTitle';
 import FeaturedPost from './FeaturedPost';
 
 type Props = {
-  titulo?: string
+  titulo: string
   categoryName: string
   first: number
 }
 const PostGenerico = (props: Props) => {
-  const {categoryName, first, titulo} = props;
+  const { categoryName, first, titulo } = props;
   const classesGlobal = useStylesGlobal();
 
   const getPosts = gql`
@@ -42,52 +44,53 @@ const PostGenerico = (props: Props) => {
   let gridValue: GridSize;
   switch (first) {
     case 2:
+    case 8:
+    default:
       gridValue = 6;
       break;
     case 3:
-      gridValue = 4;
-      break;
     case 4:
       gridValue = 4;
       break;
-    case 8:
-      gridValue = 6;
-    default:
-      gridValue = 6;
   }
 
-  const {loading, error, data} = useQuery(getPosts, {
-    variables: {categoryName, first},
+  const { loading, error, data } = useQuery(getPosts, {
+    variables: { categoryName, first },
   });
   const posts = data?.posts?.edges?.map((edge) => edge.node) || null;
 
-  if (loading) return <CircularProgress />;
   if (error) return <NotFoundPage />;
-  if (!posts) return <div>Sin datos</div>;
+
+  const showSkeleton = () => {
+    const skeletons = [];
+
+    for (let i = 0; i < first; i++) {
+      skeletons.push(<Skeleton
+        variant="rect"
+        style={{ minWidth: 300, minHeight: 200, margin: 10}} />);
+    }
+    return skeletons;
+  };
 
   return (
     <>
-      <Grid container
-        className={classesGlobal.container}
-        key="postgenericogrid">
-        {titulo && <> <div key="postgenericodiv">
-          <h2 className={classesGlobal.titulo}>
-            <span className={classesGlobal.tituloSpan}>{titulo} </span>
-          </h2>
-        </div> </>}
-        <Grid container>
-          {posts.map((post, index) => (
-            <Grid
-              item
-              key={index}
-              lg={gridValue}
-              className={classesGlobal.card}
-            >
-              <FeaturedPost key={index} post={post} />
-            </Grid>
+      <Grid container>
+        <HeaderTitle title={titulo} />
+        {
+          (!loading && posts) ?
+            posts.map((post, index) => (
+              <Grid
+                item
+                key={index}
+                lg={gridValue}
+                className={classesGlobal.card}
+              >
+                <FeaturedPost key={index} post={post} />
+              </Grid>
 
-          ))}
-        </Grid>
+            )) :
+            showSkeleton()
+        }
       </Grid>
     </>
   );

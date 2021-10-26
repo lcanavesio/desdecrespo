@@ -1,12 +1,12 @@
-import { gql, useQuery } from '@apollo/client'
-import { makeStyles } from '@material-ui/core/styles'
-import { Skeleton } from '@material-ui/lab'
-import { Link, navigate } from 'gatsby'
-import React from 'react'
-import Carousel from 'react-material-ui-carousel'
-import NotFoundPage from '../../pages/404'
+import { gql, useQuery } from '@apollo/client';
+import { makeStyles } from '@material-ui/core/styles';
+import { Skeleton } from '@material-ui/lab';
+import { Link, navigate } from 'gatsby';
+import React from 'react';
+import Carousel from 'react-material-ui-carousel';
+import NotFoundPage from '../../pages/404';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   carousel: {
     marginLeft: 10,
     marginRight: 10,
@@ -31,10 +31,10 @@ const useStyles = makeStyles(theme => ({
     color: 'white',
     textDecoration: 'none',
   },
-}))
+}));
 
 const SlidePosts = () => {
-  const classes = useStyles()
+  const classes = useStyles();
   const getPosts = gql`
     query getPosts {
       posts(
@@ -59,10 +59,10 @@ const SlidePosts = () => {
         }
       }
     }
-  `
+  `;
 
-  const { loading, error, data } = useQuery(getPosts)
-  const posts = data?.posts?.edges?.map(edge => edge.node) || null
+  const {loading, error, data} = useQuery(getPosts);
+  const posts = data?.posts?.edges?.map((edge) => edge.node) || null;
 
   if (error) return <NotFoundPage />;
   return (
@@ -83,12 +83,11 @@ const SlidePosts = () => {
               </Link>
             </div>
           ))}
-        </Carousel>
-        :
+        </Carousel> :
         <Skeleton variant="rect" className={classes.carousel} />
       }
 
     </>
-  )
-}
-export default SlidePosts
+  );
+};
+export default SlidePosts;

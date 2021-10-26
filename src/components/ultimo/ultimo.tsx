@@ -1,5 +1,5 @@
 import { gql, useQuery } from '@apollo/client';
-import { Grid } from '@material-ui/core';
+import { Grid, useMediaQuery } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import FlashOnIcon from '@material-ui/icons/FlashOn';
 import { Skeleton } from '@material-ui/lab';
@@ -36,11 +36,14 @@ const useStyles = makeStyles((theme) => ({
     color: 'black',
     textDecoration: 'none',
   },
+  mobileItem: {
+    display: 'flex',
+  },
 }));
 
 const Ultimo = () => {
   const classes = useStyles();
-
+  const matches = useMediaQuery('(min-width:900px)');
   const getPosts = gql`
     query getPosts {
       posts(first: 5, where: { orderby: { field: DATE, order: DESC } }) {
@@ -59,44 +62,87 @@ const Ultimo = () => {
   const posts = data?.posts?.edges?.map((edge) => edge.node) || null;
 
   if (error) return <NotFoundPage />;
-  //if (!posts) return <div>Sin datos</div>;
 
   return (
-    <Grid
-      container
-      direction="row"
-      style={{ width: '90%', maxWidth: 1700 }}
-      justifyContent="center"
-      alignItems="center"
-    >
-      <FlashOnIcon style={{ color: 'red' }} />
-      <h5 style={{ paddingTop: 21 }}>LO ÚLTIMO</h5>
-      {(!loading && posts) ?
-        <Carousel
-          className={classes.carousel}
-          indicators={false}
-          navButtonsAlwaysVisible={true}
-          animation={'slide'}
-          navButtonsProps={{
-            style: {
-              height: 5,
-              width: 5,
-              marginTop: 7,
-              textAlign: 'right',
-            },
-          }}
+    <>
+      {matches ?
+        <Grid
+          container
+          direction="row"
+          style={{ width: '90%', maxWidth: 1700 }}
+          justifyContent="center"
+          alignItems="center"
         >
-          {posts.map((post, index) => (
-            <Link key={index}
-              to={`/post/${post.slug}/${post.id}`} className={classes.link}>
-              {post.title}
-            </Link>
-          ))}
-        </Carousel>
-        :
-        <Skeleton variant="rect" className={classes.carousel} />
-      }
-    </Grid>
+          <FlashOnIcon style={{ color: 'red' }} />
+          <h5 style={{ paddingTop: 21 }}>LO ÚLTIMO</h5>
+          {
+            (posts) ?
+              <Carousel
+                className={classes.carousel}
+                indicators={false}
+                navButtonsAlwaysVisible={true}
+                animation={'slide'}
+                navButtonsProps={{
+                  style: {
+                    height: 5,
+                    width: 5,
+                    marginTop: 7,
+                    textAlign: 'right',
+                  },
+                }}
+              >
+                {posts.map((post, index) => (
+                  <Link key={index}
+                    to={`/post/${post.slug}/${post.id}`}
+                    className={classes.link}>
+                    {post.title}
+                  </Link>
+                ))}
+              </Carousel>
+              :
+              <Skeleton variant="rect" className={classes.carousel} />
+          }
+
+        </Grid> :
+        <Grid
+          container
+          direction="row"
+        >
+          <Grid item key="ultimoMobile" className={classes.mobileItem}>
+
+            <FlashOnIcon style={{ color: 'red' }} />
+            <h5 style={{ fontSize: '12px', display: 'inline' }}>LO ÚLTIMO</h5>
+            {
+              (posts) ?
+                <Carousel
+                  className={classes.carousel}
+                  indicators={false}
+                  navButtonsAlwaysVisible={true}
+                  animation={'slide'}
+                  navButtonsProps={{
+                    style: {
+                      height: 5,
+                      width: 5,
+                      marginTop: 7,
+                      textAlign: 'right',
+                    },
+                  }}
+                >
+                  {posts.map((post, index) => (
+                    <Link key={index}
+                      to={`/post/${post.slug}/${post.id}`}
+                      className={classes.link}>
+                      {post.title}
+                    </Link>
+                  ))}
+                </Carousel>
+                :
+                <Skeleton variant="rect" className={classes.carousel} />
+            }
+
+          </Grid>
+        </Grid>}
+    </>
   );
 };
 export default Ultimo;

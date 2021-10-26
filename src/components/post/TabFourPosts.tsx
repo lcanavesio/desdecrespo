@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import FitnessCenterIcon from '@material-ui/icons/FitnessCenter';
 import ImportantDevicesIcon from '@material-ui/icons/ImportantDevices';
 import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
+import { Skeleton } from '@material-ui/lab';
 import React from 'react';
 import FeaturedPost from './FeaturedPost';
 import SlidePosts from './SlidePosts';
@@ -110,6 +111,17 @@ const TabFourPosts = () => {
     setValue(newValue);
   };
 
+  const showSkeleton = (rows) => {
+    const skeletons = [];
+
+    for (let i = 0; i < rows; i++) {
+      skeletons.push(<Skeleton
+        variant="rect"
+        style={{ minWidth: '47%', minHeight: 290, margin: 10 }} />);
+    }
+    return skeletons;
+  };
+
   return (
     <>
       <Paper square className={classes.root}>
@@ -131,23 +143,36 @@ const TabFourPosts = () => {
 
         <TabPanel value={value} index={0}>
           <Grid container lg={12}>
-            {sportPosts.map((post) => (
-              <Grid container lg={6} className={classes.card}>
-                <FeaturedPost key={`sport-featured-post-${post.id}`} post={post} />
-              </Grid>
-            ))}
+            {
+              sportPosts ?
+                sportPosts.map((post) => (
+                  <Grid container lg={6} className={classes.card}>
+                    <FeaturedPost key={`sport-featured-post-${post.id}`} post={post} />
+                  </Grid>
+                )) :
+                showSkeleton(4)
+            }
           </Grid>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <SlidePosts key={`health-tech-featured-post`} posts={healthPosts || null} />
+          {
+            healthPosts ?
+              <SlidePosts key={`health-tech-featured-post`} posts={healthPosts || null} />
+              :
+              showSkeleton(1)
+          }
         </TabPanel>
         <TabPanel value={value} index={2}>
           <Grid container lg={12}>
-            {technologyPosts.map((post) => (
-              <Grid container lg={6} className={classes.card}>
-                <FeaturedPost key={`tech-featured-post-${post.id}`} post={post} />
-              </Grid>
-            ))}
+            {technologyPosts ?
+              technologyPosts.map((post) => (
+                <Grid container lg={6} className={classes.card}>
+                  <FeaturedPost key={`tech-featured-post-${post.id}`} post={post} />
+                </Grid>
+              ))
+              :
+              showSkeleton(4)
+            }
           </Grid>
         </TabPanel>
       </Paper>
