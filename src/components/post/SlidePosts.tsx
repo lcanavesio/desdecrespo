@@ -1,6 +1,6 @@
 import { gql, useQuery } from '@apollo/client'
-import { CircularProgress } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
+import { Skeleton } from '@material-ui/lab'
 import { Link, navigate } from 'gatsby'
 import React from 'react'
 import Carousel from 'react-material-ui-carousel'
@@ -10,6 +10,7 @@ const useStyles = makeStyles(theme => ({
   carousel: {
     marginLeft: 10,
     marginRight: 10,
+    minHeight: 472,
   },
   image: {
     position: 'relative',
@@ -63,26 +64,30 @@ const SlidePosts = () => {
   const { loading, error, data } = useQuery(getPosts)
   const posts = data?.posts?.edges?.map(edge => edge.node) || null
 
-  if (loading) return <CircularProgress />
-  if (error) return <NotFoundPage />
-  if (!posts) return <div>Sin datos</div>
-
+  if (error) return <NotFoundPage />;
   return (
     <>
-      <Carousel className={classes.carousel} animation={'slide'}>
-        {posts.map((post, index) => (
-          <div key={index}>
-            <Link to={`/post/${post.slug}/${post.id}`} className={classes.link}>
-              <img
-                src={post.featuredImage?.node?.mediaItemUrl}
-                className={classes.image}
-                onClick={() => navigate(`/post/${post.slug}/${post.id}`)}
-              />
-              <h3 className={classes.postTitle}>{post.title}</h3>
-            </Link>
-          </div>
-        ))}
-      </Carousel>
+      {(!loading && posts) ?
+        <Carousel className={classes.carousel} animation={'slide'}>
+          {posts.map((post, index) => (
+            <div key={index}>
+              <Link
+                to={`/post/${post.slug}/${post.id}`}
+                className={classes.link}>
+                <img
+                  src={post.featuredImage?.node?.mediaItemUrl}
+                  className={classes.image}
+                  onClick={() => navigate(`/post/${post.slug}/${post.id}`)}
+                />
+                <h3 className={classes.postTitle}>{post.title}</h3>
+              </Link>
+            </div>
+          ))}
+        </Carousel>
+        :
+        <Skeleton variant="rect" className={classes.carousel} />
+      }
+
     </>
   )
 }

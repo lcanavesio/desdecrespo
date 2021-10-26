@@ -1,8 +1,9 @@
-import {gql, useQuery} from '@apollo/client';
-import {CircularProgress, Grid} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
+import { gql, useQuery } from '@apollo/client';
+import { Grid } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import FlashOnIcon from '@material-ui/icons/FlashOn';
-import {Link} from 'gatsby';
+import { Skeleton } from '@material-ui/lab';
+import { Link } from 'gatsby';
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
 import NotFoundPage from '../../pages/404';
@@ -54,44 +55,47 @@ const Ultimo = () => {
     }
   `;
 
-  const {loading, error, data} = useQuery(getPosts);
+  const { loading, error, data } = useQuery(getPosts);
   const posts = data?.posts?.edges?.map((edge) => edge.node) || null;
 
-  if (loading) return <CircularProgress />;
   if (error) return <NotFoundPage />;
-  if (!posts) return <div>Sin datos</div>;
+  //if (!posts) return <div>Sin datos</div>;
 
   return (
     <Grid
       container
       direction="row"
-      style={{width: '90%', maxWidth: 1700}}
+      style={{ width: '90%', maxWidth: 1700 }}
       justifyContent="center"
       alignItems="center"
     >
-      <FlashOnIcon style={{color: 'red'}} />
-      <h5 style={{paddingTop: 21}}>LO ÚLTIMO</h5>
-      <Carousel
-        className={classes.carousel}
-        indicators={false}
-        navButtonsAlwaysVisible={true}
-        animation={'slide'}
-        navButtonsProps={{
-          style: {
-            height: 5,
-            width: 5,
-            marginTop: 7,
-            textAlign: 'right',
-          },
-        }}
-      >
-        {posts.map((post, index) => (
-          <Link key={index}
-            to={`/post/${post.slug}/${post.id}`} className={classes.link}>
-            {post.title}
-          </Link>
-        ))}
-      </Carousel>
+      <FlashOnIcon style={{ color: 'red' }} />
+      <h5 style={{ paddingTop: 21 }}>LO ÚLTIMO</h5>
+      {(!loading && posts) ?
+        <Carousel
+          className={classes.carousel}
+          indicators={false}
+          navButtonsAlwaysVisible={true}
+          animation={'slide'}
+          navButtonsProps={{
+            style: {
+              height: 5,
+              width: 5,
+              marginTop: 7,
+              textAlign: 'right',
+            },
+          }}
+        >
+          {posts.map((post, index) => (
+            <Link key={index}
+              to={`/post/${post.slug}/${post.id}`} className={classes.link}>
+              {post.title}
+            </Link>
+          ))}
+        </Carousel>
+        :
+        <Skeleton variant="rect" className={classes.carousel} />
+      }
     </Grid>
   );
 };
