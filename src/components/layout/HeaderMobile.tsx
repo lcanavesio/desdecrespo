@@ -69,7 +69,7 @@ function HeaderMobile(props: HeaderProps) {
                 onClick={onDrawerToggle}
                 className={classes.menuButton}
               >
-                <MenuIcon />
+                <MenuIcon style={{color: '#fc4a00'}}/>
               </IconButton>
             </Grid>
             <Grid item xs={7}>
@@ -84,7 +84,7 @@ function HeaderMobile(props: HeaderProps) {
             </Grid>
 
             <Grid item xs={3}>
-              <Button variant="outlined" size="small" color="secondary">
+              <Button variant="outlined" size="small" style={{color: 'red'}}>
                En vivo
               </Button>
             </Grid>

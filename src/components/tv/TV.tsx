@@ -1,9 +1,9 @@
-import {Grid, Theme, Typography} from '@material-ui/core';
-import ReactPlayer from 'react-player';
-import React from 'react';
-
+import { Grid, Theme, Typography } from '@material-ui/core';
 /* eslint-disable quote-props */
-import {makeStyles} from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
+import React from 'react';
+import ReactPlayer from 'react-player';
+
 
 const useStyles = makeStyles((theme: Theme) => ({
   radio: {
@@ -19,6 +19,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     paddingBottom: '1px',
   },
   div: {
+    background: 'rgba(0, 0, 0, 0.87)',
     borderStyle: 'solid',
     borderWidth: '5px',
     borderRadius: '0 0 0 0',
@@ -30,13 +31,14 @@ const TV = () => {
 
   return (
     <Grid container className={classes.div}>
-      <Grid item >
+      <Grid item style={{ background: 'black' }}>
         <ReactPlayer
+          style={{ background: 'black' }}
           height="100%"
-          width= "100%"
+          width="100%"
           controls={true}
           url={'https://stmvideo1.livecastv.com/canal6er/canal6er/playlist.m3u8'}
-          config={{file: {attributes: {controlsList: 'nodownload'}}}}
+          config={{ file: { attributes: { controlsList: 'nodownload' } } }}
         />
       </Grid>
       <Grid item className={classes.title}>
