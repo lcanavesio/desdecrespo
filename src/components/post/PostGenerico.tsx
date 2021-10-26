@@ -65,9 +65,23 @@ const PostGenerico = (props: Props) => {
     const skeletons = [];
 
     for (let i = 0; i < first; i++) {
-      skeletons.push(<Skeleton
-        variant="rect"
-        style={{ minWidth: 300, minHeight: 200, margin: 10}} />);
+      skeletons.push(
+        <div>
+          <Skeleton
+            variant="rect"
+            animation="wave"
+            style={{
+              minWidth: 300, minHeight: 200,
+              marginLeft: 10, marginRight: 10
+            }} />
+          <Skeleton variant="text"
+            animation="wave"
+            style={{
+              minWidth: 300, minHeight: 30,
+              marginLeft: 10, marginRight: 10
+            }} />
+        </div>
+      )
     }
     return skeletons;
   };

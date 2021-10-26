@@ -92,17 +92,17 @@ const TabFourPosts = () => {
 
   const [value, setValue] = React.useState(0);
 
-  const { data: sportData } = useQuery(getPosts, {
+  const { loading: loadingSport, data: sportData } = useQuery(getPosts, {
     variables: { categoryName: 'Deportes' },
   });
   const sportPosts = sportData?.posts?.edges?.map((edge) => edge.node) || [];
 
-  const { data: healthData } = useQuery(getPosts, {
+  const { loading: loadingHealth, data: healthData } = useQuery(getPosts, {
     variables: { categoryName: 'Salud' },
   });
   const healthPosts = healthData?.posts?.edges?.map((edge) => edge.node) || [];
 
-  const { data: technologyData } = useQuery(getPosts, {
+  const { loading: loadingTechnology, data: technologyData } = useQuery(getPosts, {
     variables: { categoryName: 'Tecnología' },
   });
   const technologyPosts = technologyData?.posts?.edges?.map((edge) => edge.node) || [];
@@ -115,9 +115,23 @@ const TabFourPosts = () => {
     const skeletons = [];
 
     for (let i = 0; i < rows; i++) {
-      skeletons.push(<Skeleton
-        variant="rect"
-        style={{ minWidth: '47%', minHeight: 290, margin: 10 }} />);
+      skeletons.push(
+        <div style={{ minWidth: '50%' }}>
+          <Skeleton
+            variant="rect"
+            animation="wave"
+            style={{
+              minWidth: '47%', minHeight: 290,
+              marginLeft: 10, marginRight: 10
+            }} />
+          <Skeleton variant="text"
+            animation="wave"
+            style={{
+              minWidth: 300, minHeight: 50,
+              marginLeft: 10, marginRight: 10, marginBottom: 10
+            }} />
+        </div>
+      );
     }
     return skeletons;
   };
@@ -144,7 +158,7 @@ const TabFourPosts = () => {
         <TabPanel value={value} index={0}>
           <Grid container lg={12}>
             {
-              sportPosts ?
+              !loadingSport && sportPosts ?
                 sportPosts.map((post) => (
                   <Grid container lg={6} className={classes.card}>
                     <FeaturedPost key={`sport-featured-post-${post.id}`} post={post} />
@@ -156,7 +170,7 @@ const TabFourPosts = () => {
         </TabPanel>
         <TabPanel value={value} index={1}>
           {
-            healthPosts ?
+            !loadingHealth && healthPosts ?
               <SlidePosts key={`health-tech-featured-post`} posts={healthPosts || null} />
               :
               showSkeleton(1)
@@ -164,7 +178,7 @@ const TabFourPosts = () => {
         </TabPanel>
         <TabPanel value={value} index={2}>
           <Grid container lg={12}>
-            {technologyPosts ?
+            {!loadingTechnology && technologyPosts ?
               technologyPosts.map((post) => (
                 <Grid container lg={6} className={classes.card}>
                   <FeaturedPost key={`tech-featured-post-${post.id}`} post={post} />

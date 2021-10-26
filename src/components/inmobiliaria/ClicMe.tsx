@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'space-around',
     overflow: 'hidden',
+    maxWidth: 320,
     backgroundColor: theme.palette.background.paper,
   },
   'titleContainer': {
