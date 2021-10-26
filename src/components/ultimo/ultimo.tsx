@@ -1,9 +1,9 @@
-import { gql, useQuery } from '@apollo/client';
-import { Grid, useMediaQuery } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import {gql, useQuery} from '@apollo/client';
+import {Grid, useMediaQuery} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
 import FlashOnIcon from '@material-ui/icons/FlashOn';
-import { Skeleton } from '@material-ui/lab';
-import { Link } from 'gatsby';
+import {Skeleton} from '@material-ui/lab';
+import {Link} from 'gatsby';
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
 import NotFoundPage from '../../pages/404';
@@ -14,6 +14,14 @@ const useStyles = makeStyles((theme) => ({
     marginRight: 10,
     width: '80%',
     height: 30,
+    textAlign: 'center',
+    paddingTop: 5,
+  },
+  carouselMobile: {
+    marginLeft: 10,
+    marginRight: 10,
+    width: '90%',
+    height: 50,
     textAlign: 'center',
     paddingTop: 5,
   },
@@ -39,6 +47,13 @@ const useStyles = makeStyles((theme) => ({
   mobileItem: {
     display: 'flex',
   },
+  mobileTitle: {
+    fontSize: '12px',
+    marginLeft: 10,
+    marginRight: 10,
+    display: 'flex',
+    paddingTop: 5,
+  },
 }));
 
 const Ultimo = () => {
@@ -58,7 +73,7 @@ const Ultimo = () => {
     }
   `;
 
-  const { loading, error, data } = useQuery(getPosts);
+  const {loading, error, data} = useQuery(getPosts);
   const posts = data?.posts?.edges?.map((edge) => edge.node) || null;
 
   if (error) return <NotFoundPage />;
@@ -69,12 +84,12 @@ const Ultimo = () => {
         <Grid
           container
           direction="row"
-          style={{ width: '90%', maxWidth: 1700 }}
+          style={{width: '90%', maxWidth: 1700}}
           justifyContent="center"
           alignItems="center"
         >
-          <FlashOnIcon style={{ color: 'red' }} />
-          <h5 style={{ paddingTop: 21 }}>LO ÚLTIMO</h5>
+          <FlashOnIcon style={{color: 'red'}} />
+          <h5 style={{paddingTop: 21}}>LO ÚLTIMO</h5>
           {
             (posts) ?
               <Carousel
@@ -98,8 +113,7 @@ const Ultimo = () => {
                     {post.title}
                   </Link>
                 ))}
-              </Carousel>
-              :
+              </Carousel> :
               <Skeleton variant="rect" className={classes.carousel} />
           }
 
@@ -109,24 +123,15 @@ const Ultimo = () => {
           direction="row"
         >
           <Grid item key="ultimoMobile" className={classes.mobileItem}>
-
-            <FlashOnIcon style={{ color: 'red' }} />
-            <h5 style={{ fontSize: '12px', display: 'inline' }}>LO ÚLTIMO</h5>
+            <h5 className={ classes.mobileTitle }>
+              <FlashOnIcon style={{color: 'red'}} />LO ÚLTIMO</h5>
             {
               (posts) ?
                 <Carousel
-                  className={classes.carousel}
+                  className={classes.carouselMobile}
                   indicators={false}
-                  navButtonsAlwaysVisible={true}
+                  navButtonsAlwaysVisible={false}
                   animation={'slide'}
-                  navButtonsProps={{
-                    style: {
-                      height: 5,
-                      width: 5,
-                      marginTop: 7,
-                      textAlign: 'right',
-                    },
-                  }}
                 >
                   {posts.map((post, index) => (
                     <Link key={index}
@@ -135,8 +140,7 @@ const Ultimo = () => {
                       {post.title}
                     </Link>
                   ))}
-                </Carousel>
-                :
+                </Carousel> :
                 <Skeleton variant="rect" className={classes.carousel} />
             }
 
