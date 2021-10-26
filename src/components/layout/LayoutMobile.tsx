@@ -9,6 +9,7 @@ import SlidePosts from '../../components/post/SlidePosts';
 import SEO from '../../components/seo';
 import Wather from '../../components/Wather';
 import {PublicidadGenerico} from '../../utils/Publicidad';
+import SocialFollow from '../social/SocialFollow';
 import Layout from './Layout';
 
 const useStyles = makeStyles((theme) => ({
@@ -64,6 +65,7 @@ const LayoutMobile = () => {
             first={6}
             titulo="Crespo"
           />
+          <SocialFollow />
           <img src={process.env.PUBLICIDAD3} />
           <PolicialesProvinciales key="policialesprovinciales" />
           <img src={process.env.PUBLICIDAD4} />

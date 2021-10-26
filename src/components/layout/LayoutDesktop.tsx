@@ -3,13 +3,15 @@ import React from 'react';
 import ClicMe from '../../components/inmobiliaria/ClicMe';
 import TabFourPosts from '../../components/post//TabFourPosts';
 import NoSePierda from '../../components/post/NoSePierda';
-import PolicialesProvinciales from '../../components/post/PolicialesProvinciales';
+import PolicialesProvinciales
+  from '../../components/post/PolicialesProvinciales';
 import PostGenerico from '../../components/post/PostGenerico';
 import SlidePosts from '../../components/post/SlidePosts';
 import SEO from '../../components/seo';
 import TV from '../../components/tv/TV';
 import Wather from '../../components/Wather';
 import {PublicidadGenerico, PublicidadPrincipal} from '../../utils/Publicidad';
+import SocialFlow from '../social/SocialFollow';
 import Layout from './Layout';
 
 const useStyles = makeStyles((theme) => ({
@@ -98,6 +100,8 @@ const LayoutDesktop = () => {
             <Wather />
             {/* <Radio /> */}
             <ClicMe />
+            <img src=" https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png" />
+            <SocialFlow />
           </Grid>
         </Grid>
       </section>
