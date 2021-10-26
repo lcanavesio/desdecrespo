@@ -1,14 +1,13 @@
-import ImageList from '@material-ui/core/ImageList';
-import ImageListItem from '@material-ui/core/ImageListItem';
-import ImageListItemBar from '@material-ui/core/ImageListItemBar';
-import {makeStyles} from '@material-ui/core/styles';
-import React, {useState} from 'react';
-import itemData from './itemData';
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
+import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'gatsby';
+import React, { useState } from 'react';
+import Carousel from 'react-material-ui-carousel';
+import itemData from './itemData';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,11 +17,6 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'hidden',
     backgroundColor: theme.palette.background.paper,
   },
-  imageList: {
-    width: 500,
-    height: 450,
-    transform: 'translateZ(0)',
-  },
   titleBar: {
     background:
       'linear-gradient(to bottom, rgba(0,0,0,0.7) 0%, ' +
@@ -30,6 +24,27 @@ const useStyles = makeStyles((theme) => ({
   },
   icon: {
     color: 'white',
+  },
+  carousel: {
+    margin: 0,
+  },
+  link: {
+    color: 'white',
+    textDecoration: 'none',
+  },
+  title: {
+    background: '#000',
+    textAlign: 'center',
+    color: '#fff',
+    minHeight: 30,
+    verticalAlign: 'middle',
+    paddingTop: 6,
+    width: '100%',
+    margin: 0,
+  },
+  image: {
+    margin: 0,
+    padding: 0,
   },
 }));
 
@@ -45,36 +60,27 @@ export default function AdvancedImageList() {
   };
 
   return (
-    <div className={classes.root}>
-      <ImageList rowHeight={200} gap={1} className={classes.imageList}>
-        {itemData.map((item, index) => (
-          <ImageListItem
-            key={index}
-            cols={item.featured ? 2 : 1}
-            rows={item.featured ? 2 : 1}
+    <Carousel className={classes.carousel} animation={'slide'}
+      navButtonsAlwaysInvisible={true}
+      indicators={false}
+    >
+      {itemData.map((item, index) => (
+        <div key={index}>
+          <Link
+            to={``}
+            className={classes.link}
           >
             <img
+              className={classes.image}
               src={item.img}
               alt={item.title}
               onClick={(item) => handleClickOpen(item)}
             />
-            <FormDialog
-              open={open}
-              item={itemSelected}
-              setOpen={setOpen}
-              key={index}
-            />
-            <ImageListItemBar
-              key={index + (index+1)}
-              title={item.title}
-              position="top"
-              actionPosition="left"
-              className={classes.titleBar}
-            />
-          </ImageListItem>
-        ))}
-      </ImageList>
-    </div>
+            <h5 className={classes.title}>{item.title}</h5>
+          </Link>
+        </div>
+      ))}
+    </Carousel>
   );
 }
 
@@ -84,7 +90,7 @@ type PropDialog = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 function FormDialog(props: PropDialog) {
-  const {open, item, setOpen} = props;
+  const { open, item, setOpen } = props;
 
   const handleClose = () => {
     setOpen(false);
