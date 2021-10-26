@@ -5,17 +5,17 @@ import {
   DialogTitle,
   Divider,
   Grid,
-  TextField
+  TextField,
 } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
-import { navigate } from 'gatsby';
-import { Link } from 'gatsby-material-ui-components';
-import { StaticImage } from 'gatsby-plugin-image';
+import {navigate} from 'gatsby';
+import {Link} from 'gatsby-material-ui-components';
+import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
 import Ultimo from '../ultimo/ultimo';
 

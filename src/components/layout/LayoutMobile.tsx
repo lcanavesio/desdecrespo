@@ -1,18 +1,16 @@
 import {CssBaseline, Grid, makeStyles} from '@material-ui/core';
-import React, {useState} from 'react';
+import React from 'react';
 import ClicMe from '../../components/inmobiliaria/ClicMe';
 import TabFourPosts from '../../components/post//TabFourPosts';
 import NoSePierda from '../../components/post/NoSePierda';
-import PolicialesProvinciales
-  from '../../components/post/PolicialesProvinciales';
+import PolicialesProvinciales from '../../components/post/PolicialesProvinciales';
 import PostGenerico from '../../components/post/PostGenerico';
 import SlidePosts from '../../components/post/SlidePosts';
 import SEO from '../../components/seo';
 import TV from '../../components/tv/TV';
 import Wather from '../../components/Wather';
 import {PublicidadGenerico, PublicidadPrincipal} from '../../utils/Publicidad';
-import HeaderMobile from './HeaderMobile';
-import NavigatorMobile from './NavigatorMobile';
+import Layout from './Layout';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -25,25 +23,12 @@ const useStyles = makeStyles((theme) => ({
     padingLeft: 5,
   },
 }));
-const drawerWidth = 200;
 
 const LayoutMobile = () => {
   const classes = useStyles();
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  const handleDrawerToggle = () => {
-    setMobileOpen(!mobileOpen);
-  };
 
   return (
-    <div className="layoutMobile">
-      <NavigatorMobile
-        PaperProps={{style: {width: drawerWidth}}}
-        variant="temporary"
-        open={mobileOpen}
-        onClose={handleDrawerToggle}
-      />
-      <HeaderMobile onDrawerToggle={handleDrawerToggle}/>
+    <Layout>
       <section className={classes.container}>
         <SEO title="Inicio" />
         <CssBaseline />
@@ -111,7 +96,7 @@ const LayoutMobile = () => {
           </Grid>
         </Grid>
       </section>
-    </div>
+    </Layout>
   );
 };
 
