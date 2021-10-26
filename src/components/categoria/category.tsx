@@ -1,18 +1,18 @@
-import {gql, useQuery} from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 import {
   CssBaseline,
   GridList,
-  GridListTile,
+  GridListTile
 } from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
+import { Skeleton } from '@material-ui/lab';
 import React from 'react';
-import {Category} from '../../interfaces/category.interface';
+import { Category } from '../../interfaces/category.interface';
 import NotFoundPage from '../../pages/404';
-import {Constants} from '../../utils/constants';
+import { Constants } from '../../utils/constants';
 import Breadcrumb from '../breadcrumb/breadcrumb';
 import FeaturedPost from '../post/FeaturedPost';
 import SEO from '../seo';
-import {Loading} from '../../utils/Loading';
 import InfiniteScrollComponent from './infiniteScroll';
 
 
@@ -57,22 +57,39 @@ const CategoryComponent = (props: Props) => {
   `;
 
   const category: Category = Constants.CATEGORIES.find(
-      (c) => c.url === location.pathname,
+    (c) => c.url === location.pathname,
   );
   if (!category) {
     return null;
     // return 404
   }
 
-  const {loading, error, data} = useQuery(getPosts, {
-    variables: {categoryName: category.databaseName},
+  const { loading, error, data } = useQuery(getPosts, {
+    variables: { categoryName: category.databaseName },
   });
   const posts = data?.posts?.edges?.map((edge) => edge.node) || null;
   const classes = useStyles();
 
-  if (loading) return <Loading />;
+  const showSkeleton = () => {
+    const skeletons = [];
+
+    for (let i = 0; i < 10; i++) {
+      skeletons.push(
+        <GridListTile>
+          <Skeleton
+            animation="wave"
+            variant='rect'
+            style={{ width: '100%', height: '80%', padding: 5 }} />
+          <Skeleton variant="text"
+            animation="wave"
+            style={{ width: '100%', height: '20%'}} />
+        </GridListTile>
+      );
+    }
+    return skeletons;
+  };
+
   if (error) return <NotFoundPage />;
-  if (!posts) return <div>Sin datos</div>;
 
   return (
     <section className={classes.container}>
@@ -80,14 +97,17 @@ const CategoryComponent = (props: Props) => {
       <CssBaseline />
       <Breadcrumb category={category.databaseName} label={data?.post?.title} />
       <GridList cellHeight={288} cols={2}>
-        {posts.map((post) => (
-          <GridListTile key={`gridList-${category.title}-${post?.title}`}>
-            <FeaturedPost
-              key={`${category.title}-${post?.title}`}
-              post={post}
-            />
-          </GridListTile>
-        ))}
+        {(!loading && posts) ?
+          posts.map((post) => (
+            <GridListTile key={`gridList-${category.title}-${post?.title}`}>
+              <FeaturedPost
+                key={`${category.title}-${post?.title}`}
+                post={post}
+              />
+            </GridListTile>
+          )) :
+          showSkeleton()
+        }
       </GridList>
       <InfiniteScrollComponent />
     </section>

@@ -66,12 +66,22 @@ const useStyles = makeStyles((theme) => ({
     marginTop: 12,
     marginBottom: 12,
   },
+  btnLive: {
+    background: '#f44336',
+    '&:hover': {
+      background: 'red',
+    },
+  },
+  linkLive: {
+    textDecoration: 'none',
+    color: 'white',
+  },
 }));
 type Props = {
   sections: any
 }
 export default function Header(props: Props) {
-  const {sections} = props;
+  const { sections } = props;
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
@@ -140,9 +150,11 @@ export default function Header(props: Props) {
         <IconButton onClick={handleClickOpen}>
           <SearchIcon />
         </IconButton>
-        <Link to="/live" >
-          Ver en VIVO
-        </Link>
+        <Button variant="outlined" size="small" color="secondary" className={classes.btnLive}>
+          <Link className={classes.linkLive} to="/live" >
+            Ver en VIVO
+          </Link>
+        </Button>
       </Toolbar>
 
       <div className={classes.bannerContainer}>
@@ -151,7 +163,7 @@ export default function Header(props: Props) {
             <StaticImage
               src="../../images/banner-desktop.jpg"
               alt="Banner - Desde Crespo"
-              style={{width: '100%'}}
+              style={{ width: '100%' }}
             />
           </a>
         </Grid>
@@ -178,10 +190,10 @@ export default function Header(props: Props) {
                   {section.title}
                 </Link>
               </div>
-              <Divider
-                orientation="vertical"
-                flexItem
-                className={classes.dividerVertical} /></>
+                <Divider
+                  orientation="vertical"
+                  flexItem
+                  className={classes.dividerVertical} /></>
             ))}
           </Toolbar>
         </div>
