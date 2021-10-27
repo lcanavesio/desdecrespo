@@ -1,5 +1,5 @@
 /* eslint-disable quote-props */
-import {makeStyles} from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
 
 export const useStylesGlobal = makeStyles(() => ({
   container: {
@@ -29,8 +29,8 @@ export const useStylesGlobal = makeStyles(() => ({
     flexDirection: 'column',
   },
   title: {
-    fontFamily: 'Barlow',
-    fontSize: 21,
+    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
+    fontSize: 25,
     fontWeight: 700,
     height: '100%',
     overflow: 'hidden',

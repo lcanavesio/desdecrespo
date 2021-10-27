@@ -1,10 +1,10 @@
-import {gql, useQuery} from '@apollo/client';
-import {CircularProgress, Grid} from '@material-ui/core';
+import { gql, useQuery } from '@apollo/client';
+import { CircularProgress, Grid } from '@material-ui/core';
 import React from 'react';
-import {useStylesGlobal} from '../../utils/GlobalStyle';
 import NotFoundPage from '../../pages/404';
-import FeaturedPost from './FeaturedPost';
+import { useStylesGlobal } from '../../utils/GlobalStyle';
 import HeaderTitle from '../common/HeaderTitle';
+import FeaturedPost from './FeaturedPost';
 
 const PolicialesProvinciales = () => {
   const classesGlobal = useStylesGlobal();
@@ -60,7 +60,7 @@ const PolicialesProvinciales = () => {
     }
   `;
 
-  const {loading, error, data} = useQuery(getPostsPoliciales);
+  const { loading, error, data } = useQuery(getPostsPoliciales);
   const {
     loading: loadingProvinciales,
     error: errorProvinciales,
@@ -76,19 +76,20 @@ const PolicialesProvinciales = () => {
   if (!postsPoliciales || !postsProvinciales) return <div>Sin datos</div>;
 
   window.localStorage.setItem(
-      'postsPoliciales',
-      JSON.stringify(postsPoliciales),
+    'postsPoliciales',
+    JSON.stringify(postsPoliciales),
   );
 
   window.localStorage.setItem(
-      'postsProvinciales',
-      JSON.stringify(postsProvinciales),
+    'postsProvinciales',
+    JSON.stringify(postsProvinciales),
   );
 
   return (
     <>
       <Grid container className={classesGlobal.container} key="firstgrid">
-        <Grid item lg={6} key="policiales">
+        <Grid item lg={6} key="policiales"
+          style={{ paddingLeft: 10, paddingRight: 20 }}>
           <HeaderTitle title="POLICIALES" />
 
           <Grid container>
@@ -100,7 +101,8 @@ const PolicialesProvinciales = () => {
           </Grid>
         </Grid>
         {!matches && <img src={process.env.PUBLICIDAD4} />}
-        <Grid item lg={6} key="provinciales">
+        <Grid item lg={6} key="provinciales"
+          style={{ paddingLeft: 10, paddingRight: 20 }}>
           <HeaderTitle title="PROVINCIALES" />
           <Grid container>
             {postsProvinciales.map((post, index) => (

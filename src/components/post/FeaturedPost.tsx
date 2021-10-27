@@ -5,7 +5,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import { navigate } from "gatsby";
-import PropTypes from 'prop-types';
 import React from 'react';
 
 const useStyles = makeStyles((theme) => ({
@@ -30,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
   },
   title: {
-    fontFamily: 'Barlow',
+    fontFamily: 'Roboto, Helvetica, Arial, sans-serif',
     fontSize: 21,
     fontWeight: 700,
     height: '100%',
