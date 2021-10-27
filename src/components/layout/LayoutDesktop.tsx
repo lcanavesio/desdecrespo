@@ -11,6 +11,7 @@ import SEO from '../../components/seo';
 import TV from '../../components/tv/TV';
 import Wather from '../../components/Wather';
 import {PublicidadGenerico, PublicidadPrincipal} from '../../utils/Publicidad';
+import PostsRecientes from '../post/PostsRecientes';
 import SocialFlow from '../social/SocialFollow';
 import Layout from './Layout';
 
@@ -102,6 +103,7 @@ const LayoutDesktop = () => {
             <ClicMe />
             <img src=" https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png" />
             <SocialFlow />
+            <PostsRecientes />
           </Grid>
         </Grid>
       </section>

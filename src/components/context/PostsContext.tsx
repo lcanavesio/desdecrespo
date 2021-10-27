@@ -63,9 +63,10 @@ export function usePostsContext() {
 }
 
 const getPosts = gql`
-  query getPosts($categoryName: String, $first: Int) {
+  query getPosts($categoryName: String, $first: Int, $skip: Int) {
     posts(
       first: $first
+      skip: $skip
       where: {
         orderby: { field: DATE, order: DESC }
         categoryName: $categoryName

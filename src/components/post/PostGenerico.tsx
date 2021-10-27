@@ -1,9 +1,9 @@
-import { gql, useQuery } from '@apollo/client';
-import { Grid, GridSize } from '@material-ui/core';
-import { Skeleton } from '@material-ui/lab';
+import {gql, useQuery} from '@apollo/client';
+import {Grid, GridSize} from '@material-ui/core';
+import {Skeleton} from '@material-ui/lab';
 import React from 'react';
 import NotFoundPage from '../../pages/404';
-import { useStylesGlobal } from '../../utils/GlobalStyle';
+import {useStylesGlobal} from '../../utils/GlobalStyle';
 import HeaderTitle from '../common/headerTitle';
 import FeaturedPost from './FeaturedPost';
 
@@ -13,7 +13,7 @@ type Props = {
   first: number
 }
 const PostGenerico = (props: Props) => {
-  const { categoryName, first, titulo } = props;
+  const {categoryName, first, titulo} = props;
   const classesGlobal = useStylesGlobal();
 
   const getPosts = gql`
@@ -54,8 +54,8 @@ const PostGenerico = (props: Props) => {
       break;
   }
 
-  const { loading, error, data } = useQuery(getPosts, {
-    variables: { categoryName, first },
+  const {loading, error, data} = useQuery(getPosts, {
+    variables: {categoryName, first},
   });
   const posts = data?.posts?.edges?.map((edge) => edge.node) || null;
 
@@ -66,25 +66,34 @@ const PostGenerico = (props: Props) => {
 
     for (let i = 0; i < first; i++) {
       skeletons.push(
-        <div>
-          <Skeleton
-            variant="rect"
-            animation="wave"
-            style={{
-              minWidth: 300, minHeight: 200,
-              marginLeft: 10, marginRight: 10
-            }} />
-          <Skeleton variant="text"
-            animation="wave"
-            style={{
-              minWidth: 300, minHeight: 30,
-              marginLeft: 10, marginRight: 10
-            }} />
-        </div>
-      )
+          <div>
+            <Skeleton
+              variant="rect"
+              animation="wave"
+              style={{
+                minWidth: 300, minHeight: 200,
+                marginLeft: 10, marginRight: 10,
+              }} />
+            <Skeleton variant="text"
+              animation="wave"
+              style={{
+                minWidth: 300, minHeight: 30,
+                marginLeft: 10, marginRight: 10,
+              }} />
+          </div>,
+      );
     }
     return skeletons;
   };
+
+  switch (titulo) {
+    case 'DEPORTES':
+      window.localStorage.setItem('postDeportes', JSON.stringify(posts));
+    default:
+      window.localStorage.setItem('postLocales', JSON.stringify(posts));
+      break;
+  }
+
 
   return (
     <>

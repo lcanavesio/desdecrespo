@@ -9,6 +9,7 @@ import SlidePosts from '../../components/post/SlidePosts';
 import SEO from '../../components/seo';
 import Wather from '../../components/Wather';
 import {PublicidadGenerico} from '../../utils/Publicidad';
+import PostsRecientes from '../post/PostsRecientes';
 import SocialFollow from '../social/SocialFollow';
 import Layout from './Layout';
 
@@ -58,6 +59,7 @@ const LayoutMobile = () => {
 
           <img src={process.env.PUBLICIDAD2} />
           {/* <PublicidadPrincipal key={'publicidadprincipal1'} /> */}
+          <PostsRecientes />
           <ClicMe />
           <PostGenerico
             key="postgenerico3"

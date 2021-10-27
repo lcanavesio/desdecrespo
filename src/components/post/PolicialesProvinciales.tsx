@@ -75,6 +75,16 @@ const PolicialesProvinciales = () => {
   if (error || errorProvinciales) return <NotFoundPage />;
   if (!postsPoliciales || !postsProvinciales) return <div>Sin datos</div>;
 
+  window.localStorage.setItem(
+      'postsPoliciales',
+      JSON.stringify(postsPoliciales),
+  );
+
+  window.localStorage.setItem(
+      'postsProvinciales',
+      JSON.stringify(postsProvinciales),
+  );
+
   return (
     <>
       <Grid container className={classesGlobal.container} key="firstgrid">
@@ -96,7 +106,6 @@ const PolicialesProvinciales = () => {
               <Grid key={index} item lg={6} className={classesGlobal.card}>
                 <FeaturedPost key={index} post={post} />
               </Grid>
-
             ))}
           </Grid>
         </Grid>
