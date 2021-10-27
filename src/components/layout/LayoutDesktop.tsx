@@ -104,6 +104,15 @@ const LayoutDesktop = () => {
             <img src=" https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png" />
             <SocialFlow />
             <PostsRecientes />
+            <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg" />
+            <PostGenerico
+              key="postgenerico8"
+              categoryName="Rurales"
+              first={1}
+              titulo="Rurales"
+            />
+            <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png" />
+            <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png" />
           </Grid>
         </Grid>
       </section>

@@ -61,6 +61,8 @@ const LayoutMobile = () => {
           {/* <PublicidadPrincipal key={'publicidadprincipal1'} /> */}
           <PostsRecientes />
           <ClicMe />
+          <img src=" https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png" />
+
           <PostGenerico
             key="postgenerico3"
             categoryName="locales"
@@ -70,7 +72,15 @@ const LayoutMobile = () => {
           <SocialFollow />
           <img src={process.env.PUBLICIDAD3} />
           <PolicialesProvinciales key="policialesprovinciales" />
-          <img src={process.env.PUBLICIDAD4} />
+          <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg" />
+
+          <PostGenerico
+            key="postgenerico8"
+            categoryName="Rurales"
+            first={1}
+            titulo="Rurales"
+          />
+          <img src={process.env.PUBLICIDAD5} />
 
           <PostGenerico
             key="postgenerico5"
@@ -78,13 +88,15 @@ const LayoutMobile = () => {
             first={3}
             titulo="NACIONALES"
           />
-          <img src={process.env.PUBLICIDAD5} />
+          <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png" />
+
           <PostGenerico
             key="postgenerico6"
             categoryName="Internacionales"
             first={2}
             titulo="INTERNACIONALES"
           />
+          <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png" />
 
           <PostGenerico
             key="postgenerico7"

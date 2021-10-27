@@ -66,7 +66,7 @@ const PolicialesProvinciales = () => {
     error: errorProvinciales,
     data: dataProvinciales,
   } = useQuery(getPostsProvinciales);
-
+  const matches = window.matchMedia('(min-width: 900px)');
   const postsPoliciales = data?.posts?.edges?.map((edge) => edge.node) || null;
   const postsProvinciales =
     dataProvinciales?.posts?.edges?.map((edge) => edge.node) || null;
@@ -99,6 +99,7 @@ const PolicialesProvinciales = () => {
             ))}
           </Grid>
         </Grid>
+        {!matches && <img src={process.env.PUBLICIDAD4} />}
         <Grid item lg={6} key="provinciales">
           <HeaderTitle title="PROVINCIALES" />
           <Grid container>

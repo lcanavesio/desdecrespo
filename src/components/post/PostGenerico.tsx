@@ -41,8 +41,11 @@ const PostGenerico = (props: Props) => {
       }
     }
   `;
-  let gridValue: GridSize;
+  let gridValue: GridSize | boolean;
   switch (first) {
+    case 1:
+      gridValue = false;
+      break;
     case 2:
     case 8:
     default:
@@ -93,7 +96,6 @@ const PostGenerico = (props: Props) => {
       window.localStorage.setItem('postLocales', JSON.stringify(posts));
       break;
   }
-
 
   return (
     <>
