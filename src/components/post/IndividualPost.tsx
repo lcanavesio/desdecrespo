@@ -5,7 +5,8 @@ import {makeStyles} from '@material-ui/core/styles';
 import React from 'react';
 import NotFoundPage from '../../pages/404';
 import Breadcrumb from '../breadcrumb/breadcrumb';
-import InfiniteScrollComponent from '../categoria/infiniteScroll';
+import InfiniteScrollComponent from '../categoria/InfiniteScroll';
+import InfiniteScrollSimple from '../categoria/infiniteScrollSimple';
 import HeaderTitle from '../common/headerTitle';
 import SEO from '../seo';
 import PostsRecientes from './PostsRecientes';
@@ -64,7 +65,6 @@ const IndividualPost = (props: Props) => {
   if (error) return <NotFoundPage />;
   if (!category) return <div>Sin datos</div>;
 
-
   return (
     <section className={classes.container}>
       <SEO title="Inicio" />
@@ -77,7 +77,9 @@ const IndividualPost = (props: Props) => {
               <div dangerouslySetInnerHTML={{__html: data?.post?.content}} />
             </Grid>
             <Grid item lg={11}>
-              <InfiniteScrollComponent />
+              <InfiniteScrollComponent
+                categoryParams={'Locales, Policiales, Nacionales'}
+              />
             </Grid>
           </Grid>
         </Grid>
@@ -87,10 +89,27 @@ const IndividualPost = (props: Props) => {
           <img src={process.env.PUBLICIDAD5} />
           <img src={process.env.PUBLICIDAD2} />
           <img src={process.env.PUBLICIDAD4} />
-          <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg" className={classes.image}/>
-          <img src=" https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png" className={classes.image}/>
-          <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png" className={classes.image}/>
-          <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png" className={classes.image}/>
+          <img
+            src="https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg"
+            className={classes.image}
+          />
+          <img
+            src=" https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png"
+            className={classes.image}
+          />
+          <img
+            src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png"
+            className={classes.image}
+          />
+          <img
+            src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png"
+            className={classes.image}
+          />
+          <InfiniteScrollSimple
+            categoryParams={
+              'Espectáculos, Sociales, Rurales, Nacionales, Internacionales'
+            }
+          />
         </Grid>
       </Grid>
     </section>

@@ -5,7 +5,7 @@ import React from 'react';
 import {useStylesGlobal} from '../../utils/GlobalStyle';
 import NotFoundPage from '../../pages/404';
 import FeaturedPost from './FeaturedPost';
-import HeaderTitle from '../common/HeaderTitle';
+import HeaderTitle from '../common/headerTitle';
 
 const NoSePierda = () => {
   const classesGlobal = useStylesGlobal();
@@ -78,7 +78,6 @@ const NoSePierda = () => {
   return (
     <>
       <HeaderTitle title="NO SE PIERDA" />
-
       <Grid container className={classesGlobal.container}>
         <Grid item lg={6}>
           <Grid container >

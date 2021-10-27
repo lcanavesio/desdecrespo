@@ -11,7 +11,7 @@ import {Waypoint} from 'react-waypoint';
 import {Category} from '../../interfaces/category.interface';
 import NotFoundPage from '../../pages/404';
 import {Constants} from '../../utils/constants';
-import PostCard from '../post/PostCard.';
+import FeaturedPost from '../post/FeaturedPost';
 import SEO from '../seo';
 
 const useStyles = makeStyles((theme) => ({
@@ -25,12 +25,11 @@ const useStyles = makeStyles((theme) => ({
 type Props = {
   path?: string
   location?: string
-  categoryParams?: string
+  categoryParams: string
 }
 
-const InfiniteScrollComponent = (props: Props) => {
+const InfiniteScrollSimple = (props: Props) => {
   const {categoryParams} = props;
-
   const getPosts = gql`
     query getPosts($categoryName: String, $first: Int, $cursor: String) {
       posts(
@@ -60,15 +59,12 @@ const InfiniteScrollComponent = (props: Props) => {
     }
   `;
 
-  const category: Category = Constants.CATEGORIES.find(
-      (c) => c.url === location.pathname,
-  );
 
   const {loading, error, data, fetchMore, networkStatus} = useQuery(
       getPosts,
       {
         variables: {
-          categoryName: category ? category.databaseName : categoryParams,
+          categoryName: categoryParams,
           first: 10,
           cursor: null,
         },
@@ -90,7 +86,7 @@ const InfiniteScrollComponent = (props: Props) => {
         {edges.map((x, i) => (
           <React.Fragment key={x.id}>
             <ListItem style={{paddingLeft: 0, paddingRight: 0}}>
-              <PostCard post={x.node} />
+              <FeaturedPost key={x.id} post={x.node} />
             </ListItem>
             {i === edges.length - 2 && (
               <Waypoint
@@ -125,4 +121,4 @@ const InfiniteScrollComponent = (props: Props) => {
     </section>
   );
 };
-export default InfiniteScrollComponent;
+export default InfiniteScrollSimple;
