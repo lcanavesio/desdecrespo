@@ -1,10 +1,11 @@
-import {Typography} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
+import { Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 
 const useStyles = makeStyles((theme) => ({
   header: {
-    margin: 10,
+    marginTop: 10,
+    marginBottom: 10,
     width: '100%',
     borderBottom: '2px solid #fc4a00',
   },

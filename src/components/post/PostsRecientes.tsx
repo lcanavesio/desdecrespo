@@ -4,14 +4,13 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import HeaderTitle from '../common/headerTitle';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    maxWidth: '36ch',
     backgroundColor: theme.palette.background.paper,
   },
   inline: {
@@ -32,7 +31,7 @@ export default function PostsRecientes() {
     <>
       <HeaderTitle title="Recientes" />
       <List className={classes.root}>
-        <ListItem alignItems="flex-start">
+        <ListItem alignItems="flex-start" style={{width: '100%'}}>
           <ListItemAvatar>
             <Avatar
               alt="locales"

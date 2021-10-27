@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
   toolbarLink: {
     'padding': theme.spacing(2),
     'flexShrink': 0,
-    'fontFamily': 'Roboto',
+    'fontFamily': 'Roboto, Helvetica, Arial, sans-serif',
     'fontSize': 13,
     'fontWeight': 500,
     'textTransform': 'uppercase',
