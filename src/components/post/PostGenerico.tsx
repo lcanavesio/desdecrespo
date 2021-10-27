@@ -44,9 +44,9 @@ const PostGenerico = (props: Props) => {
   let gridValue: GridSize | boolean;
   switch (first) {
     case 1:
+    case 2:
       gridValue = false;
       break;
-    case 2:
     case 8:
     default:
       gridValue = 6;

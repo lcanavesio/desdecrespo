@@ -1,4 +1,4 @@
-import { CssBaseline, Grid, makeStyles } from '@material-ui/core';
+import {CssBaseline, Grid, makeStyles} from '@material-ui/core';
 import React from 'react';
 import ClicMe from '../../components/inmobiliaria/ClicMe';
 import TabFourPosts from '../../components/post//TabFourPosts';
@@ -9,7 +9,7 @@ import SlidePosts from '../../components/post/SlidePosts';
 import SEO from '../../components/seo';
 import TV from '../../components/tv/TV';
 import Wather from '../../components/Wather';
-import { PublicidadGenerico, PublicidadPrincipal } from '../../utils/Publicidad';
+import {PublicidadGenerico, PublicidadPrincipal} from '../../utils/Publicidad';
 import PostsRecientes from '../post/PostsRecientes';
 import SocialFlow from '../social/SocialFollow';
 import Layout from './Layout';
@@ -23,12 +23,6 @@ const useStyles = makeStyles((theme) => ({
   },
   rightColumn: {
     padingLeft: 5,
-  },
-  content: {
-    maxWidth: 1287,
-    display: 'block',
-    marginLeft: 'auto',
-    marginRight: 'auto',
   },
   image: {
     marginTop: 10,
@@ -75,29 +69,33 @@ const LayoutDesktop = () => {
               key="publicidad6"
               href={process.env.PUBLICIDAD6}
             />
-            <PolicialesProvinciales key="policialesprovinciales" />
+
           </Grid>
           <Grid lg={3} className={classes.rightColumn}>
             <TV />
             <Wather />
             {/* <Radio /> */}
             <ClicMe />
-            <img src=" https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png" className={classes.image}/>
             <SocialFlow />
+            <img src=" https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png" className={classes.image}/>
             <PostsRecientes />
-            <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg" className={classes.image}/>
-            <Grid item lg={12} style={{ marginLeft: -10, marginRight: -10 }}>
+
+            <img src={process.env.PUBLICIDAD5} />
+
+            <Grid item lg={12} style={{marginLeft: -10, marginRight: -10}}>
               <PostGenerico
                 key="postgenerico8"
                 categoryName="Rurales"
-                first={1}
+                first={2}
                 titulo="Rurales"
               />
             </Grid>
+            <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg" className={classes.image}/>
+
             <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png" className={classes.image}/>
             <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png" className={classes.image}/>
           </Grid>
-
+          <PolicialesProvinciales key="policialesprovinciales" />
           <PostGenerico
             key="postgenerico5"
             categoryName="Nacionales"
@@ -108,7 +106,7 @@ const LayoutDesktop = () => {
           <PostGenerico
             key="postgenerico6"
             categoryName="Internacionales"
-            first={2}
+            first={3}
             titulo="INTERNACIONALES"
           />
 

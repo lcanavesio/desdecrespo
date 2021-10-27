@@ -51,11 +51,11 @@ const InfiniteScrollComponent = (props: Props) => {
   }
 `;
 
-  const category: Category = Constants.CATEGORIES
+  let category: Category = Constants.CATEGORIES
     .find((c) => c.url === location.pathname);
 
   if (!category) {
-    return <NotFoundPage />;
+    category = ['Locales', 'Policiales', 'Nacionales'];
   }
   const { loading, error, data, fetchMore, networkStatus } = useQuery(getPosts, {
     variables: { categoryName: category.databaseName, first: 10, cursor: null },

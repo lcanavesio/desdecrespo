@@ -15,18 +15,16 @@ export const PublicidadPrincipal = () => {
   const classes = useStyles();
   return (
     <Grid container>
-      <Grid item lg={3} className={classes.card}>
+      <Grid item lg={4} className={classes.card}>
         <img src={process.env.PUBLICIDAD2} />
       </Grid>
-      <Grid item lg={3} className={classes.card}>
+      <Grid item lg={4} className={classes.card}>
         <img src={process.env.PUBLICIDAD3} />
       </Grid>
-      <Grid item lg={3} className={classes.card}>
+      <Grid item lg={4} className={classes.card}>
         <img src={process.env.PUBLICIDAD4} />
       </Grid>
-      <Grid item lg={3} className={classes.card}>
-        <img src={process.env.PUBLICIDAD5} />
-      </Grid>
+  
     </Grid>
   );
 };
