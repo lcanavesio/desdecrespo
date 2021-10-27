@@ -66,6 +66,9 @@ const useStyles = makeStyles((theme) => ({
   summary: {
     height: '100%',
   },
+  icon: {
+    color: '#fc4a00'
+  },
 }));
 
 type Post = {
@@ -125,8 +128,8 @@ const PostCard = (props: Props) => {
                 <div className={classes.summary}
                   dangerouslySetInnerHTML={{ __html: getSummary(post?.content, 40) }} />
               </Typography>
-              <Grid container lg={12} justify="flex-end" style={{paddingTop: 20}}>
-                <Button variant="outlined" startIcon={<VisibilityIcon />}>
+              <Grid container lg={12} justify="flex-end" style={{ paddingTop: 20 }}>
+                <Button variant="outlined" startIcon={<VisibilityIcon className={classes.icon} />}>
                   Leer más
                 </Button>
               </Grid>
