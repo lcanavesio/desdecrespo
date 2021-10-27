@@ -28,7 +28,6 @@ export default function PostsRecientes() {
   );
   const postDeportes = JSON.parse(localStorage.getItem('postDeportes'));
 
-  console.log('postLocales', postLocales);
   return (
     <>
       <HeaderTitle title="Recientes" />
@@ -84,12 +83,12 @@ export default function PostsRecientes() {
               alt="postDeportes"
               src={
                 postDeportes ?
-                  postDeportes[0]?.featuredImage?.node?.mediaItemUrl :
+                  postDeportes[1]?.featuredImage?.node?.mediaItemUrl :
                   ''
               }
             />
           </ListItemAvatar>
-          <ListItemText primary={postDeportes ? postDeportes[0]?.title : ''} />
+          <ListItemText primary={postDeportes ? postDeportes[1]?.title : ''} />
         </ListItem>
       </List>
     </>
