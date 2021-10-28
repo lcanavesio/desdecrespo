@@ -1,5 +1,6 @@
 import {Grid, makeStyles} from '@material-ui/core';
 import React from 'react';
+import Img from 'gatsby-image';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -16,15 +17,29 @@ export const PublicidadPrincipal = () => {
   return (
     <Grid container>
       <Grid item lg={4} className={classes.card}>
-        <img src={process.env.PUBLICIDAD2} />
+        <Img fixed={ {
+          width: 310,
+          height: 240,
+          src: process.env.PUBLICIDAD2,
+          srcSet: process.env.PUBLICIDAD2,
+
+        }} loading={'lazy'}/>
+
       </Grid>
       <Grid item lg={4} className={classes.card}>
-        <img src={process.env.PUBLICIDAD3} />
+        <Img fixed={ {
+          width: 300,
+          height: 268,
+          src: process.env.PUBLICIDAD3,
+          srcSet: process.env.PUBLICIDAD3,
+
+        }} loading={'lazy'} />
       </Grid>
       <Grid item lg={4} className={classes.card}>
         <img src={process.env.PUBLICIDAD4} />
+
       </Grid>
-  
+
     </Grid>
   );
 };

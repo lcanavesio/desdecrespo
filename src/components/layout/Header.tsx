@@ -50,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
     'padding': theme.spacing(2),
     'flexShrink': 0,
     'fontFamily': 'Roboto, Helvetica, Arial, sans-serif',
-    'fontSize': 13,
+    'fontSize': 12,
     'fontWeight': 500,
     'textTransform': 'uppercase',
     'backgroundOrigin': 'padding-box',
@@ -152,7 +152,7 @@ export default function Header(props: Props) {
         </IconButton>
         <Button variant="outlined" size="small" color="secondary" className={classes.btnLive}>
           <Link className={classes.linkLive} to="/live" >
-            Ver en VIVO
+            en VIVO
           </Link>
         </Button>
       </Toolbar>

@@ -1,5 +1,5 @@
 import {gql, useQuery} from '@apollo/client';
-import {Grid, useMediaQuery} from '@material-ui/core';
+import {Button, Grid, Typography, useMediaQuery} from '@material-ui/core';
 import {makeStyles} from '@material-ui/core/styles';
 import FlashOnIcon from '@material-ui/icons/FlashOn';
 import {Skeleton} from '@material-ui/lab';
@@ -7,7 +7,7 @@ import {Link} from 'gatsby';
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
 import NotFoundPage from '../../pages/404';
-
+import Brightness1Icon from '@material-ui/icons/Brightness1';
 const useStyles = makeStyles((theme) => ({
   carousel: {
     marginLeft: 10,
@@ -80,7 +80,7 @@ const Ultimo = () => {
 
   return (
     <>
-      {matches ?
+      {matches ? (
         <Grid
           container
           direction="row"
@@ -90,62 +90,77 @@ const Ultimo = () => {
         >
           <FlashOnIcon style={{color: 'red'}} />
           <h5 style={{paddingTop: 21}}>LO ÚLTIMO</h5>
-          {
-            (posts) ?
+          {posts ? (
+            <Carousel
+              className={classes.carousel}
+              indicators={false}
+              navButtonsAlwaysVisible={true}
+              animation={'slide'}
+              navButtonsProps={{
+                style: {
+                  height: 5,
+                  width: 5,
+                  marginTop: 7,
+                  textAlign: 'right',
+                },
+              }}
+            >
+              {posts.map((post, index) => (
+                <Link
+                  key={index}
+                  to={`/post/${post.slug}/${post.id}`}
+                  className={classes.link}
+                >
+                  {post.title}
+                </Link>
+              ))}
+            </Carousel>
+          ) : (
+            <Skeleton variant="rect" className={classes.carousel} />
+          )}
+        </Grid>
+      ) : (
+        <Grid container direction="row">
+          <Grid item key="ultimoMobile" className={classes.mobileItem}>
+            <h5 className={classes.mobileTitle}>
+              <FlashOnIcon style={{color: 'red'}} />
+              LO ÚLTIMO
+            </h5>
+            {posts ? (
               <Carousel
-                className={classes.carousel}
+                className={classes.carouselMobile}
                 indicators={false}
-                navButtonsAlwaysVisible={true}
+                navButtonsAlwaysVisible={false}
                 animation={'slide'}
-                navButtonsProps={{
-                  style: {
-                    height: 5,
-                    width: 5,
-                    marginTop: 7,
-                    textAlign: 'right',
-                  },
-                }}
               >
                 {posts.map((post, index) => (
-                  <Link key={index}
+                  <Link
+                    key={index}
                     to={`/post/${post.slug}/${post.id}`}
-                    className={classes.link}>
+                    className={classes.link}
+                  >
                     {post.title}
                   </Link>
                 ))}
-              </Carousel> :
+              </Carousel>
+            ) : (
               <Skeleton variant="rect" className={classes.carousel} />
-          }
-
-        </Grid> :
-        <Grid
-          container
-          direction="row"
-        >
-          <Grid item key="ultimoMobile" className={classes.mobileItem}>
-            <h5 className={ classes.mobileTitle }>
-              <FlashOnIcon style={{color: 'red'}} />LO ÚLTIMO</h5>
-            {
-              (posts) ?
-                <Carousel
-                  className={classes.carouselMobile}
-                  indicators={false}
-                  navButtonsAlwaysVisible={false}
-                  animation={'slide'}
-                >
-                  {posts.map((post, index) => (
-                    <Link key={index}
-                      to={`/post/${post.slug}/${post.id}`}
-                      className={classes.link}>
-                      {post.title}
-                    </Link>
-                  ))}
-                </Carousel> :
-                <Skeleton variant="rect" className={classes.carousel} />
-            }
-
+            )}
+            <Grid item style={{paddingRight: '1%', paddingTop: '1%'}}>
+              <Button
+                variant="contained"
+                size="small"
+                style={{color: 'white', background: 'red'}}
+              >
+                <Typography component="p" variant="body2">
+                  <Brightness1Icon style={{width: 8,
+                    height: 8}}/> vivo
+                </Typography>
+              </Button>
+            </Grid>
           </Grid>
-        </Grid>}
+        </Grid>
+      )}
     </>
   );
 };

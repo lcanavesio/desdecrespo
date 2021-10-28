@@ -1,10 +1,12 @@
-import { gql, useQuery } from '@apollo/client';
-import { makeStyles } from '@material-ui/core/styles';
-import { Skeleton } from '@material-ui/lab';
-import { Link, navigate } from 'gatsby';
+import {gql, useQuery} from '@apollo/client';
+import {makeStyles} from '@material-ui/core/styles';
+import {Skeleton} from '@material-ui/lab';
+import {Link, navigate} from 'gatsby';
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
 import NotFoundPage from '../../pages/404';
+import Img from 'gatsby-image';
+import { useMediaQuery } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   carousel: {
@@ -63,7 +65,7 @@ const SlidePosts = () => {
 
   const {loading, error, data} = useQuery(getPosts);
   const posts = data?.posts?.edges?.map((edge) => edge.node) || null;
-
+  const matches = useMediaQuery('(min-width:900px)');
   if (error) return <NotFoundPage />;
   return (
     <>
@@ -72,12 +74,20 @@ const SlidePosts = () => {
           {posts.map((post, index) => (
             <div key={index}>
               <Link
+                onClick={() => navigate(`/post/${post.slug}/${post.id}`)}
                 to={`/post/${post.slug}/${post.id}`}
                 className={classes.link}>
-                <img
-                  src={post.featuredImage?.node?.mediaItemUrl}
+                <Img
+                  fixed={{
+                    width: matches ? 924 : 375,
+                    height: matches ? 420 : 470,
+                    src: post.featuredImage?.node?.mediaItemUrl,
+                    srcSet: post.featuredImage?.node?.mediaItemUrl,
+                  }}
+                  alt={post.title}
+                  loading={'lazy'}
                   className={classes.image}
-                  onClick={() => navigate(`/post/${post.slug}/${post.id}`)}
+
                 />
                 <h3 className={classes.postTitle}>{post.title}</h3>
               </Link>

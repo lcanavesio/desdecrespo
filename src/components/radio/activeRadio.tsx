@@ -1,9 +1,9 @@
-import { makeStyles, Theme } from '@material-ui/core';
+import {makeStyles, Theme, useMediaQuery} from '@material-ui/core';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import ReactJkMusicPlayer, { ReactJkMusicPlayerAudioInfo } from 'react-jinke-music-player';
+import React, {useEffect, useState} from 'react';
+import ReactJkMusicPlayer, {ReactJkMusicPlayerAudioInfo} from 'react-jinke-music-player';
 import 'react-jinke-music-player/assets/index.css';
-import { getRadioList } from '../../utils/radiosConfig';
+import {getRadioList} from '../../utils/radiosConfig';
 
 const useStyles = makeStyles((theme: Theme) => ({
   player: {
@@ -38,18 +38,19 @@ const ActiveRadio = () => {
   const [streamTitle, setStreamTitle] = useState('');
   const [stations, setStations] = useState(null);
   const [intervalId, setIntervalId] = useState(null);
+  const matches = useMediaQuery('(min-width:900px)');
 
   const getStreamTitle = () => {
     if (playing && !errorMetadataURL) {
       const activeStation = stations[playIndex];
       axios
-        .get(activeStation.metadataUrl)
-        .then((response) => {
-          setStreamTitle(response?.data?.nowplaying);
-        })
-        .catch(function (error) {
-          setErrorMetadataURL(true);
-        });
+          .get(activeStation.metadataUrl)
+          .then((response) => {
+            setStreamTitle(response?.data?.nowplaying);
+          })
+          .catch(function(error) {
+            setErrorMetadataURL(true);
+          });
     }
   };
 
@@ -92,9 +93,8 @@ const ActiveRadio = () => {
     showPlay: true,
     showReload: true,
     showPlayMode: true,
-    showThemeSwitch: true,
+    showThemeSwitch: false,
     playModeTipVisible: false,
-    autoplay: false,
     showDownload: false,
   };
 
@@ -118,7 +118,8 @@ const ActiveRadio = () => {
           right: '20px',
           bottom: '20px',
         }}
-        mode={'full'}
+        showMediaSession = {true}
+        mode={matches ? 'full' : 'mini'}
         preload={'metadata'}
         {...options}
         onPlayIndexChange={(playIndex) => {

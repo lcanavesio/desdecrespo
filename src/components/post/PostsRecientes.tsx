@@ -1,11 +1,14 @@
+import {gql, useQuery} from '@apollo/client';
 import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemText from '@material-ui/core/ListItemText';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
+import {Skeleton} from '@material-ui/lab';
 import React from 'react';
+import NotFoundPage from '../../pages/404';
 import HeaderTitle from '../common/headerTitle';
 
 const useStyles = makeStyles((theme) => ({
@@ -20,75 +23,93 @@ const useStyles = makeStyles((theme) => ({
 
 export default function PostsRecientes() {
   const classes = useStyles();
-  const postLocales = JSON.parse(localStorage.getItem('postLocales'));
-  const postsPoliciales = JSON.parse(localStorage.getItem('postsPoliciales'));
-  const postsProvinciales = JSON.parse(
-      localStorage.getItem('postsProvinciales'),
-  );
-  const postDeportes = JSON.parse(localStorage.getItem('postDeportes'));
+  const getPosts = gql`
+    query getPosts {
+      posts(
+        first: 4
+        where: {
+          orderby: { field: DATE, order: DESC }
+          categoryName: "locales,Nacionales,Internacionales"
+        }
+      ) {
+        edges {
+          node {
+            id
+            date
+            title
+            slug
+            featuredImage {
+              node {
+                mediaItemUrl
+              }
+            }
+          }
+        }
+      }
+    }
+  `;
+  const {loading, error, data} = useQuery(getPosts);
+  const posts = data?.posts?.edges?.map((edge) => edge.node) || null;
+
+  if (error) return <NotFoundPage />;
+
+  const showSkeleton = () => {
+    const skeletons = [];
+
+    for (let i = 0; i < 4; i++) {
+      skeletons.push(
+          <div>
+            <Skeleton
+              variant="rect"
+              animation="wave"
+              style={{
+                minWidth: 300,
+                minHeight: 200,
+                marginLeft: 10,
+                marginRight: 10,
+              }}
+            />
+            <Skeleton
+              variant="text"
+              animation="wave"
+              style={{
+                minWidth: 300,
+                minHeight: 30,
+                marginLeft: 10,
+                marginRight: 10,
+              }}
+            />
+          </div>,
+      );
+    }
+    return skeletons;
+  };
 
   return (
     <>
       <HeaderTitle title="Recientes" />
       <List className={classes.root}>
-        <ListItem alignItems="flex-start" style={{width: '100%'}}>
-          <ListItemAvatar>
-            <Avatar
-              alt="locales"
-              src={
-                postLocales ?
-                  postLocales[0]?.featuredImage?.node?.mediaItemUrl :
-                  ''
-              }
-            />
-          </ListItemAvatar>
-          <ListItemText primary={postLocales ? postLocales[0]?.title : ''} />
-        </ListItem>
-        <Divider variant="inset" component="li" />
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar
-              alt="postsPoliciales"
-              src={
-                postsPoliciales ?
-                  postsPoliciales[0]?.featuredImage?.node?.mediaItemUrl :
-                  ''
-              }
-            />
-          </ListItemAvatar>
-          <ListItemText
-            primary={postsPoliciales ? postsPoliciales[0]?.title : ''}
-          />
-        </ListItem>
-        <Divider variant="inset" component="li" />
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar
-              alt="postsProvinciales"
-              src={
-                postsProvinciales ?
-                  postsProvinciales[0]?.featuredImage?.node?.mediaItemUrl :
-                  ''
-              }
-            />
-          </ListItemAvatar>
-          <ListItemText
-            primary={postsProvinciales ? postsProvinciales[0]?.title : ''}
-          />
-        </ListItem>
-        <ListItem alignItems="flex-start">
-          <ListItemAvatar>
-            <Avatar
-              alt="postDeportes"
-              src={
-                postDeportes ?
-                  postDeportes[1]?.featuredImage?.node?.mediaItemUrl :
-                  ''
-              }
-            />
-          </ListItemAvatar>
-          <ListItemText primary={postDeportes ? postDeportes[1]?.title : ''} />
-        </ListItem>
+        {!loading && posts ?
+          posts.map((post, index) => (
+            <>
+              <ListItem
+                alignItems="flex-start"
+                style={{width: '100%'}}
+                key={index}
+              >
+                <ListItemAvatar key={index}>
+                  <Avatar
+                    alt="locales"
+                    src={post ? post?.featuredImage?.node?.mediaItemUrl : ''}
+                    key={index}
+                  />
+                </ListItemAvatar>
+                <ListItemText primary={post ? post?.title : ''} key={index}/>
+              </ListItem>
+              <Divider variant="inset" component="li" key={index}/>
+            </>
+          )) :
+          showSkeleton()}
       </List>
     </>
   );

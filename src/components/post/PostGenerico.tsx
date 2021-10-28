@@ -1,9 +1,10 @@
-import { gql, useQuery } from '@apollo/client';
-import { Grid, GridSize } from '@material-ui/core';
-import { Skeleton } from '@material-ui/lab';
+import {gql, useQuery} from '@apollo/client';
+import {Grid, GridSize} from '@material-ui/core';
+import {Skeleton} from '@material-ui/lab';
 import React from 'react';
 import NotFoundPage from '../../pages/404';
-import { useStylesGlobal } from '../../utils/GlobalStyle';
+import {useStylesGlobal} from '../../utils/GlobalStyle';
+import useLocalStorage from '../../utils/useLocalStorage';
 import HeaderTitle from '../common/headerTitle';
 import FeaturedPost from './FeaturedPost';
 
@@ -89,13 +90,6 @@ const PostGenerico = (props: Props) => {
     return skeletons;
   };
 
-  switch (titulo) {
-    case 'DEPORTES':
-      window.localStorage.setItem('postDeportes', JSON.stringify(posts));
-    default:
-      window.localStorage.setItem('postLocales', JSON.stringify(posts));
-      break;
-  }
 
   return (
     <>

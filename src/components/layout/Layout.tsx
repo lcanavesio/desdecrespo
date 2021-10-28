@@ -1,6 +1,6 @@
-import {makeStyles, useMediaQuery} from '@material-ui/core';
-import React, {useState} from 'react';
-import {Constants} from '../../utils/constants';
+import { makeStyles, useMediaQuery } from '@material-ui/core';
+import React, { useState } from 'react';
+import { Constants } from '../../utils/constants';
 import ActiveRadio from '../radio/activeRadio';
 import Footer from './Footer';
 import Header from './Header';
@@ -14,11 +14,10 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 'auto',
     marginRight: 'auto',
   },
-
 }));
 const drawerWidth = 200;
 
-type Layout ={
+type Layout = {
   children: React.ReactNode
 }
 const Layout = (props: Layout) => {
@@ -33,37 +32,31 @@ const Layout = (props: Layout) => {
 
   return (
     <>
-      {matches ? <div className="layout">
-        <Header sections={Constants.CATEGORIES} />
-        <div className={classes.content}>
-          <main>{children}</main>
+      {matches ? (
+        <div className="layout">
+          <Header sections={Constants.CATEGORIES} />
+          <div className={classes.content}>
+            <main>{children}</main>
+          </div>
+          <Footer title="Desde Crespo" description="Semanario Diario" />
+          <ActiveRadio />
         </div>
-        <Footer
-          title="Desde Crespo"
-          description="Semanario Diario"
-
-        />
-        <ActiveRadio />
-      </div> :
-      <>
-        <NavigatorMobile
-          PaperProps={{style: {width: drawerWidth}}}
-          variant="temporary"
-          open={mobileOpen}
-          onClose={handleDrawerToggle}
-        />
-        <HeaderMobile onDrawerToggle={handleDrawerToggle}/>
-        <div className={classes.content}>
-          <main>{children}</main>
-        </div>
-        <Footer
-          title="Desde Crespo"
-          description="Semanario Diario"
-
-        />
-      </>
-      }
-
+      ) : (
+        <>
+          <NavigatorMobile
+            PaperProps={{style: {width: drawerWidth}}}
+            variant="temporary"
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+          />
+          <HeaderMobile onDrawerToggle={handleDrawerToggle} />
+          <div className={classes.content}>
+            <main>{children}</main>
+          </div>
+          <ActiveRadio />
+          <Footer title="Desde Crespo" description="Semanario Diario" />
+        </>
+      )}
     </>
   );
 };

@@ -3,11 +3,12 @@ import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'gatsby';
-import React, { useState } from 'react';
+import {makeStyles} from '@material-ui/core/styles';
+import {Link} from 'gatsby';
+import React, {useState} from 'react';
 import Carousel from 'react-material-ui-carousel';
 import itemData from './itemData';
+import Img from 'gatsby-image';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -60,22 +61,28 @@ export default function AdvancedImageList() {
   };
 
   return (
-    <Carousel className={classes.carousel} animation={'slide'}
+    <Carousel
+      className={classes.carousel}
+      animation={'slide'}
       navButtonsAlwaysInvisible={true}
       indicators={false}
     >
       {itemData.map((item, index) => (
         <div key={index}>
-          <Link
-            to={``}
-            className={classes.link}
-          >
-            <img
-              className={classes.image}
-              src={item.img}
+          <Link to={``} className={classes.link}>
+            <Img
+              fixed={{
+                width: 300,
+                height: 268,
+                src: item.img,
+                srcSet: item.img,
+              }}
               alt={item.title}
-              onClick={(item) => handleClickOpen(item)}
+              loading={'lazy'}
+              className={classes.image}
+              // onClick={item => handleClickOpen(item)}
             />
+
             <h5 className={classes.title}>{item.title}</h5>
           </Link>
         </div>
@@ -90,7 +97,7 @@ type PropDialog = {
   setOpen: React.Dispatch<React.SetStateAction<boolean>>
 }
 function FormDialog(props: PropDialog) {
-  const { open, item, setOpen } = props;
+  const {open, item, setOpen} = props;
 
   const handleClose = () => {
     setOpen(false);

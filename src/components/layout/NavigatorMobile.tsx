@@ -13,6 +13,8 @@ import clsx from 'clsx';
 import React, {memo} from 'react';
 import {Constants} from '../../utils/constants';
 import {Link} from 'gatsby-material-ui-components';
+import SearchIcon from '@material-ui/icons/Search';
+import IconButton from '@material-ui/core/IconButton';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -42,7 +44,9 @@ export interface NavigatorProps extends Omit<DrawerProps, 'classes'> {}
 function NavigatorMobile(props: NavigatorProps) {
   const {...other} = props;
   const classes = useStyles();
-
+  const handleClickOpen = () => {
+    console.log('click');
+  };
   return (
     <ThemeProvider theme={theme}>
       <Drawer variant="permanent" {...other}>
@@ -68,6 +72,11 @@ function NavigatorMobile(props: NavigatorProps) {
             </div>
           ))}
         </List>
+
+
+        <IconButton onClick={handleClickOpen}>
+          <SearchIcon style={{color: 'rgb(252, 74, 0)'}}/>
+        </IconButton>
       </Drawer>
     </ThemeProvider>
   );

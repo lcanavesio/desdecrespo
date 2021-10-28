@@ -1,11 +1,10 @@
-import {Button, Typography} from '@material-ui/core';
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
 import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from '@material-ui/icons/Search';
+import {StaticImage} from 'gatsby-plugin-image';
 import React, {memo} from 'react';
 import Ultimo from '../ultimo/ultimo';
 
@@ -21,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: 'center',
     },
     menuButton: {
-      marginLeft: -theme.spacing(1),
+      marginLeft: -theme.spacing(2),
       color: 'black',
     },
 
@@ -39,6 +38,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
 
     toolbarTitle: {
+      display: 'flex',
       color: 'black',
     },
   }),
@@ -52,9 +52,6 @@ interface HeaderProps {
 function HeaderMobile(props: HeaderProps) {
   const {onDrawerToggle} = props;
   const classes = useStyles();
-  const handleClickOpen = () => {
-    console.log('click');
-  };
 
   return (
     <>
@@ -69,29 +66,15 @@ function HeaderMobile(props: HeaderProps) {
                 onClick={onDrawerToggle}
                 className={classes.menuButton}
               >
-                <MenuIcon style={{color: '#fc4a00'}}/>
+                <MenuIcon style={{color: '#fc4a00'}} />
               </IconButton>
             </Grid>
-            <Grid item xs={7}>
-              <Typography
-                component="h2"
-                variant="h5"
-                color="inherit"
-                className={classes.toolbarTitle}
-              >
-                Desde Crespo
-              </Typography>
-            </Grid>
-
-            <Grid item xs={3}>
-              <Button variant="outlined" size="small" style={{color: 'red'}}>
-               En vivo
-              </Button>
-            </Grid>
-            <Grid item xs={1}>
-              <IconButton onClick={handleClickOpen}>
-                <SearchIcon />
-              </IconButton>
+            <Grid item xs={11}>
+              <StaticImage
+                src="../../images/banner-desktop.jpg"
+                alt="Banner - Desde Crespo"
+                style={{width: '100%'}}
+              />
             </Grid>
           </Grid>
         </Toolbar>
