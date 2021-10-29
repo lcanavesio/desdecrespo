@@ -1,13 +1,13 @@
-import {gql, useQuery} from '@apollo/client';
-import {Button, Grid, Typography, useMediaQuery} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
+import { gql, useQuery } from '@apollo/client';
+import { Button, Grid, Typography, useMediaQuery } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import Brightness1Icon from '@material-ui/icons/Brightness1';
 import FlashOnIcon from '@material-ui/icons/FlashOn';
-import {Skeleton} from '@material-ui/lab';
-import {Link} from 'gatsby';
+import { Skeleton } from '@material-ui/lab';
+import { Link } from 'gatsby';
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
 import NotFoundPage from '../../pages/404';
-import Brightness1Icon from '@material-ui/icons/Brightness1';
 const useStyles = makeStyles((theme) => ({
   carousel: {
     marginLeft: 10,
@@ -46,6 +46,7 @@ const useStyles = makeStyles((theme) => ({
   },
   mobileItem: {
     display: 'flex',
+    textAlign: 'center',
   },
   mobileTitle: {
     fontSize: '12px',

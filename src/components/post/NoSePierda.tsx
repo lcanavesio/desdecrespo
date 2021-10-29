@@ -1,14 +1,15 @@
 /* eslint-disable max-len */
-import {gql, useQuery} from '@apollo/client';
-import {CircularProgress, Grid} from '@material-ui/core';
+import { gql, useQuery } from '@apollo/client';
+import { CircularProgress, Grid, useMediaQuery } from '@material-ui/core';
 import React from 'react';
-import {useStylesGlobal} from '../../utils/GlobalStyle';
 import NotFoundPage from '../../pages/404';
-import FeaturedPost from './FeaturedPost';
+import { useStylesGlobal } from '../../utils/GlobalStyle';
 import HeaderTitle from '../common/headerTitle';
+import FeaturedPost from './FeaturedPost';
 
 const NoSePierda = () => {
   const classesGlobal = useStylesGlobal();
+  const matches = useMediaQuery('(max-width:1279px)');
   const getPostsVarios = gql`
     query getPosts {
       posts(
@@ -73,7 +74,7 @@ const NoSePierda = () => {
     dataEducacion?.posts?.edges?.map((edge) => edge.node) || null;
 
   if (error || errorEducacion) return <NotFoundPage />;
-  if (!postsVarios || !postsEducacion) return <div>Sin datos</div>;
+  if (!postsVarios || !postsEducacion) return null;
   if (loading || loadingEducacion) return <CircularProgress />;
   return (
     <>
@@ -82,7 +83,7 @@ const NoSePierda = () => {
         <Grid item lg={6}>
           <Grid container >
             {postsVarios.map((post, index) => (
-              <Grid key={index} item lg={12} className={classesGlobal.card}>
+              <Grid key={index} item lg={12} className={classesGlobal.card} style={{minWidth: '100%'}}>
                 <FeaturedPost key={index} post={post} />
               </Grid>
             ))}
@@ -91,7 +92,7 @@ const NoSePierda = () => {
         <Grid item lg={6}>
           <Grid container >
             {postsEducacion.map((post, index) => (
-              <Grid item key={index} lg={6} className={classesGlobal.card}>
+              <Grid item key={index} lg={6} className={classesGlobal.card} style={{minWidth: matches ? '100%' : 'auto'}}>
                 <FeaturedPost key={index} post={post} />
               </Grid>
             ))}

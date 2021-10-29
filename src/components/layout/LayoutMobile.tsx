@@ -1,4 +1,4 @@
-import {CssBaseline, Grid, makeStyles} from '@material-ui/core';
+import { CssBaseline, Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
 import ClicMe from '../../components/inmobiliaria/ClicMe';
 import TabFourPosts from '../../components/post//TabFourPosts';
@@ -8,7 +8,7 @@ import PostGenerico from '../../components/post/PostGenerico';
 import SlidePosts from '../../components/post/SlidePosts';
 import SEO from '../../components/seo';
 import Wather from '../../components/Wather';
-import {PublicidadGenerico} from '../../utils/Publicidad';
+import { PublicidadGenerico } from '../../utils/Publicidad';
 import PostsRecientes from '../post/PostsRecientes';
 import SocialFollow from '../social/SocialFollow';
 import Layout from './Layout';
@@ -22,6 +22,10 @@ const useStyles = makeStyles((theme) => ({
   },
   rightColumn: {
     padingLeft: 5,
+  },
+  advertisingContainer: {
+    width: '100%',
+    textAlign: 'center',    
   },
 }));
 
@@ -72,7 +76,10 @@ const LayoutMobile = () => {
           <SocialFollow />
           <img src={process.env.PUBLICIDAD3} />
           <PolicialesProvinciales key="policialesprovinciales" />
+
+          <div className={classes.advertisingContainer}>
           <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg" />
+          </div>>
 
           <PostGenerico
             key="postgenerico8"
@@ -80,7 +87,9 @@ const LayoutMobile = () => {
             first={1}
             titulo="Rurales"
           />
+          <div className={classes.advertisingContainer}>
           <img src={process.env.PUBLICIDAD5} />
+          </div>
 
           <PostGenerico
             key="postgenerico5"
@@ -96,7 +105,9 @@ const LayoutMobile = () => {
             first={2}
             titulo="INTERNACIONALES"
           />
-          <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png" />
+          <div className={classes.advertisingContainer}>
+            <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png" />
+          </div>
 
           <PostGenerico
             key="postgenerico7"

@@ -5,7 +5,7 @@ import Layout from '../components/layout/Layout';
 
 const Categoria = () => (
 
-  <Layout title="Test">
+  <Layout>
     <Router>
       <CategoryComponent path="/categoria/:name" />
     </Router>

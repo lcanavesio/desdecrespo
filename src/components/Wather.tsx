@@ -3,9 +3,17 @@ import React from 'react';
 import useScript from '../utils/useScript';
 
 const useStyles = makeStyles((theme) => ({
-  container: {
+  content: {
     marginTop: 10,
     marginBottom: 10,
+    width: 325,
+    height: 100,
+  },
+  container: {
+    minWidth: '100%',
+    textAlign: 'center',
+    justifyContent: 'center',
+    display: 'flex',
   },
 }));
 
@@ -14,11 +22,11 @@ const Wather = () => {
   useScript('https://www.tutiempo.net/s-widget/l_FeJkkE11kAEFCBhAKAxDDDDzzUaATEj2bDujWVgfZEDkkEkE1');
 
   return (
-    <>
+    <div className={classes.container}>
       <div
         id="TT_FeJkkE11kAEFCBhAKAxDDDDzzUaATEj2bDujWVgfZEDkkEkE1"
-        className={classes.container} />
-    </>
+        className={classes.content} />
+    </div>
   );
 };
 export default Wather;

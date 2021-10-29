@@ -17,6 +17,13 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: 320,
     backgroundColor: theme.palette.background.paper,
   },
+  'container': {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingBottom: 10,
+  },
   'titleContainer': {
     textAlign: 'center',
     border: 'solid',
@@ -75,31 +82,31 @@ const ClicMe = () => {
 
   return (
     <>
-      <div className={classes.root}>
-        <div className={classes.titleContainer}>
-          <a href="https://www.crespoinmobiliaria.com.ar"
-            className={classes.link}
-            target="_blank"
-            rel="noreferrer">
-            <img
-              src="https://www.desdecrespo.com.ar/wp-includes/images/clic-aqui.gif"
-              className={classes.clickMe} />
-            <label
-              className={classes.crespoInmobiliaria}>CRESPO INMOBILIARIA
-            </label>
-          </a>
-        </div>
-        <div className={classes.contentContainer}>
-          <AdvancedImageList key="advancedImagelist" />
-          <div id="social-platforms">
-            <a className="btn btn-icon btn-facebook" href="https://www.desdecrespo.com.ar/wp-content/uploads/SmartLinks/crespo-inmobiliairia/crespo-inmobiliairia.html" target="_blank" rel="noreferrer"><i className="fa fa-facebook"><FacebookIcon /></i><span>Ingresá al Facebook </span></a>
-            <a className="btn btn-icon btn-instagram" href="https://instagram.com/crespoinmobiliaria" target="_blank" rel="noreferrer"><i className="fa fa-instagram"><InstagramIcon /></i><span>Ingresá al Instagram</span></a>
-            <a className="btn btn-icon btn-whatsapp" href="https://api.whatsapp.com/send?phone=5493435037590" target="_blank" rel="noreferrer"><i className="fa fa-whatsapp"><WhatsAppIcon /> </i><span>Escribinos al Whatsapp</span></a>
-            <a className="btn btn-icon btn-globe" href="https://www.crespoinmobiliaria.com.ar" target="_blank" rel="noreferrer"><i className="fa fa-globe"><LanguageIcon /></i><span>Ingresá a la Web</span></a>
+      <div className={classes.container}>
+        <div className={classes.root}>
+          <div className={classes.titleContainer}>
+            <a href="https://www.crespoinmobiliaria.com.ar"
+              className={classes.link}
+              target="_blank"
+              rel="noreferrer">
+              <img
+                src="https://www.desdecrespo.com.ar/wp-includes/images/clic-aqui.gif"
+                className={classes.clickMe} />
+              <label
+                className={classes.crespoInmobiliaria}>CRESPO INMOBILIARIA
+              </label>
+            </a>
+          </div>
+          <div className={classes.contentContainer}>
+            <AdvancedImageList key="advancedImagelist" />
+            <div id="social-platforms">
+              <a className="btn btn-icon btn-facebook" href="https://www.desdecrespo.com.ar/wp-content/uploads/SmartLinks/crespo-inmobiliairia/crespo-inmobiliairia.html" target="_blank" rel="noreferrer"><i className="fa fa-facebook"><FacebookIcon /></i><span>Ingresá al Facebook </span></a>
+              <a className="btn btn-icon btn-instagram" href="https://instagram.com/crespoinmobiliaria" target="_blank" rel="noreferrer"><i className="fa fa-instagram"><InstagramIcon /></i><span>Ingresá al Instagram</span></a>
+              <a className="btn btn-icon btn-whatsapp" href="https://api.whatsapp.com/send?phone=5493435037590" target="_blank" rel="noreferrer"><i className="fa fa-whatsapp"><WhatsAppIcon /> </i><span>Escribinos al Whatsapp</span></a>
+              <a className="btn btn-icon btn-globe" href="https://www.crespoinmobiliaria.com.ar" target="_blank" rel="noreferrer"><i className="fa fa-globe"><LanguageIcon /></i><span>Ingresá a la Web</span></a>
+            </div>
           </div>
         </div>
-
-
       </div>
     </>
   );

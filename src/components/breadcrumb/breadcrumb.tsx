@@ -31,7 +31,6 @@ const Breadcrumb = (props: Props) => {
   const category: Category = Constants.CATEGORIES
       .find((c) => c.databaseName === props.category);
 
-  if (!category) return null;
   return (
     <Breadcrumbs aria-label="breadcrumb">
       <Link color="inherit" href="/" className={classes.link}>
@@ -43,20 +42,20 @@ const Breadcrumb = (props: Props) => {
         props.label ?
           <Link
             color="inherit"
-            href={category.url}
+            href={category?.url}
             className={classes.link}
           >
-            <SvgIcon component={category.icon} className={classes.icon} />
-            {category.title}
+            <SvgIcon component={category?.icon} className={classes.icon} />
+            {category?.title ? category?.title : props.category}
           </Link> :
           <Link
             color="inherit"
             onClick={(event) => event.preventDefault()}
-            href={category.url}
+            href={category?.url}
             className={classes.link}
           >
-            <SvgIcon component={category.icon} className={classes.icon} />
-            {category.title}
+            <SvgIcon component={category?.icon} className={classes.icon} />
+            {category?.title}
           </Link>
       }
 
