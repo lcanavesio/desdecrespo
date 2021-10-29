@@ -1,9 +1,9 @@
-import {makeStyles, Theme, useMediaQuery} from '@material-ui/core';
+import { makeStyles, Theme, useMediaQuery } from '@material-ui/core';
 import axios from 'axios';
-import React, {useEffect, useState} from 'react';
-import ReactJkMusicPlayer, {ReactJkMusicPlayerAudioInfo} from 'react-jinke-music-player';
+import React, { useEffect, useState } from 'react';
+import ReactJkMusicPlayer, { ReactJkMusicPlayerAudioInfo } from 'react-jinke-music-player';
 import 'react-jinke-music-player/assets/index.css';
-import {getRadioList} from '../../utils/radiosConfig';
+import { getRadioList } from '../../utils/radiosConfig';
 
 const useStyles = makeStyles((theme: Theme) => ({
   player: {
@@ -26,6 +26,20 @@ const useStyles = makeStyles((theme: Theme) => ({
       '.group.player-delete': {
         display: 'none',
       },
+      '.react-jinke-music-player-mobile-cover.text-center > img': {
+        minHeight: '100%',
+      },
+      '.duration.text-right': {
+        display: 'none',
+      },
+      '.react-jinke-music-player-mobile.default-bg': {
+        maxHeight: 400,
+        top: 100,
+      },
+      '.react-jinke-music-player-mobile-cover.text-center': {
+        width: 150,
+        height: 150,
+      },
     },
   },
 }));
@@ -44,13 +58,13 @@ const ActiveRadio = () => {
     if (playing && !errorMetadataURL) {
       const activeStation = stations[playIndex];
       axios
-          .get(activeStation.metadataUrl)
-          .then((response) => {
-            setStreamTitle(response?.data?.nowplaying);
-          })
-          .catch(function(error) {
-            setErrorMetadataURL(true);
-          });
+        .get(activeStation.metadataUrl)
+        .then((response) => {
+          setStreamTitle(response?.data?.nowplaying);
+        })
+        .catch(function (error) {
+          setErrorMetadataURL(true);
+        });
     }
   };
 
@@ -118,7 +132,7 @@ const ActiveRadio = () => {
           right: '20px',
           bottom: '20px',
         }}
-        showMediaSession = {true}
+        showMediaSession={true}
         mode={matches ? 'full' : 'mini'}
         preload={'metadata'}
         {...options}

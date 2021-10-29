@@ -2,15 +2,26 @@ import {
   faFacebook,
   faInstagram,
   faTwitter,
-  faYoutube,
+  faYoutube
 } from '@fortawesome/free-brands-svg-icons';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { makeStyles } from '@material-ui/core';
 import React from 'react';
 import HeaderTitle from '../common/headerTitle';
 import './social.css';
+
+const useStyles = makeStyles((theme: Theme) => ({
+  container: {
+    textAlign: 'center',
+    width: '100%', 
+  },
+}));
+
 export default function SocialFollow() {
+  const classes = useStyles();
+
   return (
-    <div>
+    <div className={classes.container}>
       <HeaderTitle title="Seguinos en" />
       <p className="social-container">
         <a

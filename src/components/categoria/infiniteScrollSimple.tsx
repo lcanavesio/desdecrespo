@@ -1,16 +1,14 @@
-import {gql, useQuery} from '@apollo/client';
+import { gql, useQuery } from '@apollo/client';
 import {
   CircularProgress,
   CssBaseline,
   List,
-  ListItem,
+  ListItem
 } from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
-import {Waypoint} from 'react-waypoint';
-import {Category} from '../../interfaces/category.interface';
+import { Waypoint } from 'react-waypoint';
 import NotFoundPage from '../../pages/404';
-import {Constants} from '../../utils/constants';
 import FeaturedPost from '../post/FeaturedPost';
 import SEO from '../seo';
 
@@ -75,7 +73,7 @@ const InfiniteScrollSimple = (props: Props) => {
 
   if (loading) return <CircularProgress />;
   if (error) return <NotFoundPage />;
-  if (!edges) return <div>Sin datos</div>;
+  if (!edges) return null;
 
   return (
     <section className={classes.container}>

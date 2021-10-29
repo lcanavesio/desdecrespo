@@ -1,10 +1,9 @@
-import {gql, useQuery} from '@apollo/client';
-import {Grid, GridSize} from '@material-ui/core';
-import {Skeleton} from '@material-ui/lab';
+import { gql, useQuery } from '@apollo/client';
+import { Grid, GridSize } from '@material-ui/core';
+import { Skeleton } from '@material-ui/lab';
 import React from 'react';
 import NotFoundPage from '../../pages/404';
-import {useStylesGlobal} from '../../utils/GlobalStyle';
-import useLocalStorage from '../../utils/useLocalStorage';
+import { useStylesGlobal } from '../../utils/GlobalStyle';
 import HeaderTitle from '../common/headerTitle';
 import FeaturedPost from './FeaturedPost';
 
@@ -99,6 +98,7 @@ const PostGenerico = (props: Props) => {
           (!loading && posts) ?
             posts.map((post, index) => (
               <Grid
+              style={{paddingLeft: 10, paddingRight: 10, width: '100%'}}
                 item
                 key={index}
                 lg={gridValue}

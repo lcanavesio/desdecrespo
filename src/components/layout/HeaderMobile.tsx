@@ -1,11 +1,11 @@
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
-import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import MenuIcon from '@material-ui/icons/Menu';
-import {StaticImage} from 'gatsby-plugin-image';
-import React, {memo} from 'react';
+import { StaticImage } from 'gatsby-plugin-image';
+import React, { memo } from 'react';
 import Ultimo from '../ultimo/ultimo';
 
 const useStyles = makeStyles((theme: Theme) =>

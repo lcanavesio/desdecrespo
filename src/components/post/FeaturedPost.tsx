@@ -58,16 +58,17 @@ export default function FeaturedPost(props: Props) {
 
   return (
     <>
-      <Card className={classes.card}>
-        <CardActionArea onClick={() => navigate(`/post/${post.slug}/${post.id}`)}>
+      <Card className={classes.card} style={{ minWidth: '100%' }}>
+        <CardActionArea onClick={() => navigate(`/post/${post.slug}/${post.id}`)} style={{ minWidth: '100%' }}>
           <CardMedia
+            style={{ minWidth: '100%' }}
             className={classes.cardMedia}
             component="img"
             alt={post?.title}
             image={post?.featuredImage?.node?.mediaItemUrl}
             title={post?.title}
           />
-          <CardContent onClick={() => navigate(`/post/${post.slug}/${post.id}`)}>
+          <CardContent onClick={() => navigate(`/post/${post.slug}/${post.id}`)} style={{ minWidth: '100%' }}>
             <Typography gutterBottom variant="h5" component="h2" className={classes.title}>
               {post?.title}
             </Typography>

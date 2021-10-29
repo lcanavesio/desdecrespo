@@ -1,9 +1,8 @@
-import {gql, useQuery} from '@apollo/client';
-import {CircularProgress, Grid} from '@material-ui/core';
+import { gql, useQuery } from '@apollo/client';
+import { CircularProgress, Grid, useMediaQuery } from '@material-ui/core';
 import React from 'react';
 import NotFoundPage from '../../pages/404';
-import {useStylesGlobal} from '../../utils/GlobalStyle';
-import useLocalStorage from '../../utils/useLocalStorage';
+import { useStylesGlobal } from '../../utils/GlobalStyle';
 import HeaderTitle from '../common/HeaderTitle';
 import FeaturedPost from './FeaturedPost';
 
@@ -61,32 +60,31 @@ const PolicialesProvinciales = () => {
     }
   `;
 
-  const {loading, error, data} = useQuery(getPostsPoliciales);
+  const { loading, error, data } = useQuery(getPostsPoliciales);
   const {
     loading: loadingProvinciales,
     error: errorProvinciales,
     data: dataProvinciales,
   } = useQuery(getPostsProvinciales);
-  const matches = window.matchMedia('(min-width: 900px)');
+  const matches = useMediaQuery('(min-width:900px)');
   const postsPoliciales = data?.posts?.edges?.map((edge) => edge.node) || null;
   const postsProvinciales =
     dataProvinciales?.posts?.edges?.map((edge) => edge.node) || null;
 
   if (loading || loadingProvinciales) return <CircularProgress />;
   if (error || errorProvinciales) return <NotFoundPage />;
-  if (!postsPoliciales || !postsProvinciales) return <div>Sin datos</div>;
+  if (!postsPoliciales || !postsProvinciales) return null;
 
 
   return (
     <>
       <Grid container className={classesGlobal.container} key="firstgrid">
         <Grid item lg={6} key="policiales"
-          style={{paddingLeft: 10, paddingRight: 20}}>
+          style={{ paddingLeft: 10, paddingRight: 20 }}>
           <HeaderTitle title="POLICIALES" />
-
           <Grid container>
             {postsPoliciales.map((post, index) => (
-              <Grid item key={index} lg={6} className={classesGlobal.card}>
+              <Grid item key={index} lg={6} className={classesGlobal.card} style={{minWidth: '100%'}}>
                 <FeaturedPost key={index} post={post} />
               </Grid>
             ))}
@@ -94,11 +92,11 @@ const PolicialesProvinciales = () => {
         </Grid>
         {!matches && <img src={process.env.PUBLICIDAD4} />}
         <Grid item lg={6} key="provinciales"
-          style={{paddingLeft: 10, paddingRight: 20}}>
+          style={{ paddingLeft: 10, paddingRight: 20 }}>
           <HeaderTitle title="PROVINCIALES" />
           <Grid container>
             {postsProvinciales.map((post, index) => (
-              <Grid key={index} item lg={6} className={classesGlobal.card}>
+              <Grid key={index} item lg={6} className={classesGlobal.card} style={{minWidth: '100%'}}>
                 <FeaturedPost key={index} post={post} />
               </Grid>
             ))}

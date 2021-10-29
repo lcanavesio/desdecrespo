@@ -3,10 +3,9 @@ import LocalTaxiIcon from '@material-ui/icons/LocalTaxi';
 import PageviewIcon from '@material-ui/icons/Pageview';
 import PetsIcon from '@material-ui/icons/Pets';
 import PublicIcon from '@material-ui/icons/Public';
-import SentimentDissatisfiedIcon
-  from '@material-ui/icons/SentimentDissatisfied';
+import SentimentDissatisfiedIcon from '@material-ui/icons/SentimentDissatisfied';
 import SportsBasketballIcon from '@material-ui/icons/SportsBasketball';
-import {Category} from 'src/interfaces/category.interface';
+import { Category } from 'src/interfaces/category.interface';
 
 export abstract class Constants {
   static readonly CATEGORIES: Category[] = [
@@ -65,18 +64,18 @@ export abstract class Constants {
       url: '/categoria/deportes',
       icon: SportsBasketballIcon,
     },
-    // {
-    //   title: 'Deportes',
-    //   databaseName: 'Básquet',
-    //   url: '/categoria/deportes',
-    //   icon: SportsBasketballIcon,
-    // },
-    // {
-    //   title: 'Salud',
-    //   databaseName: 'Salud',
-    //   url: '/categoria/salud',
-    //   icon: LocalHospitalIcon,
-    // },
+    {
+      title: 'Deportes',
+      databaseName: 'Básquet',
+      url: '/categoria/deportes',
+      icon: SportsBasketballIcon,
+    },
+    {
+      title: 'Salud',
+      databaseName: 'Salud',
+      url: '/categoria/salud',
+      icon: SportsBasketballIcon,
+    },
     // {
     //   title: 'Tecnología',
     //   databaseName: 'Tecnología',

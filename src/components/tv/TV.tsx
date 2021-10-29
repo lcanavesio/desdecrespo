@@ -31,7 +31,7 @@ const TV = () => {
 
   return (
     <Grid container className={classes.div}>
-      <Grid item style={{ background: 'black' }}>
+      <Grid item style={{ background: 'black', paddingLeft: 5, paddingRight: 3 }}>
         <ReactPlayer
           style={{ background: 'black' }}
           height="100%"
