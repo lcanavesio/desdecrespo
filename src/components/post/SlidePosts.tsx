@@ -84,7 +84,6 @@ const SlidePosts = () => {
                   src={post.featuredImage?.node?.mediaItemUrl}
                   alt={post.title}
                   aspectRatio={2}
-                  loading={'lazy'}
                   disableSpinner={false}
                   cover={true}
                   className={classes.image}

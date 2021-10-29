@@ -2,7 +2,7 @@ import { gql, useQuery } from '@apollo/client';
 import { CssBaseline, GridList, GridListTile, makeStyles } from '@material-ui/core';
 import { navigate } from 'gatsby';
 import React from 'react';
-import Layout from "../components/layout/Layout";
+import Layout from '../components/layout/Layout';
 import FeaturedPost from '../components/post/FeaturedPost';
 import SEO from '../components/seo';
 
@@ -56,7 +56,11 @@ query getPostsSearch ($keyword:String!) {
 const BusquedaPage = (props: Props) => {
   const classes = useStyles();
 
-  const search: string = location?.search;
+  if (typeof window == 'undefined') {
+    return null;
+  }
+
+  const search: string = typeof window !== 'undefined' ? location?.search : '';
   const keyword: string = new URLSearchParams(search).get('keyword'); ;
 
   if (!keyword) navigate(`/`);
