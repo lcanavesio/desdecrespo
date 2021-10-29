@@ -55,22 +55,33 @@ module.exports = {
       },
     },
     {
-      resolve: "gatsby-source-graphql",
+      resolve: `gatsby-source-graphql`,
       options: {
-        typeName: "WPGraphQL",
-        fieldName: "wpgraphql",
-        // GraphQL endpoint, relative to your WordPress home URL.
-        url: "https://www.desdecrespo.com.ar/graphql",
-        // `${process.env.WORDPRESS_URL}/graphql`,
-        // GraphQL endpoint using env variable
-       // url: "${process.env.WORDPRESS_URL}/graphql",
+        // This type will contain remote schema Query type
+        typeName: `WPGraphQL`,
+        // This is field under which it's accessible
+        fieldName: `wpgraphql`,
+        // Url to query from
+        url: `https://www.desdecrespo.com.ar/graphql`,
       },
     },
-    {
-      resolve: 'gatsby-plugin-apollo',
-      options: {
-        uri: process.env.GATSBY_GCMS_URL
-      }
-    },
+    // {
+    //   resolve: "gatsby-source-graphql",
+    //   options: {
+    //     typeName: "WPGraphQL",
+    //     fieldName: "wpgraphql",
+    //     // GraphQL endpoint, relative to your WordPress home URL.
+    //     url: "https://www.desdecrespo.com.ar/graphql",
+    //     // `${process.env.WORDPRESS_URL}/graphql`,
+    //     // GraphQL endpoint using env variable
+    //    // url: "${process.env.WORDPRESS_URL}/graphql",
+    //   },
+    // },
+    // {
+    //   resolve: 'gatsby-plugin-apollo',
+    //   options: {
+    //     uri: process.env.GATSBY_GCMS_URL
+    //   }
+    // },
   ],
 }

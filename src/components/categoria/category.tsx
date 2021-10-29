@@ -57,7 +57,7 @@ const CategoryComponent = (props: Props) => {
   `;
 
   const category: Category = Constants.CATEGORIES.find(
-    (c) => c.url === location.pathname,
+    (c) => c.url === (typeof window !== 'undefined' ? location.pathname : ''),
   );
   if (!category) {
     return null;

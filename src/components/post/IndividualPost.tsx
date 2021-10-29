@@ -2,6 +2,7 @@ import { gql, useQuery } from '@apollo/client';
 import { CssBaseline, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Skeleton } from '@material-ui/lab';
+import Image from 'material-ui-image';
 import React from 'react';
 import NotFoundPage from '../../pages/404';
 import Breadcrumb from '../breadcrumb/breadcrumb';
@@ -13,17 +14,26 @@ import PostsRecientes from './PostsRecientes';
 
 
 const useStyles = makeStyles((theme) => ({
-  container: {
+  'container': {
     paddingTop: 10,
     paddingLeft: 10,
     paddingRight: 10,
   },
-  image: {
+  'image': {
     marginTop: 10,
     marginBottom: 10,
   },
-  rightColumn: {
+  'rightColumn': {
     padingLeft: 5,
+  },
+  'image': {
+    position: 'relative',
+    height: 100,
+    minWidth: '100%',
+    objectFit: 'cover',
+    margin: 0,
+    borderRadius: 5,
+    paddingBottom: 20,
   },
 }));
 
@@ -56,7 +66,7 @@ const IndividualPost = (props: Props) => {
   `;
 
   // const query: any = queryString.parse(location.search);
-  const params: String[] = location.pathname.split('/');
+  const params: String[] = typeof window !== 'undefined' ? location.pathname.split('/') : '';
   const id: String = params[3];
   const { loading, error, data } = useQuery(getPost, {
     variables: { id },
@@ -86,9 +96,16 @@ const IndividualPost = (props: Props) => {
                     >
                       {data?.post?.title}
                     </Typography>
+                    <Image
+                      src={data?.post?.featuredImage?.node?.mediaItemUrl}
+                      alt={data?.post?.title}
+                      aspectRatio={2}
+                      disableSpinner={false}
+                      cover={true}
+                      className={classes.image}
+                    />
                     <div dangerouslySetInnerHTML={{ __html: data?.post?.content }} />
-                  </>
-                  :
+                  </> :
                   <>
                     <Skeleton variant="text"
                       animation="wave"

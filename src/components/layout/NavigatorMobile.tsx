@@ -1,5 +1,6 @@
-import {List} from '@material-ui/core';
-import Drawer, {DrawerProps} from '@material-ui/core/Drawer';
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle, List, TextField } from '@material-ui/core';
+import Drawer, { DrawerProps } from '@material-ui/core/Drawer';
+import IconButton from '@material-ui/core/IconButton';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import {
@@ -7,14 +8,14 @@ import {
   createTheme,
   makeStyles,
   Theme,
-  ThemeProvider,
+  ThemeProvider
 } from '@material-ui/core/styles';
-import clsx from 'clsx';
-import React, {memo} from 'react';
-import {Constants} from '../../utils/constants';
-import {Link} from 'gatsby-material-ui-components';
 import SearchIcon from '@material-ui/icons/Search';
-import IconButton from '@material-ui/core/IconButton';
+import clsx from 'clsx';
+import { navigate } from 'gatsby';
+import { Link } from 'gatsby-material-ui-components';
+import React, { memo } from 'react';
+import { Constants } from '../../utils/constants';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -39,46 +40,97 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 );
 
-export interface NavigatorProps extends Omit<DrawerProps, 'classes'> {}
+export interface NavigatorProps extends Omit<DrawerProps, 'classes'> { }
 
 function NavigatorMobile(props: NavigatorProps) {
-  const {...other} = props;
+  const { ...other } = props;
   const classes = useStyles();
+
+  const [open, setOpen] = React.useState(false);
+  const [keyword, setKeyword] = React.useState('');
+
   const handleClickOpen = () => {
-    console.log('click');
+    setOpen(true);
+    setKeyword('');
   };
+
+  const handleClose = () => {
+    setOpen(false);
+    setKeyword('');
+  };
+
+  const handleFormSubmit = (e: any) => {
+    e.preventDefault();
+    navigate(`/busqueda?keyword=${keyword}`);
+    setOpen(false);
+  };
+
   return (
-    <ThemeProvider theme={theme}>
-      <Drawer variant="permanent" {...other}>
-        <List disablePadding style={{background: '#2b2b2b'}}>
-          <ListItem className={clsx(classes.item, classes.itemCategory)}>
-            <ListItemText style={{color: 'white'}}>Desde Crespo</ListItemText>
-          </ListItem>
+    <>
+      <Dialog
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="form-dialog-title"
+      >
+        <form onSubmit={handleFormSubmit}>
+          <DialogTitle id="form-dialog-title">Buscar</DialogTitle>
+          <DialogContent>
+            <TextField
+              autoFocus
+              margin="dense"
+              id="search"
+              type="text"
+              label="¿Qué estás buscando?"
+              onChange={(e) => setKeyword(e.target.value)}
+              value={keyword}
+              fullWidth
+              required
+              autoComplete="none"
+            />
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary">
+              Cancelar
+            </Button>
+            <Button type="submit" color="primary">
+              Buscar
+            </Button>
+          </DialogActions>
+        </form>
+      </Dialog>
 
-          {Constants.CATEGORIES.map((item, index) => (
-            <div key={index}>
-              <ListItem className={clsx(classes.item, classes.itemCategory)}>
-                <ListItemText style={{color: 'white'}}>
-                  <Link
-                    color="inherit"
-                    noWrap
-                    key={item.title}
-                    to={item.url}
-                  >
-                    {item.title}
-                  </Link>
-                </ListItemText>
-              </ListItem>
-            </div>
-          ))}
-        </List>
+      <ThemeProvider theme={theme}>
+        <Drawer variant="permanent" {...other}>
+          <List disablePadding style={{ background: '#2b2b2b' }}>
+            <ListItem className={clsx(classes.item, classes.itemCategory)}>
+              <ListItemText style={{ color: 'white' }}>Desde Crespo</ListItemText>
+            </ListItem>
+
+            {Constants.CATEGORIES.map((item, index) => (
+              <div key={index}>
+                <ListItem className={clsx(classes.item, classes.itemCategory)}>
+                  <ListItemText style={{ color: 'white' }}>
+                    <Link
+                      color="inherit"
+                      noWrap
+                      key={item.title}
+                      to={item.url}
+                    >
+                      {item.title}
+                    </Link>
+                  </ListItemText>
+                </ListItem>
+              </div>
+            ))}
+          </List>
 
 
-        <IconButton onClick={handleClickOpen}>
-          <SearchIcon style={{color: 'rgb(252, 74, 0)'}}/>
-        </IconButton>
-      </Drawer>
-    </ThemeProvider>
+          <IconButton onClick={handleClickOpen}>
+            <SearchIcon style={{ color: 'rgb(252, 74, 0)' }} />
+          </IconButton>
+        </Drawer>
+      </ThemeProvider>
+    </>
   );
 }
 

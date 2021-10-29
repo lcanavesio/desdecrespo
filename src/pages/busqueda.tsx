@@ -1,7 +1,8 @@
-import {gql, useQuery} from '@apollo/client';
-import {CssBaseline, GridList, GridListTile, makeStyles} from '@material-ui/core';
-import {navigate} from 'gatsby';
+import { gql, useQuery } from '@apollo/client';
+import { CssBaseline, GridList, GridListTile, makeStyles } from '@material-ui/core';
+import { navigate } from 'gatsby';
 import React from 'react';
+import Layout from '../components/layout/Layout';
 import FeaturedPost from '../components/post/FeaturedPost';
 import SEO from '../components/seo';
 
@@ -55,7 +56,11 @@ query getPostsSearch ($keyword:String!) {
 const BusquedaPage = (props: Props) => {
   const classes = useStyles();
 
-  const search: string = location?.search;
+  if (typeof window == 'undefined') {
+    return null;
+  }
+
+  const search: string = typeof window !== 'undefined' ? location?.search : '';
   const keyword: string = new URLSearchParams(search).get('keyword'); ;
 
   if (!keyword) navigate(`/`);
@@ -68,11 +73,11 @@ const BusquedaPage = (props: Props) => {
 
   if (!posts) return null;
   return (
-    <Layout title="Busqueda">
+    <Layout>
       <section className={classes.container}>
         <SEO title="Busqueda"/>
         <CssBaseline />
-        <GridList cellHeight={288} cols={2}>
+        <GridList cellHeight={288} cols={2} style={{paddingLeft: 10, paddingRight: 10}}>
           {posts.map((post) => (
             <GridListTile key={`gridList-${post.title}-${post?.title}`}>
               <FeaturedPost key={`${post.title}-${post?.title}`} post={post} />
