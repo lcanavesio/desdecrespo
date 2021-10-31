@@ -5,19 +5,21 @@ import {
   DialogTitle,
   Divider,
   Grid,
-  TextField
+  TextField,
+  Tooltip,
 } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import SearchIcon from '@material-ui/icons/Search';
-import { navigate } from 'gatsby';
-import { Link } from 'gatsby-material-ui-components';
-import { StaticImage } from 'gatsby-plugin-image';
+import {navigate} from 'gatsby';
+import {Link} from 'gatsby-material-ui-components';
+import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
 import Ultimo from '../ultimo/ultimo';
+import CloseIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles((theme) => ({
   bannerContainer: {
@@ -61,13 +63,22 @@ const useStyles = makeStyles((theme) => ({
       textDecoration: 'none',
     },
   },
+  closeButton: {
+    'right': theme.spacing(1),
+    'position': 'absolute',
+    'top': 0,
+    'color': '#bad5f8',
+    '&:hover': {
+      color: '#fff',
+    },
+  },
   dividerVertical: {
     background: '#dadada',
     marginTop: 12,
     marginBottom: 12,
   },
   btnLive: {
-    background: '#f44336',
+    'background': '#f44336',
     '&:hover': {
       background: 'red',
     },
@@ -81,7 +92,7 @@ type Props = {
   sections: any
 }
 export default function Header(props: Props) {
-  const { sections } = props;
+  const {sections} = props;
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
@@ -111,7 +122,26 @@ export default function Header(props: Props) {
         aria-labelledby="form-dialog-title"
       >
         <form onSubmit={handleFormSubmit}>
-          <DialogTitle id="form-dialog-title">Buscar</DialogTitle>
+          <Grid
+            container
+            style={{marginBottom: '1em'}}
+          >
+            <Grid item>
+              <DialogTitle id="form-dialog-title">Buscar</DialogTitle>
+            </Grid>
+            <Grid item>
+              <Tooltip title="Salir" placement="top-end">
+                <IconButton
+                  className={classes.closeButton}
+                  onClick={handleClose}
+                  aria-label="close"
+                >
+                  <CloseIcon />
+                </IconButton>
+              </Tooltip>
+            </Grid>
+
+          </Grid>
           <DialogContent>
             <TextField
               autoFocus
@@ -127,9 +157,6 @@ export default function Header(props: Props) {
             />
           </DialogContent>
           <DialogActions>
-            <Button onClick={handleClose} color="primary">
-              Cancelar
-            </Button>
             <Button type="submit" color="primary">
               Buscar
             </Button>
@@ -163,7 +190,7 @@ export default function Header(props: Props) {
             <StaticImage
               src="../../images/banner-desktop.jpg"
               alt="Banner - Desde Crespo"
-              style={{ width: '100%' }}
+              style={{width: '100%'}}
             />
           </a>
         </Grid>
@@ -190,10 +217,10 @@ export default function Header(props: Props) {
                   {section.title}
                 </Link>
               </div>
-                <Divider
-                  orientation="vertical"
-                  flexItem
-                  className={classes.dividerVertical} /></>
+              <Divider
+                orientation="vertical"
+                flexItem
+                className={classes.dividerVertical} /></>
             ))}
           </Toolbar>
         </div>

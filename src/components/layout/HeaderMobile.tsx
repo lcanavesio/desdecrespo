@@ -7,6 +7,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import {StaticImage} from 'gatsby-plugin-image';
 import React, {memo} from 'react';
 import Ultimo from '../ultimo/ultimo';
+import {Link} from 'gatsby-material-ui-components';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -70,11 +71,13 @@ function HeaderMobile(props: HeaderProps) {
               </IconButton>
             </Grid>
             <Grid item xs={10}>
-              <StaticImage
-                src="../../images/iconmobile.png"
-                alt="Banner - Desde Crespo"
+              <Link to="/" >
+                <StaticImage
+                  src="../../images/iconmobile.png"
+                  alt="Banner - Desde Crespo"
 
-              />
+                />
+              </Link>
             </Grid>
           </Grid>
         </Toolbar>
