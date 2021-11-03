@@ -1,12 +1,13 @@
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
+import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import MenuIcon from '@material-ui/icons/Menu';
-import { StaticImage } from 'gatsby-plugin-image';
-import React, { memo } from 'react';
+import {StaticImage} from 'gatsby-plugin-image';
+import React, {memo} from 'react';
 import Ultimo from '../ultimo/ultimo';
+import {Link} from 'gatsby-material-ui-components';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -14,8 +15,8 @@ const useStyles = makeStyles((theme: Theme) =>
       zIndex: 0,
     },
     root: {
-      justifyContent: 'flex-start',
-      flexDirection: 'row',
+
+
       display: 'flex',
       alignItems: 'center',
     },
@@ -59,7 +60,7 @@ function HeaderMobile(props: HeaderProps) {
       <AppBar position="sticky">
         <Toolbar className={classes.toolbar}>
           <Grid container className={classes.root} xs={12}>
-            <Grid item xs={1}>
+            <Grid item xs={2}>
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
@@ -69,12 +70,14 @@ function HeaderMobile(props: HeaderProps) {
                 <MenuIcon style={{color: '#fc4a00'}} />
               </IconButton>
             </Grid>
-            <Grid item xs={11}>
-              <StaticImage
-                src="../../images/banner-desktop.jpg"
-                alt="Banner - Desde Crespo"
-                style={{width: '100%'}}
-              />
+            <Grid item xs={10}>
+              <Link to="/" >
+                <StaticImage
+                  src="../../images/iconmobile.png"
+                  alt="Banner - Desde Crespo"
+
+                />
+              </Link>
             </Grid>
           </Grid>
         </Toolbar>
