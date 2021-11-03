@@ -45,8 +45,8 @@ const SlidePosts = () => {
       posts(
         first: 8
         where: {
-          orderby: { field: DATE, order: DESC }
-          categoryName: "Destacadas, Destacados"
+          orderby: { field: MODIFIED, order: DESC }
+          tag: "Destacadas, Destacados"
         }
       ) {
         edges {

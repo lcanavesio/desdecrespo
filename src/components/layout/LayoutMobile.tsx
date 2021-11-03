@@ -77,7 +77,7 @@ const LayoutMobile = () => {
 
         <div className={classes.advertisingContainer}>
           <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg" />
-        </div>>
+        </div>
 
         <PostGenerico
           key="postgenerico8"
