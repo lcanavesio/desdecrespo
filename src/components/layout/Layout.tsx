@@ -10,6 +10,7 @@ import NavigatorMobile from './NavigatorMobile';
 const useStyles = makeStyles((theme) => ({
   content: {
     maxWidth: 1287,
+    minHeight: 600,
     display: 'block',
     marginLeft: 'auto',
     marginRight: 'auto',

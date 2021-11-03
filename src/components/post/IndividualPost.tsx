@@ -12,7 +12,6 @@ import HeaderTitle from '../common/headerTitle';
 import SEO from '../seo';
 import PostsRecientes from './PostsRecientes';
 
-
 const useStyles = makeStyles((theme) => ({
   'container': {
     paddingTop: 10,
@@ -66,6 +65,7 @@ const IndividualPost = (props: Props) => {
   `;
 
   // const query: any = queryString.parse(location.search);
+  const locationHref: String = typeof window !== 'undefined' ? location.href.replace("http://localhost:8000/", "https://www.desdecrespo.com.ar/") : '';
   const params: String[] = typeof window !== 'undefined' ? location.pathname.split('/') : '';
   const id: String = params[3];
   const { loading, error, data } = useQuery(getPost, {
@@ -105,6 +105,15 @@ const IndividualPost = (props: Props) => {
                       className={classes.image}
                     />
                     <div dangerouslySetInnerHTML={{ __html: data?.post?.content }} />
+                    <iframe
+                      src={`http://www.facebook.com/plugins/comments.php?href=${locationHref}`}
+                      scrolling="no"
+                      frameBorder="0"
+                      style={{ border: 'none', overflow: 'hidden', width: '100%', height: '100%' }}
+                    // style="border:none; overflow:hidden; width:100%; height:3806px;"
+                    // allowTransparency="true"
+                    >
+                    </iframe>
                   </> :
                   <>
                     <Skeleton variant="text"

@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/core';
 import React from 'react';
-import Layout from "../components/layout/Layout";
 import TV from '../components/tv/TV';
 
 const useStyles = makeStyles((theme) => ({
@@ -14,12 +13,9 @@ const LivePage = () => {
   const classes = useStyles();
 
   return (
-    <Layout>
-      <div className={classes.container}>
-        <TV />
-      </div>
-
-    </Layout>
+    <div className={classes.container}>
+      <TV />
+    </div>
   );
 };
 
