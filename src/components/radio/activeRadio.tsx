@@ -82,7 +82,6 @@ const ActiveRadio = () => {
     clearInterval(intervalId);
     setStreamTitle('');
     setIntervalId(null);
-
     if (playing) {
       setIntervalId(setInterval(getStreamTitle, 5000));
     }
@@ -110,6 +109,7 @@ const ActiveRadio = () => {
     showThemeSwitch: false,
     playModeTipVisible: false,
     showDownload: false,
+    autoPlay: false,
   };
 
   if (!stations) return null;
