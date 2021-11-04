@@ -27,6 +27,7 @@ import {Link} from 'gatsby-material-ui-components';
 import React, {memo} from 'react';
 import {Constants} from '../../utils/constants';
 import CloseIcon from '@material-ui/icons/Close';
+import {StaticImage} from 'gatsby-plugin-image';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -135,9 +136,10 @@ function NavigatorMobile(props: NavigatorProps) {
         <Drawer variant="permanent" {...other}>
           <List disablePadding style={{background: '#2b2b2b'}}>
             <ListItem className={clsx(classes.item, classes.itemCategory)}>
-              <ListItemText style={{color: 'white'}}>
-                Desde Crespo
-              </ListItemText>
+              <StaticImage
+                src="../../images/iconmobile.png"
+                alt="menumobile "
+              />
             </ListItem>
 
             {Constants.CATEGORIES.map((item, index) => (
