@@ -55,6 +55,10 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     paddingTop: 5,
   },
+  linkLive: {
+    textDecoration: 'none',
+    color: 'white',
+  },
 }));
 
 const Ultimo = () => {
@@ -146,16 +150,18 @@ const Ultimo = () => {
               <Skeleton variant="rect" className={classes.carousel} />
             )}
             <Grid item style={{paddingRight: '1%', paddingTop: '1%'}}>
-              <Button
-                variant="contained"
-                size="small"
-                style={{color: 'white', background: 'red'}}
-              >
-                <Typography component="p" variant="body2">
-                  <Brightness1Icon style={{width: 8,
-                    height: 8}}/> vivo
-                </Typography>
-              </Button>
+              <Link className={classes.linkLive} to="/live" >
+                <Button
+                  variant="contained"
+                  size="small"
+                  style={{color: 'white', background: 'red'}}
+                >
+                  <Typography component="p" variant="body2">
+                    <Brightness1Icon style={{width: 8,
+                      height: 8}}/> vivo
+                  </Typography>
+                </Button>
+              </Link>
             </Grid>
           </Grid>
         </Grid>
