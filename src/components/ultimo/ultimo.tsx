@@ -1,10 +1,10 @@
-import { gql, useQuery } from '@apollo/client';
-import { Button, Grid, Typography, useMediaQuery } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import {gql, useQuery} from '@apollo/client';
+import {Button, Grid, Typography, useMediaQuery} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
 import Brightness1Icon from '@material-ui/icons/Brightness1';
 import FlashOnIcon from '@material-ui/icons/FlashOn';
-import { Skeleton } from '@material-ui/lab';
-import { Link } from 'gatsby';
+import {Skeleton} from '@material-ui/lab';
+import {Link} from 'gatsby';
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
 import NotFoundPage from '../../pages/404';
@@ -50,8 +50,8 @@ const useStyles = makeStyles((theme) => ({
   },
   mobileTitle: {
     fontSize: '12px',
-    marginLeft: 10,
-    marginRight: 10,
+    marginLeft: 5,
+    marginRight: 5,
     display: 'flex',
     paddingTop: 5,
   },
@@ -97,6 +97,7 @@ const Ultimo = () => {
               indicators={false}
               navButtonsAlwaysVisible={true}
               animation={'slide'}
+              interval={5000}
               navButtonsProps={{
                 style: {
                   height: 5,
@@ -123,16 +124,13 @@ const Ultimo = () => {
       ) : (
         <Grid container direction="row">
           <Grid item key="ultimoMobile" className={classes.mobileItem}>
-            <h5 className={classes.mobileTitle}>
-              <FlashOnIcon style={{color: 'red'}} />
-              LO ÚLTIMO
-            </h5>
             {posts ? (
               <Carousel
                 className={classes.carouselMobile}
                 indicators={false}
                 navButtonsAlwaysVisible={false}
                 animation={'slide'}
+                interval={5000}
               >
                 {posts.map((post, index) => (
                   <Link

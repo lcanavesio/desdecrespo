@@ -1,4 +1,4 @@
-import { CssBaseline, Grid, makeStyles } from '@material-ui/core';
+import {CssBaseline, Grid, makeStyles} from '@material-ui/core';
 import React from 'react';
 import ClicMe from '../../components/inmobiliaria/ClicMe';
 import TabFourPosts from '../../components/post//TabFourPosts';
@@ -8,7 +8,7 @@ import PostGenerico from '../../components/post/PostGenerico';
 import SlidePosts from '../../components/post/SlidePosts';
 import SEO from '../../components/seo';
 import Wather from '../../components/Wather';
-import { PublicidadGenerico } from '../../utils/Publicidad';
+import {PublicidadGenerico} from '../../utils/Publicidad';
 import PostsRecientes from '../post/PostsRecientes';
 import SocialFollow from '../social/SocialFollow';
 
@@ -42,10 +42,10 @@ const LayoutMobile = () => {
           </Grid>
         </Grid>
         {/* <TV /> */}
-        <PublicidadGenerico
-          key="publicidad1"
-          href={process.env.PUBLICIDAD1}
-        />
+        <div style={{textAlign: 'center', width: '100%', height: '100%'}}>
+          <img src={process.env.PUBLICIDAD1} />
+        </div>
+
         <PostGenerico
           key="postgenerico1"
           categoryName="locales"
@@ -53,17 +53,19 @@ const LayoutMobile = () => {
           titulo="Locales"
         />
         <Wather />
-        <PublicidadGenerico
-          key="publicidad6"
-          href={process.env.PUBLICIDAD6}
-        />
+
         <TabFourPosts />
 
-        <img src={process.env.PUBLICIDAD2} />
-        {/* <PublicidadPrincipal key={'publicidadprincipal1'} /> */}
+        <img
+          src={process.env.PUBLICIDAD2}
+          className={classes.advertisingContainer}
+        />
+
         <PostsRecientes />
         <ClicMe />
-        <img src=" https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png" />
+        <div className={classes.advertisingContainer}>
+          <img src=" https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png" />
+        </div>
 
         <PostGenerico
           key="postgenerico3"
@@ -72,12 +74,23 @@ const LayoutMobile = () => {
           titulo="Crespo"
         />
         <SocialFollow />
-        <img src={process.env.PUBLICIDAD3} />
+        <div className={classes.advertisingContainer}>
+          <a
+            href="https://api.whatsapp.com/send?phone=5493434808579"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <img
+              src={process.env.PUBLICIDAD3}
+              style={{textAlign: 'center', width: '80%'}}
+            />
+          </a>
+        </div>
         <PolicialesProvinciales key="policialesprovinciales" />
 
         <div className={classes.advertisingContainer}>
           <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg" />
-        </div>>
+        </div>
 
         <PostGenerico
           key="postgenerico8"
@@ -95,7 +108,7 @@ const LayoutMobile = () => {
           first={3}
           titulo="NACIONALES"
         />
-        <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png" />
+        <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png" className={classes.advertisingContainer} />
 
         <PostGenerico
           key="postgenerico6"
