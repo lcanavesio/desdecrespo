@@ -26,8 +26,15 @@ const useStyles = makeStyles((theme) => ({
       boxShadow: '0 16px 70px -12.125px rgba(0,0,0,0.3)',
     },
   },
+  cardMediaContainer: {
+    padding: 5,
+    minHeight: 300,
+    width: '100%',
+  },
   media: {
-    paddingTop: '56.25%',
+    backgroundPosition: '50% 50%',
+    height: '100%',
+    width: '100%',
   },
   content: {
     textAlign: 'left',
@@ -108,7 +115,7 @@ const PostCard = (props: Props) => {
     <Link to={`/post/${post.slug}/${post.id}`} className={classes.cardLink}>
       <Card className={classes.card}>
         <Grid container lg={12}>
-          <Grid item lg={6}>
+          <Grid item lg={6} className={classes.cardMediaContainer}>
             <CardMedia
               className={classes.media}
               image={post.featuredImage?.node?.mediaItemUrl}

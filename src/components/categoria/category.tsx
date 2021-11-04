@@ -2,7 +2,8 @@ import { gql, useQuery } from '@apollo/client';
 import {
   CssBaseline,
   GridList,
-  GridListTile
+  GridListTile,
+  useMediaQuery
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Skeleton } from '@material-ui/lab';
@@ -59,6 +60,9 @@ const CategoryComponent = (props: Props) => {
   const category: Category = Constants.CATEGORIES.find(
     (c) => c.url === (typeof window !== 'undefined' ? location.pathname : ''),
   );
+  const matches = useMediaQuery('(max-width:1279px)');
+
+
   if (!category) {
     return null;
     // return 404
@@ -69,6 +73,7 @@ const CategoryComponent = (props: Props) => {
   });
   const posts = data?.posts?.edges?.map((edge) => edge.node) || null;
   const classes = useStyles();
+
 
   const showSkeleton = () => {
     const skeletons = [];
@@ -82,7 +87,7 @@ const CategoryComponent = (props: Props) => {
             style={{ width: '100%', height: '80%', padding: 5 }} />
           <Skeleton variant="text"
             animation="wave"
-            style={{ width: '100%', height: '20%'}} />
+            style={{ width: '100%', height: '20%' }} />
         </GridListTile>
       );
     }
@@ -96,7 +101,7 @@ const CategoryComponent = (props: Props) => {
       <SEO title="Inicio" />
       <CssBaseline />
       <Breadcrumb category={category.databaseName} label={data?.post?.title} />
-      <GridList cellHeight={288} cols={2}>
+      <GridList cellHeight={288} cols={matches ? 1 : 2}>
         {(!loading && posts) ?
           posts.map((post) => (
             <GridListTile key={`gridList-${category.title}-${post?.title}`}>

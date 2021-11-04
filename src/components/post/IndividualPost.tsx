@@ -109,7 +109,7 @@ const IndividualPost = (props: Props) => {
                       src={`http://www.facebook.com/plugins/comments.php?href=${locationHref}`}
                       scrolling="no"
                       frameBorder="0"
-                      style={{ border: 'none', overflow: 'hidden', width: '100%', height: '100%' }}
+                      style={{ border: 'none', overflow: 'hidden', width: '100%', minHeight: 300, height: '100%' }}
                     // style="border:none; overflow:hidden; width:100%; height:3806px;"
                     // allowTransparency="true"
                     >

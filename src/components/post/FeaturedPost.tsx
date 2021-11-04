@@ -68,7 +68,7 @@ export default function FeaturedPost(props: Props) {
             image={post?.featuredImage?.node?.mediaItemUrl}
             title={post?.title}
           />
-          <CardContent onClick={() => navigate(`/post/${post.slug}/${post.id}`)} style={{ minWidth: '100%' }}>
+          <CardContent onClick={() => navigate(`/post/${post.slug}/${post.id}`)} style={{ minWidth: '100%', minHeight: '100%'}}>
             <Typography gutterBottom variant="h5" component="h2" className={classes.title}>
               {post?.title}
             </Typography>
