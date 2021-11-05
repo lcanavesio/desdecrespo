@@ -27,12 +27,24 @@ const useStyles = makeStyles((theme) => ({
   },
   'image': {
     position: 'relative',
-    height: 100,
-    minWidth: '100%',
     objectFit: 'cover',
     margin: 0,
     borderRadius: 5,
     paddingBottom: 20,
+    maxWidth: '100%',
+  },
+  '@global': {
+    '#divContent img': {
+      width: '100%',
+      height: '100%',
+    },
+    '#divContent video': {
+      width: '100%',
+      height: '100%',
+    },
+    '.the_champ_sharing_container.the_champ_vertical_sharing.the_champ_hide_sharing.the_champ_bottom_sharing': {
+      display: 'none',
+    }
   },
 }));
 
@@ -83,7 +95,7 @@ const IndividualPost = (props: Props) => {
       <Grid container className={classes.container}>
         <Grid lg={9}>
           <Grid container>
-            <Grid item lg={11}>
+            <Grid item lg={11} style={{ maxWidth: '100%' }}>
               <Breadcrumb category={category} label={data?.post?.title} />
               {
                 (!loading && data?.post) ?
@@ -104,7 +116,7 @@ const IndividualPost = (props: Props) => {
                       cover={true}
                       className={classes.image}
                     />
-                    <div dangerouslySetInnerHTML={{ __html: data?.post?.content }} />
+                    <div id="divContent" style={{ width: '100%' }} dangerouslySetInnerHTML={{ __html: data?.post?.content }} />
                     <iframe
                       src={`http://www.facebook.com/plugins/comments.php?href=${locationHref}`}
                       scrolling="no"

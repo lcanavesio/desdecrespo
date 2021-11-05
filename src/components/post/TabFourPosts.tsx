@@ -71,6 +71,7 @@ const TabFourPosts = () => {
       where: {
         orderby: { field: DATE, order: DESC }
         categoryName: $categoryName
+        tagNotIn: [9589, 9377]
       }
     ) {
       edges {

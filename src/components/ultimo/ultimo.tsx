@@ -1,10 +1,10 @@
-import {gql, useQuery} from '@apollo/client';
-import {Button, Grid, Typography, useMediaQuery} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
+import { gql, useQuery } from '@apollo/client';
+import { Button, Grid, Typography, useMediaQuery } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 import Brightness1Icon from '@material-ui/icons/Brightness1';
 import FlashOnIcon from '@material-ui/icons/FlashOn';
-import {Skeleton} from '@material-ui/lab';
-import {Link} from 'gatsby';
+import { Skeleton } from '@material-ui/lab';
+import { Link } from 'gatsby';
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
 import NotFoundPage from '../../pages/404';
@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   carouselMobile: {
     marginLeft: 10,
     marginRight: 10,
-    width: '90%',
+    width: '60%',
     height: 50,
     textAlign: 'center',
     paddingTop: 5,
@@ -39,6 +39,13 @@ const useStyles = makeStyles((theme) => ({
     left: '5%',
     fontSize: 26,
     fontWeight: 600,
+  },
+  titleText: {
+    'display': '-webkit-box',
+    '-webkit-line-clamp': 2,
+    '-webkit-box-orient': 'vertical',
+    'overflow': 'hidden',
+    'textOverflow': 'ellipsis',
   },
   link: {
     color: 'black',
@@ -113,7 +120,7 @@ const Ultimo = () => {
                   to={`/post/${post.slug}/${post.id}`}
                   className={classes.link}
                 >
-                  {post.title}
+                  <span className={classes.titleText}>{post.title}</span>
                 </Link>
               ))}
             </Carousel>
@@ -122,8 +129,13 @@ const Ultimo = () => {
           )}
         </Grid>
       ) : (
-        <Grid container direction="row">
-          <Grid item key="ultimoMobile" className={classes.mobileItem}>
+        <div style={{width: '100%', display: '-webkit-inline-box'}}>
+          <Grid container
+            direction="row"
+            style={{width: '85%'}}
+            justifyContent="center"
+            alignItems="center">
+            <FlashOnIcon style={{color: 'red'}} />
             {posts ? (
               <Carousel
                 className={classes.carouselMobile}
@@ -138,27 +150,29 @@ const Ultimo = () => {
                     to={`/post/${post.slug}/${post.id}`}
                     className={classes.link}
                   >
-                    {post.title}
+                    <span className={classes.titleText}>{post.title}</span>
                   </Link>
                 ))}
               </Carousel>
             ) : (
               <Skeleton variant="rect" className={classes.carousel} />
             )}
-            <Grid item style={{paddingRight: '1%', paddingTop: '1%'}}>
-              <Button
-                variant="contained"
-                size="small"
-                style={{color: 'white', background: 'red'}}
-              >
-                <Typography component="p" variant="body2">
-                  <Brightness1Icon style={{width: 8,
-                    height: 8}}/> vivo
-                </Typography>
-              </Button>
-            </Grid>
           </Grid>
-        </Grid>
+          <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+            <Button
+              variant="contained"
+              size="small"
+              style={{color: 'white', background: 'red'}}
+            >
+              <Typography component="p" variant="body2">
+                <Brightness1Icon style={{
+                  width: 8,
+                  height: 8,
+                }} /> vivo
+              </Typography>
+            </Button>
+          </div>
+        </div>
       )}
     </>
   );
