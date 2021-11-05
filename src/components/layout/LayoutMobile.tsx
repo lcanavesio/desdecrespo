@@ -45,7 +45,6 @@ const LayoutMobile = () => {
         <div style={{textAlign: 'center', width: '100%', height: '100%'}}>
           <img src={process.env.PUBLICIDAD1} />
         </div>
-
         <PostGenerico
           key="postgenerico1"
           categoryName="locales"
@@ -53,7 +52,6 @@ const LayoutMobile = () => {
           titulo="Locales"
         />
         <Wather />
-
         <TabFourPosts />
 
         <img
