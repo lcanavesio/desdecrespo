@@ -6,10 +6,9 @@ import {
   DialogTitle,
   Grid,
   List,
-  TextField,
-  Tooltip,
+  TextField
 } from '@material-ui/core';
-import Drawer, {DrawerProps} from '@material-ui/core/Drawer';
+import Drawer, { DrawerProps } from '@material-ui/core/Drawer';
 import IconButton from '@material-ui/core/IconButton';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
@@ -18,16 +17,15 @@ import {
   createTheme,
   makeStyles,
   Theme,
-  ThemeProvider,
+  ThemeProvider
 } from '@material-ui/core/styles';
 import SearchIcon from '@material-ui/icons/Search';
 import clsx from 'clsx';
-import {navigate} from 'gatsby';
-import {Link} from 'gatsby-material-ui-components';
-import React, {memo} from 'react';
-import {Constants} from '../../utils/constants';
-import CloseIcon from '@material-ui/icons/Close';
-import {StaticImage} from 'gatsby-plugin-image';
+import { navigate } from 'gatsby';
+import { Link } from 'gatsby-material-ui-components';
+import { StaticImage } from 'gatsby-plugin-image';
+import React, { memo } from 'react';
+import { Constants } from '../../utils/constants';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -41,9 +39,10 @@ const useStyles = makeStyles((theme: Theme) =>
       },
     },
     itemCategory: {
-      boxShadow: '0 -1px 0 #404854 inset',
-      paddingBottom: theme.spacing(1),
-      paddingLeft: theme.spacing(1),
+      background: 'linear-gradient(20deg, #b91b0c 0%, #e28f12 100%)',
+      paddingBottom: 10,
+      paddingLeft: 10,
+      marginBottom: 2,
     },
     closeButton: {
       'right': theme.spacing(1),
@@ -56,15 +55,15 @@ const useStyles = makeStyles((theme: Theme) =>
     },
 
     divider: {
-      marginTop: theme.spacing(2),
+      marginTop: 2,
     },
   }),
 );
 
-export interface NavigatorProps extends Omit<DrawerProps, 'classes'> {}
+export interface NavigatorProps extends Omit<DrawerProps, 'classes'> { }
 
-function NavigatorMobile(props: NavigatorProps) {
-  const {...other} = props;
+function NavigatorMobile(props: any) {
+  const { ...other } = props;
   const classes = useStyles();
 
   const [open, setOpen] = React.useState(false);
@@ -84,6 +83,11 @@ function NavigatorMobile(props: NavigatorProps) {
     e.preventDefault();
     navigate(`/busqueda?keyword=${keyword}`);
     setOpen(false);
+    onCloseDialog();
+  };
+
+  const onCloseDialog = () => {
+    props.onCloseDialog();
   };
 
   return (
@@ -97,17 +101,6 @@ function NavigatorMobile(props: NavigatorProps) {
           <Grid container>
             <Grid item xs={11}>
               <DialogTitle id="form-dialog-title">Buscar</DialogTitle>
-            </Grid>
-            <Grid item xs={1}>
-              <Tooltip title="Salir" placement="top-end">
-                <IconButton
-                  onClick={handleClose}
-                  aria-label="close"
-                  className={classes.closeButton}
-                >
-                  <CloseIcon />
-                </IconButton>
-              </Tooltip>
             </Grid>
           </Grid>
           <DialogContent>
@@ -134,8 +127,9 @@ function NavigatorMobile(props: NavigatorProps) {
 
       <ThemeProvider theme={theme}>
         <Drawer variant="permanent" {...other}>
-          <List disablePadding style={{background: '#2b2b2b'}}>
-            <ListItem className={clsx(classes.item, classes.itemCategory)}>
+          <List disablePadding style={{ background: 'lightgrey' }}>
+            <ListItem className={clsx(classes.item, classes.itemCategory)}
+              style={{ background: 'white', paddingTop: 30, paddingBottom: 30 }}>
               <StaticImage
                 src="../../images/iconmobile.png"
                 alt="menumobile "
@@ -145,8 +139,12 @@ function NavigatorMobile(props: NavigatorProps) {
             {Constants.CATEGORIES.map((item, index) => (
               <div key={index}>
                 <ListItem className={clsx(classes.item, classes.itemCategory)}>
-                  <ListItemText style={{color: 'white'}}>
-                    <Link color="inherit" noWrap key={item.title} to={item.url}>
+                  <ListItemText style={{ color: 'white' }}>
+                    <Link
+                      onClick={onCloseDialog}
+                      color="inherit" noWrap
+                      key={item.title}
+                      to={item.url}>
                       {item.title}
                     </Link>
                   </ListItemText>
@@ -156,7 +154,7 @@ function NavigatorMobile(props: NavigatorProps) {
           </List>
 
           <IconButton onClick={handleClickOpen}>
-            <SearchIcon style={{color: 'rgb(252, 74, 0)'}} />
+            <SearchIcon style={{ color: 'rgb(252, 74, 0)' }} />
           </IconButton>
         </Drawer>
       </ThemeProvider>
@@ -194,7 +192,7 @@ theme = {
   overrides: {
     MuiDrawer: {
       paper: {
-        backgroundColor: '#2b2b2b',
+        backgroundColor: 'lightgrey',
       },
     },
   },

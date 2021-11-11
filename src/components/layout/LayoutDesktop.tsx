@@ -93,13 +93,15 @@ const LayoutDesktop = () => {
           </div>
           <PostsRecientes />
 
-          <Img className={classes.image} fixed={{
-            width: 321,
-            height: 200,
-            src: process.env.PUBLICIDAD5,
-            srcSet: process.env.PUBLICIDAD5,
+          <Grid item lg={12} style={{ marginLeft: -10, marginRight: -10 }}>
+            <Img className={classes.image} fixed={{
+              width: 321,
+              height: 200,
+              src: process.env.PUBLICIDAD5,
+              srcSet: process.env.PUBLICIDAD5,
 
-          }} loading={'lazy'} />
+            }} loading={'lazy'} />
+          </Grid>
 
           <Grid item lg={12} style={{ marginLeft: -10, marginRight: -10 }}>
             <PostGenerico
@@ -109,31 +111,37 @@ const LayoutDesktop = () => {
               titulo="Rurales"
             />
           </Grid>
-          <div className={classes.advertisingContainer}>
-            <Img className={classes.image} fixed={{
-              width: 327,
-              height: 200,
-              src: 'https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg',
-              srcSet: 'https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg',
+          <Grid item lg={12} style={{ marginLeft: -10, marginRight: -10 }}>
+            <Img className={classes.image}
+              imgStyle={{ objectFit: 'fill' }}
+              fixed={{
+                width: 321,
+                height: 200,
+                src: 'https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg',
+                srcSet: 'https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg',
 
-            }} loading={'lazy'} />
+              }} loading={'lazy'} />
 
-            <Img className={classes.image} fixed={{
-              width: 321,
-              height: 200,
-              src: 'https://www.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png',
-              srcSet: 'https://www.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png',
+            <Img className={classes.image}
+              imgStyle={{ objectFit: 'fill' }}
+              fixed={{
+                width: 321,
+                height: 200,
+                src: 'https://www.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png',
+                srcSet: 'https://www.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png',
 
-            }} loading={'lazy'} />
+              }} loading={'lazy'} />
 
-            <Img className={classes.image} fixed={{
-              width: 321,
-              height: 200,
-              src: 'https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png',
-              srcSet: 'https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png',
+            <Img className={classes.image}
+              imgStyle={{ objectFit: 'fill' }}
+              fixed={{
+                width: 321,
+                height: 200,
+                src: 'https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png',
+                srcSet: 'https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png',
 
-            }} loading={'lazy'} />
-          </div>
+              }} loading={'lazy'} />
+          </Grid>
 
         </Grid>
         <PolicialesProvinciales key="policialesprovinciales" />

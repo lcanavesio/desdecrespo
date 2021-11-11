@@ -24,7 +24,7 @@ type Layout = {
 const Layout = (props: Layout) => {
   const {children} = props;
   const classes = useStyles();
-  const matches = useMediaQuery('(min-width:900px)');
+  const matches = useMediaQuery('(min-width:1032px)');
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
@@ -49,6 +49,7 @@ const Layout = (props: Layout) => {
             variant="temporary"
             open={mobileOpen}
             onClose={handleDrawerToggle}
+            onCloseDialog={() => setMobileOpen(false)}
           />
           <HeaderMobile onDrawerToggle={handleDrawerToggle} />
           <div className={classes.content}>

@@ -1,4 +1,4 @@
-import {CssBaseline, Grid, makeStyles} from '@material-ui/core';
+import { CssBaseline, Grid, makeStyles } from '@material-ui/core';
 import React from 'react';
 import ClicMe from '../../components/inmobiliaria/ClicMe';
 import TabFourPosts from '../../components/post//TabFourPosts';
@@ -8,7 +8,6 @@ import PostGenerico from '../../components/post/PostGenerico';
 import SlidePosts from '../../components/post/SlidePosts';
 import SEO from '../../components/seo';
 import Wather from '../../components/Wather';
-import {PublicidadGenerico} from '../../utils/Publicidad';
 import PostsRecientes from '../post/PostsRecientes';
 import SocialFollow from '../social/SocialFollow';
 

@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   carouselMobile: {
     marginLeft: 10,
     marginRight: 10,
-    width: '60%',
+    width: '70%',
     height: 50,
     textAlign: 'center',
     paddingTop: 5,
@@ -81,7 +81,7 @@ const Ultimo = () => {
     }
   `;
 
-  const {loading, error, data} = useQuery(getPosts);
+  const { loading, error, data } = useQuery(getPosts);
   const posts = data?.posts?.edges?.map((edge) => edge.node) || null;
 
   if (error) return <NotFoundPage />;
@@ -92,12 +92,12 @@ const Ultimo = () => {
         <Grid
           container
           direction="row"
-          style={{width: '90%', maxWidth: 1700}}
-          justifyContent="center"
+          style={{ width: '90%', maxWidth: 1700 }}
+          justify="center"
           alignItems="center"
         >
-          <FlashOnIcon style={{color: 'red'}} />
-          <h5 style={{paddingTop: 21}}>LO ÚLTIMO</h5>
+          <FlashOnIcon style={{ color: 'red' }} />
+          <h5 style={{ paddingTop: 21 }}>LO ÚLTIMO</h5>
           {posts ? (
             <Carousel
               className={classes.carousel}
@@ -117,7 +117,7 @@ const Ultimo = () => {
               {posts.map((post, index) => (
                 <Link
                   key={index}
-                  to={`/post/${post.slug}/${post.id}`}
+                  to={`/post/${post.slug}`}
                   className={classes.link}
                 >
                   <span className={classes.titleText}>{post.title}</span>
@@ -129,13 +129,12 @@ const Ultimo = () => {
           )}
         </Grid>
       ) : (
-        <div style={{width: '100%', display: '-webkit-inline-box'}}>
+        <div style={{ width: '100%', display: '-webkit-inline-box' }}>
           <Grid container
             direction="row"
-            style={{width: '85%'}}
-            justifyContent="center"
+            justify="center"
             alignItems="center">
-            <FlashOnIcon style={{color: 'red'}} />
+            <FlashOnIcon style={{ color: 'red' }} />
             {posts ? (
               <Carousel
                 className={classes.carouselMobile}
@@ -147,7 +146,7 @@ const Ultimo = () => {
                 {posts.map((post, index) => (
                   <Link
                     key={index}
-                    to={`/post/${post.slug}/${post.id}`}
+                    to={`/post/${post.slug}`}
                     className={classes.link}
                   >
                     <span className={classes.titleText}>{post.title}</span>
@@ -158,11 +157,12 @@ const Ultimo = () => {
               <Skeleton variant="rect" className={classes.carousel} />
             )}
           </Grid>
-          <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+          <div style={{ display: matches ? 'flex' : 'none', alignItems: 'center', justify: 'center' }}
+          >
             <Button
               variant="contained"
               size="small"
-              style={{color: 'white', background: 'red'}}
+              style={{ color: 'white', background: 'red' }}
             >
               <Typography component="p" variant="body2">
                 <Brightness1Icon style={{

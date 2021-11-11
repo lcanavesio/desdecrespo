@@ -1,7 +1,7 @@
-import {gql, useQuery} from '@apollo/client';
-import {CssBaseline, Grid, Typography, useMediaQuery} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
-import {Skeleton} from '@material-ui/lab';
+import { gql, useQuery } from '@apollo/client';
+import { CssBaseline, Grid, Typography, useMediaQuery } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { Skeleton } from '@material-ui/lab';
 import Image from 'material-ui-image';
 import React from 'react';
 import NotFoundPage from '../../pages/404';
@@ -41,21 +41,21 @@ const useStyles = makeStyles((theme) => ({
       height: '100%',
     },
     '.the_champ_sharing_container.the_champ_vertical_sharing.the_champ_hide_sharing.the_champ_bottom_sharing':
-      {
-        display: 'none',
-      },
+    {
+      display: 'none',
+    },
   },
 }));
 
 type Props = {
-  path: string
-  location: string
+  slug: String
 }
 
 const IndividualPost = (props: Props) => {
-  const getPost = gql`
-    query getPost($id: ID!) {
-      post(id: $id) {
+  const { slug } = props;
+  const postBy = gql`
+    query postBy($slug: String!) {
+      postBy(slug: $slug) {
         content
         slug
         title
@@ -79,17 +79,15 @@ const IndividualPost = (props: Props) => {
   const locationHref: String =
     typeof window !== 'undefined' ?
       location.href.replace(
-          'http://localhost:8000/',
-          'https://www.desdecrespo.com.ar/',
+        'http://localhost:8000/',
+        'https://www.desdecrespo.com.ar/',
       ) :
       '';
-  const params: String[] =
-    typeof window !== 'undefined' ? location.pathname.split('/') : '';
-  const id: String = params[3];
-  const {loading, error, data} = useQuery(getPost, {
-    variables: {id},
+
+  const { loading, error, data } = useQuery(postBy, {
+    variables: { slug },
   });
-  const category = data?.post?.categories?.nodes[0]?.name;
+  const category = data?.postBy?.categories?.nodes[0]?.name;
 
   const classes = useStyles();
   if (error) return <NotFoundPage />;
@@ -103,9 +101,9 @@ const IndividualPost = (props: Props) => {
           <>
             <Grid lg={9}>
               <Grid container>
-                <Grid item lg={11} style={{maxWidth: '100%'}}>
+                <Grid item lg={11} style={{ maxWidth: '100%' }}>
                   <Breadcrumb category={category} label={''} />
-                  {!loading && data?.post ? (
+                  {!loading && data?.postBy ? (
                     <>
                       <Typography
                         component="h1"
@@ -121,11 +119,11 @@ const IndividualPost = (props: Props) => {
                           fontWeight: 'bold',
                         }}
                       >
-                        {data?.post?.title}
+                        {data?.postBy?.title}
                       </Typography>
                       <Image
-                        src={data?.post?.featuredImage?.node?.mediaItemUrl}
-                        alt={data?.post?.title}
+                        src={data?.postBy?.featuredImage?.node?.mediaItemUrl}
+                        alt={data?.postBy?.title}
                         aspectRatio={2}
                         disableSpinner={false}
                         cover={true}
@@ -133,10 +131,12 @@ const IndividualPost = (props: Props) => {
                       />
                       <div
                         id="divContent"
-                        style={{width: '100%', fontSize: '18px',
-                          fontWeight: 400}}
+                        style={{
+                          width: '100%', fontSize: '18px',
+                          fontWeight: 400
+                        }}
                         dangerouslySetInnerHTML={{
-                          __html: data?.post?.content,
+                          __html: data?.postBy?.content,
                         }}
 
                       />
@@ -218,9 +218,9 @@ const IndividualPost = (props: Props) => {
           </>
         ) : (
           <Grid container>
-            <Grid item lg={11} style={{maxWidth: '100%'}}>
+            <Grid item lg={11} style={{ maxWidth: '100%' }}>
               <Breadcrumb category={category} label={''} />
-              {!loading && data?.post ? (
+              {!loading && data?.postBy ? (
                 <>
                   <Typography
                     component="h1"
@@ -236,11 +236,11 @@ const IndividualPost = (props: Props) => {
                       fontWeight: 'bold',
                     }}
                   >
-                    {data?.post?.title}
+                    {data?.postBy?.title}
                   </Typography>
                   <Image
-                    src={data?.post?.featuredImage?.node?.mediaItemUrl}
-                    alt={data?.post?.title}
+                    src={data?.postBy?.featuredImage?.node?.mediaItemUrl}
+                    alt={data?.postBy?.title}
                     aspectRatio={2}
                     disableSpinner={false}
                     cover={true}
@@ -248,10 +248,12 @@ const IndividualPost = (props: Props) => {
                   />
                   <div
                     id="divContent"
-                    style={{width: '100%', fontSize: '18px',
-                      fontWeight: 400}}
+                    style={{
+                      width: '100%', fontSize: '18px',
+                      fontWeight: 400
+                    }}
                     dangerouslySetInnerHTML={{
-                      __html: data?.post?.content,
+                      __html: data?.postBy?.content,
                     }}
 
                   />

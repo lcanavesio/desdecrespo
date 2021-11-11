@@ -1,13 +1,13 @@
 import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import IconButton from '@material-ui/core/IconButton';
-import {createStyles, makeStyles, Theme} from '@material-ui/core/styles';
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import MenuIcon from '@material-ui/icons/Menu';
-import {StaticImage} from 'gatsby-plugin-image';
-import React, {memo} from 'react';
+import { Link } from 'gatsby';
+import { StaticImage } from 'gatsby-plugin-image';
+import React, { memo } from 'react';
 import Ultimo from '../ultimo/ultimo';
-import {Link} from 'gatsby-material-ui-components';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -15,14 +15,13 @@ const useStyles = makeStyles((theme: Theme) =>
       zIndex: 0,
     },
     root: {
-
-
-      display: 'flex',
+      display: 'contents',
       alignItems: 'center',
     },
     menuButton: {
       marginLeft: -theme.spacing(2),
-      color: 'black',
+      background: 'linear-gradient(20deg, #b91b0c 0%, #e28f12 100%)',
+      color: 'white',
     },
 
     items2: {
@@ -60,18 +59,18 @@ function HeaderMobile(props: HeaderProps) {
       <AppBar position="sticky">
         <Toolbar className={classes.toolbar}>
           <Grid container className={classes.root} xs={12}>
-            <Grid item xs={2}>
+            <Grid item>
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
                 onClick={onDrawerToggle}
                 className={classes.menuButton}
               >
-                <MenuIcon style={{color: '#fc4a00'}} />
+                <MenuIcon style={{color: 'white'}} />
               </IconButton>
             </Grid>
-            <Grid item xs={10}>
-              <Link to="/" >
+            <Grid item xs={11} style={{width: '100%', textAlign: 'center'}}>
+              <Link to="/" style={{width: '100%'}}>
                 <StaticImage
                   src="../../images/iconmobile.png"
                   alt="Banner - Desde Crespo"

@@ -16,6 +16,7 @@ module.exports = {
         component: require.resolve(`${__dirname}/src/components/layout/Layout.tsx`),
       },
     },
+    'gatsby-plugin-htaccess',
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
