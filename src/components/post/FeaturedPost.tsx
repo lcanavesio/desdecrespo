@@ -35,8 +35,8 @@ const useStyles = makeStyles((theme) => ({
     height: '100%',
     overflow: "hidden",
     display: "-webkit-box",
-    WebkitLineClamp: 3,
-    WebkitBoxOrient: "vertical"
+    WebkitLineClamp: 2,
+    WebkitBoxOrient: "vertical",
   }
 }));
 
@@ -59,7 +59,7 @@ export default function FeaturedPost(props: Props) {
   return (
     <>
       <Card className={classes.card} style={{ minWidth: '100%' }}>
-        <CardActionArea onClick={() => navigate(`/post/${post.slug}/${post.id}`)} style={{ minWidth: '100%' }}>
+        <CardActionArea onClick={() => navigate(`/post/${post.slug}`)} style={{ minWidth: '100%' }}>
           <CardMedia
             style={{ minWidth: '100%' }}
             className={classes.cardMedia}
@@ -68,7 +68,7 @@ export default function FeaturedPost(props: Props) {
             image={post?.featuredImage?.node?.mediaItemUrl}
             title={post?.title}
           />
-          <CardContent onClick={() => navigate(`/post/${post.slug}/${post.id}`)} style={{ minWidth: '100%', minHeight: '100%'}}>
+          <CardContent onClick={() => navigate(`/post/${post.slug}`)} style={{ minWidth: '100%', minHeight: '100%'}}>
             <Typography gutterBottom variant="h5" component="h2" className={classes.title}>
               {post?.title}
             </Typography>

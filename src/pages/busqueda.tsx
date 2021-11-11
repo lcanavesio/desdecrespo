@@ -68,7 +68,6 @@ const BusquedaPage = (props: Props) => {
     variables: { keyword: keyword },
   });
   const posts = data?.posts?.edges?.map((edge) => edge.node) || null;
-  console.log('posts', posts);
 
   if (!posts) return null;
   return (

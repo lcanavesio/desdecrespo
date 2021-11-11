@@ -79,8 +79,6 @@
       border:8px solid;
       border-color:transparent transparent transparent #222;
       position:absolute;
-      top:13px;
-      right:-15px
     }
     
     .btn-icon:hover > i,.btn-icon:focus > i {

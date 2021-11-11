@@ -6,20 +6,20 @@ import {
   Divider,
   Grid,
   TextField,
-  Tooltip,
+  Tooltip
 } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import {makeStyles} from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import CloseIcon from '@material-ui/icons/Close';
 import SearchIcon from '@material-ui/icons/Search';
-import {navigate} from 'gatsby';
-import {Link} from 'gatsby-material-ui-components';
-import {StaticImage} from 'gatsby-plugin-image';
+import { navigate } from 'gatsby';
+import { Link } from 'gatsby-material-ui-components';
+import { StaticImage } from 'gatsby-plugin-image';
 import React from 'react';
 import Ultimo from '../ultimo/ultimo';
-import CloseIcon from '@material-ui/icons/Close';
 
 const useStyles = makeStyles((theme) => ({
   bannerContainer: {
@@ -49,7 +49,7 @@ const useStyles = makeStyles((theme) => ({
     background: 'linear-gradient(20deg, #b91b0c 0%, #e28f12 100%)',
   },
   toolbarLink: {
-    'padding': theme.spacing(2),
+    'padding': '8px',
     'flexShrink': 0,
     'fontFamily': 'Roboto, Helvetica, Arial, sans-serif',
     'fontSize': 12,

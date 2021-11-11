@@ -26,8 +26,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 type Props = {
-  path: string
-  location: string
+  categoryName: String
 }
 
 const CategoryComponent = (props: Props) => {
@@ -57,11 +56,11 @@ const CategoryComponent = (props: Props) => {
     }
   `;
 
+  const { categoryName } = props;
   const category: Category = Constants.CATEGORIES.find(
-    (c) => c.url === (typeof window !== 'undefined' ? location.pathname : ''),
+    (c) => c.url === `/categoria/${categoryName}`,
   );
   const matches = useMediaQuery('(max-width:1279px)');
-
 
   if (!category) {
     return null;

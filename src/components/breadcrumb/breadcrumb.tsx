@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import { default as SvgIcon } from '@material-ui/icons/Assignment';
 import HomeIcon from '@material-ui/icons/Home';
 import ReceiptIcon from '@material-ui/icons/Receipt';
-import { Link } from 'gatsby-material-ui-components';
+import { Link } from 'gatsby';
 import React from 'react';
 import { Category } from 'src/interfaces/category.interface';
 import { Constants } from '../../utils/constants';
@@ -12,6 +12,8 @@ import { Constants } from '../../utils/constants';
 const useStyles = makeStyles((theme) => ({
   link: {
     display: 'flex',
+    color: '#5c5c5c',
+    textDecoration: 'none',
   },
   icon: {
     marginRight: theme.spacing(0.5),
@@ -27,13 +29,12 @@ type Props = {
 
 const Breadcrumb = (props: Props) => {
   const classes = useStyles();
-  console.log(props.category);
   const category: Category = Constants.CATEGORIES
       .find((c) => c.databaseName === props.category);
 
   return (
     <Breadcrumbs aria-label="breadcrumb">
-      <Link color="inherit" href="/" className={classes.link}>
+      <Link color="inherit" to={'/'} className={classes.link}>
         <HomeIcon className={classes.icon} />
         Inicio
       </Link>
@@ -42,7 +43,7 @@ const Breadcrumb = (props: Props) => {
         props.label ?
           <Link
             color="inherit"
-            href={category?.url}
+            to={category?.url}
             className={classes.link}
           >
             <SvgIcon component={category?.icon} className={classes.icon} />
@@ -50,8 +51,7 @@ const Breadcrumb = (props: Props) => {
           </Link> :
           <Link
             color="inherit"
-            onClick={(event) => event.preventDefault()}
-            href={category?.url}
+            to={category?.url}
             className={classes.link}
           >
             <SvgIcon component={category?.icon} className={classes.icon} />
