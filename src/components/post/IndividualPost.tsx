@@ -1,7 +1,7 @@
-import { gql, useQuery } from '@apollo/client';
-import { CssBaseline, Grid, Typography, useMediaQuery } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { Skeleton } from '@material-ui/lab';
+import {gql, useQuery} from '@apollo/client';
+import {CssBaseline, Grid, Typography, useMediaQuery} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
+import {Skeleton} from '@material-ui/lab';
 import Image from 'material-ui-image';
 import React from 'react';
 import NotFoundPage from '../../pages/404';
@@ -52,7 +52,7 @@ type Props = {
 }
 
 const IndividualPost = (props: Props) => {
-  const { slug } = props;
+  const {slug} = props;
   const postBy = gql`
     query postBy($slug: String!) {
       postBy(slug: $slug) {
@@ -79,13 +79,13 @@ const IndividualPost = (props: Props) => {
   const locationHref: String =
     typeof window !== 'undefined' ?
       location.href.replace(
-        'http://localhost:8000/',
-        'https://www.desdecrespo.com.ar/',
+          'http://localhost:8000/',
+          'https://www.desdecrespo.com.ar/',
       ) :
       '';
 
-  const { loading, error, data } = useQuery(postBy, {
-    variables: { slug },
+  const {loading, error, data} = useQuery(postBy, {
+    variables: {slug},
   });
   const category = data?.postBy?.categories?.nodes[0]?.name;
 
@@ -101,7 +101,7 @@ const IndividualPost = (props: Props) => {
           <>
             <Grid lg={9}>
               <Grid container>
-                <Grid item lg={11} style={{ maxWidth: '100%' }}>
+                <Grid item lg={11} style={{maxWidth: '100%'}}>
                   <Breadcrumb category={category} label={''} />
                   {!loading && data?.postBy ? (
                     <>
@@ -133,7 +133,7 @@ const IndividualPost = (props: Props) => {
                         id="divContent"
                         style={{
                           width: '100%', fontSize: '18px',
-                          fontWeight: 400
+                          fontWeight: 400,
                         }}
                         dangerouslySetInnerHTML={{
                           __html: data?.postBy?.content,
@@ -208,7 +208,13 @@ const IndividualPost = (props: Props) => {
                 src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png"
                 className={classes.image}
               />
-              <HeaderTitle title="ÚLTIMAS NOTICIAS" />
+              <a
+                href="http://galarza.gov.ar/licitaciones"
+                target="_blank"
+                rel="noreferrer"
+              >
+              <img src={process.env.PUBLICIDAD7} /></a>
+              <HeaderTitle title="NO SE PIERDA" />
               <InfiniteScrollSimple
                 categoryParams={
                   'Espectáculos, Sociales, Rurales,  Internacionales'
@@ -218,7 +224,7 @@ const IndividualPost = (props: Props) => {
           </>
         ) : (
           <Grid container>
-            <Grid item lg={11} style={{ maxWidth: '100%' }}>
+            <Grid item lg={11} style={{maxWidth: '100%'}}>
               <Breadcrumb category={category} label={''} />
               {!loading && data?.postBy ? (
                 <>
@@ -250,7 +256,7 @@ const IndividualPost = (props: Props) => {
                     id="divContent"
                     style={{
                       width: '100%', fontSize: '18px',
-                      fontWeight: 400
+                      fontWeight: 400,
                     }}
                     dangerouslySetInnerHTML={{
                       __html: data?.postBy?.content,
@@ -318,7 +324,13 @@ const IndividualPost = (props: Props) => {
                 src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png"
                 className={classes.image}
               />
-              <HeaderTitle title="ÚLTIMAS NOTICIAS" />
+              <a
+                href="http://galarza.gov.ar/licitaciones"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={process.env.PUBLICIDAD7} /></a>
+              <HeaderTitle title="NO SE PIERDA" />
               <InfiniteScrollSimple
                 categoryParams={
                   'Espectáculos, Locales, Rurales, Nacionales, Internacionales'

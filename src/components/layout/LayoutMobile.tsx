@@ -1,4 +1,4 @@
-import { CssBaseline, Grid, makeStyles } from '@material-ui/core';
+import {CssBaseline, Grid, makeStyles} from '@material-ui/core';
 import React from 'react';
 import ClicMe from '../../components/inmobiliaria/ClicMe';
 import TabFourPosts from '../../components/post//TabFourPosts';
@@ -10,6 +10,7 @@ import SEO from '../../components/seo';
 import Wather from '../../components/Wather';
 import PostsRecientes from '../post/PostsRecientes';
 import SocialFollow from '../social/SocialFollow';
+import Img from 'gatsby-image';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -123,7 +124,26 @@ const LayoutMobile = () => {
           first={3}
           titulo="DEPORTES"
         />
+        <div className={classes.advertisingContainer}>
+          <a
+            href="http://galarza.gov.ar/licitaciones"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Img
 
+              imgStyle={{objectFit: 'fill'}}
+              fixed={{
+                width: 321,
+                height: 266,
+                src: process.env.PUBLICIDAD7,
+                srcSet: process.env.PUBLICIDAD7,
+              }}
+              loading={'lazy'}
+            />
+          </a>
+
+        </div>
         <NoSePierda key="nosepierda" />
       </Grid>
     </section>

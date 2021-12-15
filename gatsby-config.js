@@ -69,7 +69,7 @@ module.exports = {
         // This is field under which it's accessible
         fieldName: `wpgraphql`,
         // Url to query from
-        url: `https://www.desdecrespo.com.ar/graphql`,
+        url: `https://admin.desdecrespo.com.ar/graphql`,
       },
     },
     // {
