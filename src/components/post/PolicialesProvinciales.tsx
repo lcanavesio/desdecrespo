@@ -3,7 +3,7 @@ import {CircularProgress, Grid, useMediaQuery} from '@material-ui/core';
 import React from 'react';
 import NotFoundPage from '../../pages/404';
 import {useStylesGlobal} from '../../utils/GlobalStyle';
-import HeaderTitle from '../common/HeaderTitle';
+import HeaderTitle from '../common/headerTitle';
 import FeaturedPost from './FeaturedPost';
 
 const PolicialesProvinciales = () => {

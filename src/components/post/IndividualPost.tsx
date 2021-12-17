@@ -6,7 +6,7 @@ import Image from 'material-ui-image';
 import React from 'react';
 import NotFoundPage from '../../pages/404';
 import Breadcrumb from '../breadcrumb/breadcrumb';
-import InfiniteScrollComponent from '../categoria/InfiniteScroll';
+import InfiniteScrollComponent from '../categoria/infiniteScroll';
 import InfiniteScrollSimple from '../categoria/infiniteScrollSimple';
 import HeaderTitle from '../common/headerTitle';
 import SEO from '../seo';
@@ -40,6 +40,7 @@ const useStyles = makeStyles((theme) => ({
       width: '100%',
       height: '100%',
     },
+    // eslint-disable-next-line max-len
     '.the_champ_sharing_container.the_champ_vertical_sharing.the_champ_hide_sharing.the_champ_bottom_sharing':
     {
       display: 'none',
@@ -213,7 +214,7 @@ const IndividualPost = (props: Props) => {
                 target="_blank"
                 rel="noreferrer"
               >
-              <img src={process.env.PUBLICIDAD7} /></a>
+                <img src={process.env.PUBLICIDAD7} /></a>
               <HeaderTitle title="NO SE PIERDA" />
               <InfiniteScrollSimple
                 categoryParams={
