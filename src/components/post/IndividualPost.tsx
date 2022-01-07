@@ -1,7 +1,7 @@
-import {gql, useQuery} from '@apollo/client';
-import {CssBaseline, Grid, Typography, useMediaQuery} from '@material-ui/core';
-import {makeStyles} from '@material-ui/core/styles';
-import {Skeleton} from '@material-ui/lab';
+import { gql, useQuery } from '@apollo/client';
+import { CssBaseline, Grid, Typography, useMediaQuery } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { Skeleton } from '@material-ui/lab';
 import Image from 'material-ui-image';
 import React from 'react';
 import NotFoundPage from '../../pages/404';

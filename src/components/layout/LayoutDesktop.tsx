@@ -1,4 +1,4 @@
-import {CssBaseline, Grid, makeStyles} from '@material-ui/core';
+import { CssBaseline, Grid, makeStyles } from '@material-ui/core';
 import Img from 'gatsby-image';
 import React from 'react';
 import ClicMe from '../../components/inmobiliaria/ClicMe';
@@ -10,7 +10,7 @@ import SlidePosts from '../../components/post/SlidePosts';
 import SEO from '../../components/seo';
 import TV from '../../components/tv/TV';
 import Wather from '../../components/Wather';
-import {PublicidadGenerico, PublicidadPrincipal} from '../../utils/Publicidad';
+import { PublicidadGenerico, PublicidadPrincipal } from '../../utils/Publicidad';
 import PostsRecientes from '../post/PostsRecientes';
 import SocialFlow from '../social/SocialFollow';
 
@@ -88,9 +88,9 @@ const LayoutDesktop = () => {
               fixed={{
                 width: 320,
                 height: 120,
-                src: 'https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png',
+                src: 'https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png',
                 srcSet:
-                  'https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png',
+                  'https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png',
               }}
               loading={'lazy'}
             />
@@ -125,9 +125,9 @@ const LayoutDesktop = () => {
               fixed={{
                 width: 321,
                 height: 200,
-                src: 'https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg',
+                src: 'https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg',
                 srcSet:
-                  'https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg',
+                  'https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg',
               }}
               loading={'lazy'}
             />
@@ -138,9 +138,9 @@ const LayoutDesktop = () => {
               fixed={{
                 width: 321,
                 height: 200,
-                src: 'https://www.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png',
+                src: 'https://admin.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png',
                 srcSet:
-                  'https://www.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png',
+                  'https://admin.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png',
               }}
               loading={'lazy'}
             />
@@ -151,9 +151,9 @@ const LayoutDesktop = () => {
               fixed={{
                 width: 321,
                 height: 200,
-                src: 'https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png',
+                src: 'https://admin.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png',
                 srcSet:
-                  'https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png',
+                  'https://admin.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png',
               }}
               loading={'lazy'}
             />

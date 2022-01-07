@@ -69,7 +69,7 @@ module.exports = {
         // This is field under which it's accessible
         fieldName: `wpgraphql`,
         // Url to query from
-        url: `https://www.desdecrespo.com.ar/graphql`,
+        url: `https://admin.desdecrespo.com.ar/graphql`,
       },
     },
     // {
@@ -78,7 +78,7 @@ module.exports = {
     //     typeName: "WPGraphQL",
     //     fieldName: "wpgraphql",
     //     // GraphQL endpoint, relative to your WordPress home URL.
-    //     url: "https://www.desdecrespo.com.ar/graphql",
+    //     url: "https://admin.desdecrespo.com.ar/graphql",
     //     // `${process.env.WORDPRESS_URL}/graphql`,
     //     // GraphQL endpoint using env variable
     //    // url: "${process.env.WORDPRESS_URL}/graphql",

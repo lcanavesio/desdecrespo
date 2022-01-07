@@ -15,7 +15,7 @@ export const getRadios = (): TRadios[] => {
       title: "FM Pasión",
       streamUrl: "https://servidor1.hostradios.com:8066/stream",
       imgLogo:
-        "https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/FMPasion.png",
+        "https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/FMPasion.png",
     },
     {
       id: "2",
@@ -23,7 +23,7 @@ export const getRadios = (): TRadios[] => {
       title: "FM Latina",
       streamUrl: "https://servidor1.hostradios.com:8068/stream",
       imgLogo:
-        "https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/FMLatina.png",
+        "https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/FMLatina.png",
     },
     {
       id: "3",
@@ -31,7 +31,7 @@ export const getRadios = (): TRadios[] => {
       title: "FM Libertad",
       streamUrl: "https://servidor1.hostradios.com:8064/stream",
       imgLogo:
-        "https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/libertad.jpg",
+        "https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/libertad.jpg",
     },
     {
       id: "4",
@@ -39,7 +39,7 @@ export const getRadios = (): TRadios[] => {
       title: "FM Universo",
       streamUrl: "https://servidor1.hostradios.com:8070/stream",
       imgLogo:
-        "https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/universo.png",
+        "https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/universo.png",
     },
   ];
 };
@@ -48,27 +48,27 @@ export const getRadioList = () => {
   return [
     {
       name: "Universo",
-      cover: "https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/universo.png",
+      cover: "https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/universo.png",
       musicSrc: "https://servidor1.hostradios.com:8070/stream",
       metadataUrl: "https://servidor1.hostradios.com:2000/AudioPlayer/FMUniverso/playerInfo",
     },
     {
       name: "FM Pasión",
-      cover: "https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/FMPasion.png",
+      cover: "https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/FMPasion.png",
       musicSrc: "https://servidor1.hostradios.com:8066/stream",
       //metadataUrl: "https://servidor1.hostradios.com:2000/AudioPlayer/FMUniverso/playerInfo",
     },
 
     {
       name: "FM Latina",
-      cover: "https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/FMLatina.png",
+      cover: "https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/FMLatina.png",
       musicSrc: "https://servidor1.hostradios.com:8068/stream",
       //metadataUrl: "https://servidor1.hostradios.com:2000/AudioPlayer/FMUniverso/playerInfo",
     },
 
     {
       name: "FM Libertad",
-      cover: "https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/libertad.jpg",
+      cover: "https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/libertad.jpg",
       musicSrc: "https://servidor1.hostradios.com:8064/stream",
       //metadataUrl: "https://servidor1.hostradios.com:2000/AudioPlayer/FMUniverso/playerInfo",
     },
