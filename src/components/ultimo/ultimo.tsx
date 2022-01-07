@@ -92,7 +92,7 @@ const Ultimo = () => {
           container
           direction="row"
           style={{ width: '90%', maxWidth: 1700 }}
-          justify="center"
+          justifyContent="center"
           alignItems="center"
         >
           <FlashOnIcon style={{ color: 'red' }} />
@@ -131,7 +131,7 @@ const Ultimo = () => {
         <div style={{ width: '100%', display: '-webkit-inline-box' }}>
           <Grid container
             direction="row"
-            justify="center"
+            justifyContent="center"
             alignItems="center">
             <FlashOnIcon style={{ color: 'red' }} />
             {posts ? (
@@ -156,7 +156,7 @@ const Ultimo = () => {
               <Skeleton variant="rect" className={classes.carousel} />
             )}
           </Grid>
-          <div style={{ display: matches ? 'flex' : 'none', alignItems: 'center', justify: 'center' }}
+          <div style={{ display: matches ? 'flex' : 'none', alignItems: 'center', justifyContent: 'center' }}
           >
             <Button
               variant="contained"

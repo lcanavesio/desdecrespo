@@ -80,7 +80,7 @@ const IndividualPost = (props: Props) => {
     typeof window !== 'undefined' ?
       location.href.replace(
         'http://localhost:8000/',
-        'https://www.desdecrespo.com.ar/',
+        'https://desdecrespo.com.ar/',
       ) :
       '';
 
@@ -193,19 +193,19 @@ const IndividualPost = (props: Props) => {
               <img src={process.env.PUBLICIDAD2} />
               <img src={process.env.PUBLICIDAD4} />
               <img
-                src="https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg"
+                src="https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg"
                 className={classes.image}
               />
               <img
-                src=" https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png"
+                src=" https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png"
                 className={classes.image}
               />
               <img
-                src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png"
+                src="https://admin.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png"
                 className={classes.image}
               />
               <img
-                src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png"
+                src="https://admin.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png"
                 className={classes.image}
               />
               <a
@@ -303,7 +303,7 @@ const IndividualPost = (props: Props) => {
             </Grid>
             <Grid item lg={11}>
               <img
-                src=" https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png"
+                src=" https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png"
                 className={classes.image}
               />
               <PostsRecientes />
@@ -312,16 +312,16 @@ const IndividualPost = (props: Props) => {
               <img src={process.env.PUBLICIDAD2} />
               <img src={process.env.PUBLICIDAD4} />
               <img
-                src="https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg"
+                src="https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg"
                 className={classes.image}
               />
 
               <img
-                src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png"
+                src="https://admin.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png"
                 className={classes.image}
               />
               <img
-                src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png"
+                src="https://admin.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png"
                 className={classes.image}
               />
               <a
