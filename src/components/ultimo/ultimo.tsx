@@ -7,7 +7,6 @@ import { Skeleton } from '@material-ui/lab';
 import { Link } from 'gatsby';
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
-import NotFoundPage from '../../pages/404';
 const useStyles = makeStyles((theme) => ({
   carousel: {
     marginLeft: 10,
@@ -84,7 +83,7 @@ const Ultimo = () => {
   const { loading, error, data } = useQuery(getPosts);
   const posts = data?.posts?.edges?.map((edge) => edge.node) || null;
 
-  if (error) return <NotFoundPage />;
+  if (error) return null;
 
   return (
     <>

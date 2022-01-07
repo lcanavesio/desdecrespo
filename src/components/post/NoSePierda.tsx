@@ -2,7 +2,6 @@
 import { gql, useQuery } from '@apollo/client';
 import { CircularProgress, Grid, useMediaQuery } from '@material-ui/core';
 import React from 'react';
-import NotFoundPage from '../../pages/404';
 import { useStylesGlobal } from '../../utils/GlobalStyle';
 import HeaderTitle from '../common/headerTitle';
 import FeaturedPost from './FeaturedPost';
@@ -73,7 +72,7 @@ const NoSePierda = () => {
   const postsEducacion =
     dataEducacion?.posts?.edges?.map((edge) => edge.node) || null;
 
-  if (error || errorEducacion) return <NotFoundPage />;
+  if (error || errorEducacion) return null;
   if (!postsVarios || !postsEducacion) return null;
   if (loading || loadingEducacion) return <CircularProgress />;
   return (

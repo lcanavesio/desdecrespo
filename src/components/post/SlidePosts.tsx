@@ -6,7 +6,6 @@ import { Link, navigate } from 'gatsby';
 import Image from 'material-ui-image';
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
-import NotFoundPage from '../../pages/404';
 
 const useStyles = makeStyles((theme) => ({
   'carousel': {
@@ -87,7 +86,7 @@ const SlidePosts = () => {
 
   const { loading, error, data: dataPosts } = useQuery(getPosts);
   const posts = dataPosts?.posts?.edges?.map((edge) => edge.node) || null;
-  if (error) return <NotFoundPage />;
+  if (error) return null;
   return (
     <>
       {(!loading && posts) ?

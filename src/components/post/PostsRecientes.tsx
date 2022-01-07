@@ -9,7 +9,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Skeleton } from '@material-ui/lab';
 import { Link } from 'gatsby';
 import React from 'react';
-import NotFoundPage from '../../pages/404';
 import HeaderTitle from '../common/headerTitle';
 
 const useStyles = makeStyles((theme) => ({
@@ -56,7 +55,7 @@ export default function PostsRecientes() {
   const { loading, error, data } = useQuery(getPosts);
   const posts = data?.posts?.edges?.map((edge) => edge.node) || null;
 
-  if (error) return <NotFoundPage />;
+  if (error) return null;
 
   const showSkeleton = () => {
     const skeletons = [];

@@ -4,7 +4,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Skeleton } from '@material-ui/lab';
 import Image from 'material-ui-image';
 import React from 'react';
-import NotFoundPage from '../../pages/404';
 import Breadcrumb from '../breadcrumb/breadcrumb';
 import InfiniteScrollComponent from '../categoria/infiniteScroll';
 import InfiniteScrollSimple from '../categoria/infiniteScrollSimple';
@@ -91,7 +90,7 @@ const IndividualPost = (props: Props) => {
   const category = data?.postBy?.categories?.nodes[0]?.name;
 
   const classes = useStyles();
-  if (error) return <NotFoundPage />;
+  if (error) return null;
 
   return (
     <section className={classes.container}>
@@ -142,7 +141,7 @@ const IndividualPost = (props: Props) => {
 
                       />
                       <iframe
-                        src={`http://www.facebook.com/plugins/comments.php?href=${locationHref}`}
+                        src={`https://www.facebook.com/plugins/comments.php?href=${locationHref}`}
                         scrolling="no"
                         frameBorder="0"
                         style={{
@@ -265,7 +264,7 @@ const IndividualPost = (props: Props) => {
 
                   />
                   <iframe
-                    src={`http://www.facebook.com/plugins/comments.php?href=${locationHref}`}
+                    src={`https://www.facebook.com/plugins/comments.php?href=${locationHref}`}
                     scrolling="no"
                     frameBorder="0"
                     style={{

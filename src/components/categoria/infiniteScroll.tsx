@@ -9,7 +9,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import { Waypoint } from 'react-waypoint';
 import { Category } from '../../interfaces/category.interface';
-import NotFoundPage from '../../pages/404';
 import { Constants } from '../../utils/constants';
 import PostCard from '../post/PostCard.';
 import SEO from '../seo';
@@ -78,7 +77,7 @@ const InfiniteScrollComponent = (props: Props) => {
   const classes = useStyles();
 
   if (loading) return <CircularProgress />;
-  if (error) return <NotFoundPage />;
+  if (error) return null;
   if (!edges) return null;
 
   return (
