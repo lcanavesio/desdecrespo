@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme: Theme) =>
       zIndex: 0,
     },
     root: {
-      display: 'flex',
+      display: 'contents',
       alignItems: 'center',
     },
     menuButton: {

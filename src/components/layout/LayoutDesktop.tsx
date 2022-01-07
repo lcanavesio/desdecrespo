@@ -83,25 +83,34 @@ const LayoutDesktop = () => {
           <SocialFlow />
 
           <div className={classes.advertisingContainer}>
-            <Img className={classes.image} fixed={{
-              width: 320,
-              height: 120,
-              src: 'https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png',
-              srcSet: 'https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png',
-
-            }} loading={'lazy'} />
+            <Img
+              className={classes.image}
+              fixed={{
+                width: 320,
+                height: 120,
+                src: 'https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png',
+                srcSet:
+                  'https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png',
+              }}
+              loading={'lazy'}
+            />
           </div>
           <PostsRecientes />
 
-          <Img className={classes.image} fixed={{
-            width: 321,
-            height: 200,
-            src: process.env.PUBLICIDAD5,
-            srcSet: process.env.PUBLICIDAD5,
+          <Grid item lg={12} style={{marginLeft: -10, marginRight: -10}}>
+            <Img
+              className={classes.image}
+              fixed={{
+                width: 321,
+                height: 200,
+                src: process.env.PUBLICIDAD5,
+                srcSet: process.env.PUBLICIDAD5,
+              }}
+              loading={'lazy'}
+            />
+          </Grid>
 
-          }} loading={'lazy'} />
-
-          <Grid item lg={12} style={{ marginLeft: -10, marginRight: -10 }}>
+          <Grid item lg={12} style={{marginLeft: -10, marginRight: -10}}>
             <PostGenerico
               key="postgenerico8"
               categoryName="Rurales"
@@ -109,32 +118,63 @@ const LayoutDesktop = () => {
               titulo="Rurales"
             />
           </Grid>
-          <div className={classes.advertisingContainer}>
-            <Img className={classes.image} fixed={{
-              width: 327,
-              height: 200,
-              src: 'https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg',
-              srcSet: 'https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg',
+          <Grid item lg={12} style={{marginLeft: -10, marginRight: -10}}>
+            <Img
+              className={classes.image}
+              imgStyle={{objectFit: 'fill'}}
+              fixed={{
+                width: 321,
+                height: 200,
+                src: 'https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg',
+                srcSet:
+                  'https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg',
+              }}
+              loading={'lazy'}
+            />
 
-            }} loading={'lazy'} />
+            <Img
+              className={classes.image}
+              imgStyle={{objectFit: 'fill'}}
+              fixed={{
+                width: 321,
+                height: 200,
+                src: 'https://admin.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png',
+                srcSet:
+                  'https://admin.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png',
+              }}
+              loading={'lazy'}
+            />
 
-            <Img className={classes.image} fixed={{
-              width: 321,
-              height: 200,
-              src: 'https://www.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png',
-              srcSet: 'https://www.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png',
-
-            }} loading={'lazy'} />
-
-            <Img className={classes.image} fixed={{
-              width: 321,
-              height: 200,
-              src: 'https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png',
-              srcSet: 'https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png',
-
-            }} loading={'lazy'} />
-          </div>
-
+            <Img
+              className={classes.image}
+              imgStyle={{objectFit: 'fill'}}
+              fixed={{
+                width: 321,
+                height: 200,
+                src: 'https://admin.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png',
+                srcSet:
+                  'https://admin.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png',
+              }}
+              loading={'lazy'}
+            />
+            <a
+              href="http://galarza.gov.ar/licitaciones"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Img
+                className={classes.image}
+                imgStyle={{objectFit: 'fill'}}
+                fixed={{
+                  width: 321,
+                  height: 266,
+                  src: process.env.PUBLICIDAD7,
+                  srcSet: process.env.PUBLICIDAD7,
+                }}
+                loading={'lazy'}
+              />
+            </a>
+          </Grid>
         </Grid>
         <PolicialesProvinciales key="policialesprovinciales" />
         <PostGenerico
@@ -159,7 +199,6 @@ const LayoutDesktop = () => {
         />
 
         <NoSePierda key="nosepierda" />
-
       </Grid>
     </section>
   );

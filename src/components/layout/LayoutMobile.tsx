@@ -1,4 +1,5 @@
-import {CssBaseline, Grid, makeStyles} from '@material-ui/core';
+import { CssBaseline, Grid, makeStyles } from '@material-ui/core';
+import Img from 'gatsby-image';
 import React from 'react';
 import ClicMe from '../../components/inmobiliaria/ClicMe';
 import TabFourPosts from '../../components/post//TabFourPosts';
@@ -8,7 +9,6 @@ import PostGenerico from '../../components/post/PostGenerico';
 import SlidePosts from '../../components/post/SlidePosts';
 import SEO from '../../components/seo';
 import Wather from '../../components/Wather';
-import {PublicidadGenerico} from '../../utils/Publicidad';
 import PostsRecientes from '../post/PostsRecientes';
 import SocialFollow from '../social/SocialFollow';
 
@@ -62,7 +62,7 @@ const LayoutMobile = () => {
         <PostsRecientes />
         <ClicMe />
         <div className={classes.advertisingContainer}>
-          <img src=" https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png" />
+          <img src=" https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png" />
         </div>
 
         <PostGenerico
@@ -87,7 +87,7 @@ const LayoutMobile = () => {
         <PolicialesProvinciales key="policialesprovinciales" />
 
         <div className={classes.advertisingContainer}>
-          <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg" />
+          <img src="https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/Cabezal_Almanaque_SUSPENDIDO.jpg" />
         </div>
 
         <PostGenerico
@@ -106,7 +106,7 @@ const LayoutMobile = () => {
           first={3}
           titulo="NACIONALES"
         />
-        <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png" className={classes.advertisingContainer} />
+        <img src="https://admin.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png" className={classes.advertisingContainer} />
 
         <PostGenerico
           key="postgenerico6"
@@ -115,7 +115,7 @@ const LayoutMobile = () => {
           titulo="INTERNACIONALES"
         />
         <div className={classes.advertisingContainer}>
-          <img src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png" />
+          <img src="https://admin.desdecrespo.com.ar/wp-content/uploads/2021/06/Cont.-Visintin.png" />
         </div>
 
         <PostGenerico
@@ -124,7 +124,26 @@ const LayoutMobile = () => {
           first={3}
           titulo="DEPORTES"
         />
+        <div className={classes.advertisingContainer}>
+          <a
+            href="http://galarza.gov.ar/licitaciones"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Img
 
+              imgStyle={{objectFit: 'fill'}}
+              fixed={{
+                width: 321,
+                height: 266,
+                src: process.env.PUBLICIDAD7,
+                srcSet: process.env.PUBLICIDAD7,
+              }}
+              loading={'lazy'}
+            />
+          </a>
+
+        </div>
         <NoSePierda key="nosepierda" />
       </Grid>
     </section>

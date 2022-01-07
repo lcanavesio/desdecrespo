@@ -1,9 +1,8 @@
-import {gql, useQuery} from '@apollo/client';
-import {CircularProgress, Grid, useMediaQuery} from '@material-ui/core';
+import { gql, useQuery } from '@apollo/client';
+import { CircularProgress, Grid, useMediaQuery } from '@material-ui/core';
 import React from 'react';
-import NotFoundPage from '../../pages/404';
-import {useStylesGlobal} from '../../utils/GlobalStyle';
-import HeaderTitle from '../common/HeaderTitle';
+import { useStylesGlobal } from '../../utils/GlobalStyle';
+import HeaderTitle from '../common/headerTitle';
 import FeaturedPost from './FeaturedPost';
 
 const PolicialesProvinciales = () => {
@@ -72,7 +71,7 @@ const PolicialesProvinciales = () => {
     dataProvinciales?.posts?.edges?.map((edge) => edge.node) || null;
 
   if (loading || loadingProvinciales) return <CircularProgress />;
-  if (error || errorProvinciales) return <NotFoundPage />;
+  if (error || errorProvinciales) return null;
   if (!postsPoliciales || !postsProvinciales) return null;
 
   return (

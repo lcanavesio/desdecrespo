@@ -2,7 +2,6 @@ import { gql, useQuery } from '@apollo/client';
 import { Grid, GridSize } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import React from 'react';
-import NotFoundPage from '../../pages/404';
 import { useStylesGlobal } from '../../utils/GlobalStyle';
 import HeaderTitle from '../common/headerTitle';
 import FeaturedPost from './FeaturedPost';
@@ -63,7 +62,7 @@ const PostGenerico = (props: Props) => {
   });
   const posts = data?.posts?.edges?.map((edge) => edge.node) || null;
 
-  if (error) return <NotFoundPage />;
+  if (error) return null;
 
   const showSkeleton = () => {
     const skeletons = [];

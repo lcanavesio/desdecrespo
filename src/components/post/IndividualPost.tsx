@@ -4,9 +4,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Skeleton } from '@material-ui/lab';
 import Image from 'material-ui-image';
 import React from 'react';
-import NotFoundPage from '../../pages/404';
 import Breadcrumb from '../breadcrumb/breadcrumb';
-import InfiniteScrollComponent from '../categoria/InfiniteScroll';
+import InfiniteScrollComponent from '../categoria/infiniteScroll';
 import InfiniteScrollSimple from '../categoria/infiniteScrollSimple';
 import HeaderTitle from '../common/headerTitle';
 import SEO from '../seo';
@@ -40,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
       width: '100%',
       height: '100%',
     },
+    // eslint-disable-next-line max-len
     '.the_champ_sharing_container.the_champ_vertical_sharing.the_champ_hide_sharing.the_champ_bottom_sharing':
     {
       display: 'none',
@@ -52,7 +52,7 @@ type Props = {
 }
 
 const IndividualPost = (props: Props) => {
-  const { slug } = props;
+  const {slug} = props;
   const postBy = gql`
     query postBy($slug: String!) {
       postBy(slug: $slug) {
@@ -84,13 +84,13 @@ const IndividualPost = (props: Props) => {
       ) :
       '';
 
-  const { loading, error, data } = useQuery(postBy, {
-    variables: { slug },
+  const {loading, error, data} = useQuery(postBy, {
+    variables: {slug},
   });
   const category = data?.postBy?.categories?.nodes[0]?.name;
 
   const classes = useStyles();
-  if (error) return <NotFoundPage />;
+  if (error) return null;
 
   return (
     <section className={classes.container}>
@@ -133,7 +133,7 @@ const IndividualPost = (props: Props) => {
                         id="divContent"
                         style={{
                           width: '100%', fontSize: '18px',
-                          fontWeight: 400
+                          fontWeight: 400,
                         }}
                         dangerouslySetInnerHTML={{
                           __html: data?.postBy?.content,
@@ -141,7 +141,7 @@ const IndividualPost = (props: Props) => {
 
                       />
                       <iframe
-                        src={`http://www.facebook.com/plugins/comments.php?href=${locationHref}`}
+                        src={`https://www.facebook.com/plugins/comments.php?href=${locationHref}`}
                         scrolling="no"
                         frameBorder="0"
                         style={{
@@ -208,7 +208,13 @@ const IndividualPost = (props: Props) => {
                 src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png"
                 className={classes.image}
               />
-              <HeaderTitle title="ÚLTIMAS NOTICIAS" />
+              <a
+                href="http://galarza.gov.ar/licitaciones"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={process.env.PUBLICIDAD7} /></a>
+              <HeaderTitle title="NO SE PIERDA" />
               <InfiniteScrollSimple
                 categoryParams={
                   'Espectáculos, Sociales, Rurales,  Internacionales'
@@ -250,7 +256,7 @@ const IndividualPost = (props: Props) => {
                     id="divContent"
                     style={{
                       width: '100%', fontSize: '18px',
-                      fontWeight: 400
+                      fontWeight: 400,
                     }}
                     dangerouslySetInnerHTML={{
                       __html: data?.postBy?.content,
@@ -258,7 +264,7 @@ const IndividualPost = (props: Props) => {
 
                   />
                   <iframe
-                    src={`http://www.facebook.com/plugins/comments.php?href=${locationHref}`}
+                    src={`https://www.facebook.com/plugins/comments.php?href=${locationHref}`}
                     scrolling="no"
                     frameBorder="0"
                     style={{
@@ -318,7 +324,13 @@ const IndividualPost = (props: Props) => {
                 src="https://www.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png"
                 className={classes.image}
               />
-              <HeaderTitle title="ÚLTIMAS NOTICIAS" />
+              <a
+                href="http://galarza.gov.ar/licitaciones"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img src={process.env.PUBLICIDAD7} /></a>
+              <HeaderTitle title="NO SE PIERDA" />
               <InfiniteScrollSimple
                 categoryParams={
                   'Espectáculos, Locales, Rurales, Nacionales, Internacionales'

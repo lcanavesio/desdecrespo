@@ -7,7 +7,6 @@ import { Skeleton } from '@material-ui/lab';
 import { Link } from 'gatsby';
 import React from 'react';
 import Carousel from 'react-material-ui-carousel';
-import NotFoundPage from '../../pages/404';
 const useStyles = makeStyles((theme) => ({
   carousel: {
     marginLeft: 10,
@@ -84,7 +83,7 @@ const Ultimo = () => {
   const { loading, error, data } = useQuery(getPosts);
   const posts = data?.posts?.edges?.map((edge) => edge.node) || null;
 
-  if (error) return <NotFoundPage />;
+  if (error) return null;
 
   return (
     <>
@@ -93,7 +92,7 @@ const Ultimo = () => {
           container
           direction="row"
           style={{ width: '90%', maxWidth: 1700 }}
-          justifyContent="center"
+          justify="center"
           alignItems="center"
         >
           <FlashOnIcon style={{ color: 'red' }} />
@@ -132,7 +131,7 @@ const Ultimo = () => {
         <div style={{ width: '100%', display: '-webkit-inline-box' }}>
           <Grid container
             direction="row"
-            justifyContent="center"
+            justify="center"
             alignItems="center">
             <FlashOnIcon style={{ color: 'red' }} />
             {posts ? (
@@ -157,7 +156,7 @@ const Ultimo = () => {
               <Skeleton variant="rect" className={classes.carousel} />
             )}
           </Grid>
-          <div style={{ display: matches ? 'flex' : 'none', alignItems: 'center', justifyContent: 'center' }}
+          <div style={{ display: matches ? 'flex' : 'none', alignItems: 'center', justify: 'center' }}
           >
             <Button
               variant="contained"
