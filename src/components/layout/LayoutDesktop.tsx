@@ -1,20 +1,21 @@
-import { CssBaseline, Grid, makeStyles } from '@material-ui/core';
-import Img from 'gatsby-image';
-import React from 'react';
-import ClicMe from '../../components/inmobiliaria/ClicMe';
-import TabFourPosts from '../../components/post//TabFourPosts';
-import NoSePierda from '../../components/post/NoSePierda';
-import PolicialesProvinciales from '../../components/post/PolicialesProvinciales';
-import PostGenerico from '../../components/post/PostGenerico';
-import SlidePosts from '../../components/post/SlidePosts';
-import SEO from '../../components/seo';
-import TV from '../../components/tv/TV';
-import Wather from '../../components/Wather';
-import { PublicidadGenerico, PublicidadPrincipal } from '../../utils/Publicidad';
-import PostsRecientes from '../post/PostsRecientes';
-import SocialFlow from '../social/SocialFollow';
+import { CssBaseline, Grid, makeStyles } from '@material-ui/core'
+import Img from 'gatsby-image'
+import React from 'react'
+import ClicMe from '../../components/inmobiliaria/ClicMe'
+import TabFourPosts from '../../components/post//TabFourPosts'
+import NoSePierda from '../../components/post/NoSePierda'
+import PolicialesProvinciales from '../../components/post/PolicialesProvinciales'
+import PostGenerico from '../../components/post/PostGenerico'
+import SlidePosts from '../../components/post/SlidePosts'
+import SEO from '../../components/seo'
+import TV from '../../components/tv/TV'
+import Wather from '../../components/Wather'
+import { PublicidadGenerico, PublicidadPrincipal } from '../../utils/Publicidad'
+import PostsRecientes from '../post/PostsRecientes'
+import Radio from '../radio/radio'
+import SocialFlow from '../social/SocialFollow'
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   container: {
     paddingTop: 10,
   },
@@ -34,10 +35,10 @@ const useStyles = makeStyles((theme) => ({
     width: '100%',
     textAlign: 'center',
   },
-}));
+}))
 
 const LayoutDesktop = () => {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <section className={classes.container}>
       <SEO title="Inicio" />
@@ -74,11 +75,11 @@ const LayoutDesktop = () => {
             key="publicidad6"
             href={process.env.PUBLICIDAD6}
           />
-
         </Grid>
         <Grid lg={3} className={classes.rightColumn}>
           <TV />
           <Wather />
+          <Radio />
           <ClicMe />
           <SocialFlow />
 
@@ -97,7 +98,7 @@ const LayoutDesktop = () => {
           </div>
           <PostsRecientes />
 
-          <Grid item lg={12} style={{marginLeft: -10, marginRight: -10}}>
+          <Grid item lg={12} style={{ marginLeft: -10, marginRight: -10 }}>
             <Img
               className={classes.image}
               fixed={{
@@ -110,7 +111,7 @@ const LayoutDesktop = () => {
             />
           </Grid>
 
-          <Grid item lg={12} style={{marginLeft: -10, marginRight: -10}}>
+          <Grid item lg={12} style={{ marginLeft: -10, marginRight: -10 }}>
             <PostGenerico
               key="postgenerico8"
               categoryName="Rurales"
@@ -118,10 +119,10 @@ const LayoutDesktop = () => {
               titulo="Rurales"
             />
           </Grid>
-          <Grid item lg={12} style={{marginLeft: -10, marginRight: -10}}>
+          <Grid item lg={12} style={{ marginLeft: -10, marginRight: -10 }}>
             <Img
               className={classes.image}
-              imgStyle={{objectFit: 'fill'}}
+              imgStyle={{ objectFit: 'fill' }}
               fixed={{
                 width: 321,
                 height: 200,
@@ -134,7 +135,7 @@ const LayoutDesktop = () => {
 
             <Img
               className={classes.image}
-              imgStyle={{objectFit: 'fill'}}
+              imgStyle={{ objectFit: 'fill' }}
               fixed={{
                 width: 321,
                 height: 200,
@@ -147,7 +148,7 @@ const LayoutDesktop = () => {
 
             <Img
               className={classes.image}
-              imgStyle={{objectFit: 'fill'}}
+              imgStyle={{ objectFit: 'fill' }}
               fixed={{
                 width: 321,
                 height: 200,
@@ -164,7 +165,7 @@ const LayoutDesktop = () => {
             >
               <Img
                 className={classes.image}
-                imgStyle={{objectFit: 'fill'}}
+                imgStyle={{ objectFit: 'fill' }}
                 fixed={{
                   width: 321,
                   height: 266,
@@ -201,7 +202,7 @@ const LayoutDesktop = () => {
         <NoSePierda key="nosepierda" />
       </Grid>
     </section>
-  );
-};
+  )
+}
 
-export default LayoutDesktop;
+export default LayoutDesktop

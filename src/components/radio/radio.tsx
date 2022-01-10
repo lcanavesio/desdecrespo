@@ -1,8 +1,9 @@
-import { Grid, makeStyles, Theme } from '@material-ui/core';
+import { Grid, IconButton, makeStyles, Theme, Tooltip } from '@material-ui/core';
+import { GraphicEqRounded, PlayCircleOutlineRounded } from '@material-ui/icons';
 import React, { useEffect, useState } from 'react';
-import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import { getRadios, TRadios } from '../../utils/radiosConfig';
+import EventBus, { EVENT_RADIO_CHANGE } from '../../utils/EventBus';
+import { getRadioList } from '../../utils/radiosConfig';
 
 const useStyles = makeStyles((theme: Theme) => ({
   radio: {
@@ -29,7 +30,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     '-webkit-align-items': 'center',
   },
 
-
   img: {
     'display': 'block',
     'width': '3.5em',
@@ -46,25 +46,33 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: '100%',
     textAlign: 'center',
   },
-
-
 }));
 
 const Radio = () => {
   const classes = useStyles();
 
-  const [stations, setStations] = useState<TRadios[]>();
-  const [stationFilter, setStationFilter] = useState();
+  const [stations, setStations] = useState(null);
+  const [playIndex, setPlayIndex] = useState(0);
 
   useEffect(() => {
-    const dataRadios = getRadios();
+    const dataRadios = getRadioList();
     setStations(dataRadios);
-  }, [stationFilter]);
-
-  // const filters = ['fmPasion', 'latina', 'libertad', 'universo'];
+    EventBus.on(EVENT_RADIO_CHANGE, (data) => {
+      if (playIndex !== data.index) {
+        setPlayIndex(data.index);
+      }
+    });
+  }, []);
 
   const setDefaultSrc = (event) => {
     event.target.src = '/images/defaultRadio.png';
+  };
+
+  const playButtonHandler = (index: number) => {
+    if (playIndex !== index) {
+      setPlayIndex(index);
+      EventBus.dispatch(EVENT_RADIO_CHANGE, {index});
+    }
   };
 
   return (
@@ -76,35 +84,38 @@ const Radio = () => {
               <Grid item xs={12} md={3}>
                 <img
                   className={classes.img}
-                  src={station.imgLogo}
+                  src={station.cover}
                   alt="station logo"
                   onError={setDefaultSrc}
                 />
               </Grid>
               <Grid item xs={12} md={4}>
-                <label className={classes.name}>{station.title}</label>
+                <label className={classes.name}>{station.name}</label>
               </Grid>
-              <Grid item xs={12} md={5}>
-                <AudioPlayer
-                  style={{
-                    backgroundColor: 'rgb(238 236 241)',
-                    display: 'flex',
-                    justifyItems: 'center',
-                    padding: '0.25em 0.75em',
-                    borderRadius: '10px',
-                  }}
-
-                  src={station.streamUrl}
-                  showJumpControls={false}
-                  layout="stacked"
-                  customProgressBarSection={[]}
-                  autoPlayAfterSrcChange={false}
-                  preload={'metadata'}
-                  customControlsSection={[
-                    RHAP_UI.MAIN_CONTROLS,
-                    RHAP_UI.VOLUME_CONTROLS,
-                  ]}
-                />
+              <Grid item xs={12} md={5} style={{textAlign: 'right'}}>
+                <Tooltip
+                  title={
+                    index !== playIndex ?
+                      'Reproducir' :
+                      'En el reproductor actualmente'
+                  }
+                  placement="top-end"
+                >
+                  <IconButton
+                    onClick={() => {
+                      playButtonHandler(index);
+                    }}
+                  >
+                    {index !== playIndex ? (
+                      <PlayCircleOutlineRounded
+                        fontSize="medium"
+                        htmlColor="red"
+                      />
+                    ) : (
+                      <GraphicEqRounded fontSize="medium" htmlColor="green"/>
+                    )}
+                  </IconButton>
+                </Tooltip>
               </Grid>
             </Grid>
           );

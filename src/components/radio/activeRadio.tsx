@@ -1,8 +1,11 @@
 import { makeStyles, Theme, useMediaQuery } from '@material-ui/core';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import ReactJkMusicPlayer, { ReactJkMusicPlayerAudioInfo } from 'react-jinke-music-player';
+import ReactJkMusicPlayer, {
+  ReactJkMusicPlayerAudioInfo
+} from 'react-jinke-music-player';
 import 'react-jinke-music-player/assets/index.css';
+import EventBus, { EVENT_RADIO_CHANGE } from '../../utils/EventBus';
 import { getRadioList } from '../../utils/radiosConfig';
 
 const useStyles = makeStyles((theme: Theme) => ({
@@ -11,9 +14,10 @@ const useStyles = makeStyles((theme: Theme) => ({
       '.music-player-panel': {
         backgroundImage: 'linear-gradient(20deg,#b91b0c 0%,#e28f12 100%)',
       },
-      '.music-player-panel > .panel-content > .progress-bar-content > .audio-main > .duration': {
-        display: 'none',
-      },
+      '.music-player-panel > .panel-content > .progress-bar-content > .audio-main > .duration':
+        {
+          display: 'none',
+        },
       '.music-player-panel > .panel-content > .img-content': {
         backgroundSize: '100% 100%',
       },
@@ -58,13 +62,13 @@ const ActiveRadio = () => {
     if (playing && !errorMetadataURL) {
       const activeStation = stations[playIndex];
       axios
-        .get(activeStation.metadataUrl)
-        .then((response) => {
-          setStreamTitle(response?.data?.nowplaying);
-        })
-        .catch(function (error) {
-          setErrorMetadataURL(true);
-        });
+          .get(activeStation.metadataUrl)
+          .then((response) => {
+            setStreamTitle(response?.data?.nowplaying);
+          })
+          .catch(function(error) {
+            setErrorMetadataURL(true);
+          });
     }
   };
 
@@ -72,6 +76,11 @@ const ActiveRadio = () => {
     if (!stations) {
       setStations(getRadioList());
     }
+    EventBus.on(EVENT_RADIO_CHANGE, (data) => {
+      if (playIndex !== data.index) {
+        setPlayIndex(data.index);
+      }
+    });
   }, []);
 
   useEffect(() => {
@@ -86,7 +95,6 @@ const ActiveRadio = () => {
       setIntervalId(setInterval(getStreamTitle, 5000));
     }
   }, [playing, playIndex]);
-
 
   const options = {
     isUploadAudio: false,
@@ -104,8 +112,8 @@ const ActiveRadio = () => {
     showMiniModeCover: true,
     showDowload: true,
     showPlay: true,
-    showReload: true,
-    showPlayMode: true,
+    showReload: false,
+    showPlayMode: false,
     showThemeSwitch: false,
     playModeTipVisible: false,
     showDownload: false,
@@ -117,6 +125,7 @@ const ActiveRadio = () => {
     <>
       <ReactJkMusicPlayer
         className={classes.player}
+        defaultPlayMode="order"
         playIndex={playIndex}
         audioLists={stations}
         onAudioPlay={() => {
@@ -139,6 +148,7 @@ const ActiveRadio = () => {
         onPlayIndexChange={(playIndex) => {
           setPlayIndex(playIndex);
           setPlaying(true);
+          EventBus.dispatch(EVENT_RADIO_CHANGE, {index: playIndex});
         }}
       />
     </>
