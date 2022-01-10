@@ -11,7 +11,6 @@ import { Waypoint } from 'react-waypoint';
 import { Category } from '../../interfaces/category.interface';
 import { Constants } from '../../utils/constants';
 import PostCard from '../post/PostCard.';
-import SEO from '../seo';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -82,7 +81,6 @@ const InfiniteScrollComponent = (props: Props) => {
 
   return (
     <section className={classes.container}>
-      <SEO title="Inicio" />
       <CssBaseline />
 
       <List>

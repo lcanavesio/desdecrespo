@@ -107,11 +107,11 @@ const SlidePosts = () => {
                   cover={true}
                   className={classes.image}
                 />
-
+                <div id="layerImage">
+                  <h3 className={classes.postTitle} style={{ fontSize: matches ? 14 : 26 }}>{post.title}</h3>
+                </div>
               </Link>
-              <div id="layerImage">
-                <h3 className={classes.postTitle} style={{fontSize: matches ? 14 : 26}}>{post.title}</h3>
-              </div>
+
             </div>
           ))}
         </Carousel> :

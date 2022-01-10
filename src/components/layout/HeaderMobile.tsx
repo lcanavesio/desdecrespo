@@ -59,7 +59,7 @@ function HeaderMobile(props: HeaderProps) {
       <AppBar position="sticky">
         <Toolbar className={classes.toolbar}>
           <Grid container className={classes.root} xs={12}>
-            <Grid item>
+            <Grid item={true}>
               <IconButton
                 color="inherit"
                 aria-label="open drawer"
