@@ -34,7 +34,7 @@ const Breadcrumb = (props: Props) => {
 
   return (
     <Breadcrumbs aria-label="breadcrumb">
-      <Link color="inherit" to={'/'} className={classes.link}>
+      <Link color="inherit" to={"/"} className={classes.link}>
         <HomeIcon className={classes.icon} />
         Inicio
       </Link>
