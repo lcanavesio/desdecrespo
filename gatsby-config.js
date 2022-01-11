@@ -1,9 +1,8 @@
-require("dotenv").config({
+require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
-})
+});
 
 module.exports = {
-
   siteMetadata: {
     title: `Desde Crespo`,
     description: `Diario`,
@@ -20,9 +19,6 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-     // `gatsby-plugin-typescript` is automatically included in gatsby
-    // You only need to explicitly define it here if you need to configure
-    // specific options in it
     {
       resolve: `gatsby-plugin-typography`,
       options: {
@@ -36,7 +32,7 @@ module.exports = {
       options: {
         stylesConfig: {
           // disableAutoprefixing: true,
-           disableMinification: true
+          disableMinification: true,
         },
       },
     },
@@ -58,7 +54,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/desde-crespo-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/desde-crespo-icon.png`,
       },
     },
     {
@@ -69,26 +65,8 @@ module.exports = {
         // This is field under which it's accessible
         fieldName: `wpgraphql`,
         // Url to query from
-        url: `https://admin.desdecrespo.com.ar/graphql`,
+        url: process.env.GATSBY_GCMS_URL,
       },
     },
-    // {
-    //   resolve: "gatsby-source-graphql",
-    //   options: {
-    //     typeName: "WPGraphQL",
-    //     fieldName: "wpgraphql",
-    //     // GraphQL endpoint, relative to your WordPress home URL.
-    //     url: "https://admin.desdecrespo.com.ar/graphql",
-    //     // `${process.env.WORDPRESS_URL}/graphql`,
-    //     // GraphQL endpoint using env variable
-    //    // url: "${process.env.WORDPRESS_URL}/graphql",
-    //   },
-    // },
-    // {
-    //   resolve: 'gatsby-plugin-apollo',
-    //   options: {
-    //     uri: process.env.GATSBY_GCMS_URL
-    //   }
-    // },
   ],
-}
+};
