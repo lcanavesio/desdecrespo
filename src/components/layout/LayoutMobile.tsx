@@ -1,4 +1,4 @@
-import { CssBaseline, Grid, makeStyles } from '@material-ui/core';
+import {CssBaseline, Grid, makeStyles} from '@material-ui/core';
 import Img from 'gatsby-image';
 import React from 'react';
 import ClicMe from '../../components/inmobiliaria/ClicMe';
@@ -59,7 +59,7 @@ const LayoutMobile = () => {
           className={classes.advertisingContainer}
         />
 
-        <PostsRecientes />
+        <PostsRecientes key="postrecientes-mobile" />
         <ClicMe />
         <div className={classes.advertisingContainer}>
           <img src=" https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png" />
@@ -124,6 +124,7 @@ const LayoutMobile = () => {
           first={3}
           titulo="DEPORTES"
         />
+        {process.env.PUBLICIDAD7 &&
         <div className={classes.advertisingContainer}>
           <a
             href="http://galarza.gov.ar/licitaciones"
@@ -144,6 +145,7 @@ const LayoutMobile = () => {
           </a>
 
         </div>
+        }
         <NoSePierda key="nosepierda" />
       </Grid>
     </section>

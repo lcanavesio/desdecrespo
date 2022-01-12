@@ -87,9 +87,9 @@ const InfiniteScrollComponent = (props: Props) => {
 
       <List>
         {edges.map((x, i) => (
-          <React.Fragment key={x.id}>
-            <ListItem style={{paddingLeft: 0, paddingRight: 0}}>
-              <PostCard post={x.node} />
+          <React.Fragment key={i}>
+            <ListItem style={{paddingLeft: 0, paddingRight: 0}} key={i}>
+              <PostCard post={x.node} key={i}/>
             </ListItem>
             {i === edges.length - 2 && (
               <Waypoint

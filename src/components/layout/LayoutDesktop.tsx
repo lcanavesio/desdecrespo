@@ -96,7 +96,7 @@ const LayoutDesktop = () => {
               loading={'lazy'}
             />
           </div>
-          <PostsRecientes />
+          <PostsRecientes key="PostsRecientes" />
 
           <Grid item lg={12} style={{ marginLeft: -10, marginRight: -10 }}>
             <Img
@@ -158,23 +158,25 @@ const LayoutDesktop = () => {
               }}
               loading={'lazy'}
             />
-            <a
-              href="http://galarza.gov.ar/licitaciones"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Img
-                className={classes.image}
-                imgStyle={{ objectFit: 'fill' }}
-                fixed={{
-                  width: 321,
-                  height: 266,
-                  src: process.env.PUBLICIDAD7,
-                  srcSet: process.env.PUBLICIDAD7,
-                }}
-                loading={'lazy'}
-              />
-            </a>
+            {process.env.PUBLICIDAD7 && (
+              <a
+                href="http://galarza.gov.ar/licitaciones"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <Img
+                  className={classes.image}
+                  imgStyle={{ objectFit: 'fill' }}
+                  fixed={{
+                    width: 321,
+                    height: 266,
+                    src: process.env.PUBLICIDAD7,
+                    srcSet: process.env.PUBLICIDAD7,
+                  }}
+                  loading={'lazy'}
+                />
+              </a>
+            )}
           </Grid>
         </Grid>
         <PolicialesProvinciales key="policialesprovinciales" />

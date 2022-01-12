@@ -52,7 +52,7 @@ export default function PostsRecientes() {
       }
     }
   `;
-  const { loading, error, data } = useQuery(getPosts);
+  const {loading, error, data} = useQuery(getPosts);
   const posts = data?.posts?.edges?.map((edge) => edge.node) || null;
 
   if (error) return null;
@@ -62,28 +62,28 @@ export default function PostsRecientes() {
 
     for (let i = 0; i < 4; i++) {
       skeletons.push(
-        <div>
-          <Skeleton
-            variant="rect"
-            animation="wave"
-            style={{
-              minWidth: 300,
-              minHeight: 200,
-              marginLeft: 10,
-              marginRight: 10,
-            }}
-          />
-          <Skeleton
-            variant="text"
-            animation="wave"
-            style={{
-              minWidth: 300,
-              minHeight: 30,
-              marginLeft: 10,
-              marginRight: 10,
-            }}
-          />
-        </div>,
+          <div key={i}>
+            <Skeleton
+              variant="rect"
+              animation="wave"
+              style={{
+                minWidth: 300,
+                minHeight: 200,
+                marginLeft: 10,
+                marginRight: 10,
+              }}
+            />
+            <Skeleton
+              variant="text"
+              animation="wave"
+              style={{
+                minWidth: 300,
+                minHeight: 30,
+                marginLeft: 10,
+                marginRight: 10,
+              }}
+            />
+          </div>,
       );
     }
     return skeletons;
@@ -91,14 +91,14 @@ export default function PostsRecientes() {
 
   return (
     <>
-      <HeaderTitle title="Recientes" />
-      <List className={classes.root}>
+      <HeaderTitle title="Recientes" key="header-title-postrecientes"/>
+      <List className={classes.root} key="list-postrecientes">
         {!loading && posts ?
           posts.map((post, index) => (
             <>
               <ListItem
                 alignItems="flex-start"
-                style={{ width: '100%' }}
+                style={{width: '100%'}}
                 key={index}
                 component={Link}
                 to={`/post/${post?.slug}`}

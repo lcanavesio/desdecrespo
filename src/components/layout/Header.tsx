@@ -6,18 +6,18 @@ import {
   Divider,
   Grid,
   TextField,
-  Tooltip
+  Tooltip,
 } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import CloseIcon from '@material-ui/icons/Close';
 import SearchIcon from '@material-ui/icons/Search';
-import { navigate } from 'gatsby';
-import { Link } from 'gatsby-material-ui-components';
-import { StaticImage } from 'gatsby-plugin-image';
+import {navigate} from 'gatsby';
+import {Link} from 'gatsby-material-ui-components';
+import {StaticImage} from 'gatsby-plugin-image';
 import React from 'react';
 import Ultimo from '../ultimo/ultimo';
 
@@ -164,8 +164,8 @@ export default function Header(props: Props) {
         </form>
       </Dialog>
 
-      <Toolbar className={classes.toolbar}>
-        <Ultimo />
+      <Toolbar className={classes.toolbar} key="toolbar-1">
+        <Ultimo key="ultimo" />
         <Typography
           component="h2"
           variant="h5"
@@ -184,7 +184,7 @@ export default function Header(props: Props) {
         </Button>
       </Toolbar>
 
-      <div className={classes.bannerContainer}>
+      <div className={classes.bannerContainer} key="banner">
         <Grid item md={12} lg={12} className={classes.banner}>
           <a rel="home" href="https://admin.desdecrespo.com.ar/">
             <StaticImage
@@ -196,10 +196,11 @@ export default function Header(props: Props) {
         </Grid>
       </div>
 
-      <header className={classes.header}>
+      <header className={classes.header} key="header-desktop-component">
         <div className={classes.headerContainer}>
-          <Toolbar component="nav" variant="dense">
+          <Toolbar component="nav" variant="dense" key="toolbar-2">
             <Divider
+              key="divider-1"
               orientation="vertical"
               flexItem
               className={classes.dividerVertical}
@@ -218,6 +219,7 @@ export default function Header(props: Props) {
                 </Link>
               </div>
               <Divider
+                key={'divider-' + `${index}`}
                 orientation="vertical"
                 flexItem
                 className={classes.dividerVertical} /></>

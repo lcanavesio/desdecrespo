@@ -1,7 +1,7 @@
-import { gql, useQuery } from '@apollo/client';
-import { CssBaseline, Grid, Typography, useMediaQuery } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
-import { Skeleton } from '@material-ui/lab';
+import {gql, useQuery} from '@apollo/client';
+import {CssBaseline, Grid, Typography, useMediaQuery} from '@material-ui/core';
+import {makeStyles} from '@material-ui/core/styles';
+import {Skeleton} from '@material-ui/lab';
 import Image from 'material-ui-image';
 import React from 'react';
 import Breadcrumb from '../breadcrumb/breadcrumb';
@@ -41,9 +41,9 @@ const useStyles = makeStyles((theme) => ({
     },
     // eslint-disable-next-line max-len
     '.the_champ_sharing_container.the_champ_vertical_sharing.the_champ_hide_sharing.the_champ_bottom_sharing':
-    {
-      display: 'none',
-    },
+      {
+        display: 'none',
+      },
   },
 }));
 
@@ -79,8 +79,8 @@ const IndividualPost = (props: Props) => {
   const locationHref: String =
     typeof window !== 'undefined' ?
       location.href.replace(
-        'http://localhost:8000/',
-        'https://desdecrespo.com.ar/',
+          'http://localhost:8000/',
+          'https://desdecrespo.com.ar/',
       ) :
       '';
 
@@ -101,7 +101,7 @@ const IndividualPost = (props: Props) => {
           <>
             <Grid lg={9}>
               <Grid container>
-                <Grid item lg={11} style={{ maxWidth: '100%' }}>
+                <Grid item lg={11} style={{maxWidth: '100%'}}>
                   <Breadcrumb category={category} label={''} />
                   {!loading && data?.postBy ? (
                     <>
@@ -132,13 +132,13 @@ const IndividualPost = (props: Props) => {
                       <div
                         id="divContent"
                         style={{
-                          width: '100%', fontSize: '18px',
+                          width: '100%',
+                          fontSize: '18px',
                           fontWeight: 400,
                         }}
                         dangerouslySetInnerHTML={{
                           __html: data?.postBy?.content,
                         }}
-
                       />
                       <iframe
                         src={`https://www.facebook.com/plugins/comments.php?href=${locationHref}`}
@@ -178,17 +178,24 @@ const IndividualPost = (props: Props) => {
                     </>
                   )}
                 </Grid>
-                <HeaderTitle title="ÚLTIMAS NOTICIAS" />
+                <HeaderTitle
+                  title="ÚLTIMAS NOTICIAS"
+                  key="header-title-ultimasnoticias"
+                />
                 <Grid item lg={11}>
                   <InfiniteScrollComponent
+                    key="infinite-scroll-component-locales"
                     categoryParams={'Locales, Policiales, Nacionales'}
                   />
                 </Grid>
               </Grid>
             </Grid>
             <Grid lg={3} className={classes.rightColumn}>
-              <PostsRecientes />
-              <HeaderTitle title="PUBLICITE AQUÍ" />
+              <PostsRecientes key="postrecientes-individualpost-desktop" />
+              <HeaderTitle
+                title="PUBLICITE AQUÍ"
+                key="header-title-publicite-desktop"
+              />
               <img src={process.env.PUBLICIDAD5} />
               <img src={process.env.PUBLICIDAD2} />
               <img src={process.env.PUBLICIDAD4} />
@@ -213,9 +220,14 @@ const IndividualPost = (props: Props) => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={process.env.PUBLICIDAD7} /></a>
-              <HeaderTitle title="NO SE PIERDA" />
+              {process.env.PUBLICIDAD7 && <img src={process.env.PUBLICIDAD7} /> }
+              </a>
+              <HeaderTitle
+                title="NO SE PIERDA"
+                key="header-title-nosepierda-desktop"
+              />
               <InfiniteScrollSimple
+                key="infiniteScrollSimple-espectauclos-rurales"
                 categoryParams={
                   'Espectáculos, Sociales, Rurales,  Internacionales'
                 }
@@ -224,7 +236,7 @@ const IndividualPost = (props: Props) => {
           </>
         ) : (
           <Grid container>
-            <Grid item lg={11} style={{ maxWidth: '100%' }}>
+            <Grid item lg={11} style={{maxWidth: '100%'}}>
               <Breadcrumb category={category} label={''} />
               {!loading && data?.postBy ? (
                 <>
@@ -255,13 +267,13 @@ const IndividualPost = (props: Props) => {
                   <div
                     id="divContent"
                     style={{
-                      width: '100%', fontSize: '18px',
+                      width: '100%',
+                      fontSize: '18px',
                       fontWeight: 400,
                     }}
                     dangerouslySetInnerHTML={{
                       __html: data?.postBy?.content,
                     }}
-
                   />
                   <iframe
                     src={`https://www.facebook.com/plugins/comments.php?href=${locationHref}`}
@@ -306,8 +318,11 @@ const IndividualPost = (props: Props) => {
                 src=" https://admin.desdecrespo.com.ar/wp-content/uploads/2020/05/fh.png"
                 className={classes.image}
               />
-              <PostsRecientes />
-              <HeaderTitle title="PUBLICITE AQUÍ" />
+              <PostsRecientes key="postrecientes-individualpost-mobile" />
+              <HeaderTitle
+                title="PUBLICITE AQUÍ"
+                key="header-title-publiciteaqui"
+              />
               <img src={process.env.PUBLICIDAD5} />
               <img src={process.env.PUBLICIDAD2} />
               <img src={process.env.PUBLICIDAD4} />
@@ -329,9 +344,11 @@ const IndividualPost = (props: Props) => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={process.env.PUBLICIDAD7} /></a>
-              <HeaderTitle title="NO SE PIERDA" />
+                <img src={process.env.PUBLICIDAD7} />
+              </a>
+              <HeaderTitle title="NO SE PIERDA" key="header-title-nosepierda" />
               <InfiniteScrollSimple
+                key="infiniteScrollSimple-espectauclos-locales"
                 categoryParams={
                   'Espectáculos, Locales, Rurales, Nacionales, Internacionales'
                 }
