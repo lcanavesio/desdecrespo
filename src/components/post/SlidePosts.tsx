@@ -91,6 +91,7 @@ const SlidePosts = () => {
     <>
       {(!loading && posts) ?
         <Carousel
+        interval={8000}
           className={classes.carousel} animation={'slide'}>
           {posts.map((post, index) => (
             <div key={index}>

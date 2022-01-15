@@ -42,7 +42,7 @@ const LayoutMobile = () => {
           </Grid>
         </Grid>
         {/* <TV /> */}
-        <div style={{textAlign: 'center', width: '100%', height: '100%'}}>
+        <div style={{ textAlign: 'center', width: '100%', height: '100%' }}>
           <img src={process.env.PUBLICIDAD1} />
         </div>
         <PostGenerico
@@ -80,7 +80,7 @@ const LayoutMobile = () => {
           >
             <img
               src={process.env.PUBLICIDAD3}
-              style={{textAlign: 'center', width: '80%'}}
+              style={{ textAlign: 'center', width: '80%' }}
             />
           </a>
         </div>
@@ -124,7 +124,7 @@ const LayoutMobile = () => {
           first={3}
           titulo="DEPORTES"
         />
-        <div className={classes.advertisingContainer}>
+        {process.env.PUBLICIDAD7 && <div className={classes.advertisingContainer}>
           <a
             href="http://galarza.gov.ar/licitaciones"
             target="_blank"
@@ -132,7 +132,7 @@ const LayoutMobile = () => {
           >
             <Img
 
-              imgStyle={{objectFit: 'fill'}}
+              imgStyle={{ objectFit: 'fill' }}
               fixed={{
                 width: 321,
                 height: 266,
@@ -143,7 +143,7 @@ const LayoutMobile = () => {
             />
           </a>
 
-        </div>
+        </div>}
         <NoSePierda key="nosepierda" />
       </Grid>
     </section>
