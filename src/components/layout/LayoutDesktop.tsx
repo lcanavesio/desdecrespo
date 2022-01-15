@@ -158,7 +158,7 @@ const LayoutDesktop = () => {
               }}
               loading={'lazy'}
             />
-            <a
+            {process.env.PUBLICIDAD7 && <a
               href="http://galarza.gov.ar/licitaciones"
               target="_blank"
               rel="noreferrer"
@@ -175,6 +175,7 @@ const LayoutDesktop = () => {
                 loading={'lazy'}
               />
             </a>
+            }
           </Grid>
         </Grid>
         <PolicialesProvinciales key="policialesprovinciales" />

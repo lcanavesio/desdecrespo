@@ -52,7 +52,7 @@ type Props = {
 }
 
 const IndividualPost = (props: Props) => {
-  const {slug} = props;
+  const { slug } = props;
   const postBy = gql`
     query postBy($slug: String!) {
       postBy(slug: $slug) {
@@ -84,8 +84,8 @@ const IndividualPost = (props: Props) => {
       ) :
       '';
 
-  const {loading, error, data} = useQuery(postBy, {
-    variables: {slug},
+  const { loading, error, data } = useQuery(postBy, {
+    variables: { slug },
   });
   const category = data?.postBy?.categories?.nodes[0]?.name;
 
@@ -208,12 +208,14 @@ const IndividualPost = (props: Props) => {
                 src="https://admin.desdecrespo.com.ar/wp-content/uploads/2021/09/Screenshot_2021-09-18-11-50-08-1024x576.png"
                 className={classes.image}
               />
-              <a
+
+              {process.env.PUBLICIDAD7 && <a
                 href="http://galarza.gov.ar/licitaciones"
                 target="_blank"
                 rel="noreferrer"
               >
                 <img src={process.env.PUBLICIDAD7} /></a>
+              }
               <HeaderTitle title="NO SE PIERDA" />
               <InfiniteScrollSimple
                 categoryParams={
