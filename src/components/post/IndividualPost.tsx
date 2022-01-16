@@ -8,7 +8,7 @@ import Breadcrumb from '../breadcrumb/breadcrumb';
 import InfiniteScrollComponent from '../categoria/infiniteScroll';
 import InfiniteScrollSimple from '../categoria/infiniteScrollSimple';
 import HeaderTitle from '../common/headerTitle';
-import SEO from '../seo';
+import SEO from '../seo/seo';
 import PostsRecientes from './PostsRecientes';
 
 const useStyles = makeStyles((theme) => ({
@@ -41,9 +41,9 @@ const useStyles = makeStyles((theme) => ({
     },
     // eslint-disable-next-line max-len
     '.the_champ_sharing_container.the_champ_vertical_sharing.the_champ_hide_sharing.the_champ_bottom_sharing':
-    {
-      display: 'none',
-    },
+      {
+        display: 'none',
+      },
   },
 }));
 
@@ -52,7 +52,7 @@ type Props = {
 }
 
 const IndividualPost = (props: Props) => {
-  const { slug } = props;
+  const {slug} = props;
   const postBy = gql`
     query postBy($slug: String!) {
       postBy(slug: $slug) {
@@ -79,13 +79,13 @@ const IndividualPost = (props: Props) => {
   const locationHref: String =
     typeof window !== 'undefined' ?
       location.href.replace(
-        'http://localhost:8000/',
-        'https://desdecrespo.com.ar/',
+          'http://localhost:8000/',
+          'https://desdecrespo.com.ar/',
       ) :
       '';
 
-  const { loading, error, data } = useQuery(postBy, {
-    variables: { slug },
+  const {loading, error, data} = useQuery(postBy, {
+    variables: {slug},
   });
   const category = data?.postBy?.categories?.nodes[0]?.name;
 
@@ -94,14 +94,19 @@ const IndividualPost = (props: Props) => {
 
   return (
     <section className={classes.container}>
-      <SEO title={data?.postBy?.title} />
+      <SEO
+        title={data?.postBy?.title}
+        description={data?.postBy?.title}
+        image={data?.postBy?.featuredImage?.node?.mediaItemUrl}
+        article={data?.postBy?.content}
+      />
       <CssBaseline />
       <Grid container className={classes.container}>
         {!matches ? (
           <>
             <Grid lg={9}>
               <Grid container>
-                <Grid item lg={11} style={{ maxWidth: '100%' }}>
+                <Grid item lg={11} style={{maxWidth: '100%'}}>
                   <Breadcrumb category={category} label={''} />
                   {!loading && data?.postBy ? (
                     <>
@@ -132,13 +137,13 @@ const IndividualPost = (props: Props) => {
                       <div
                         id="divContent"
                         style={{
-                          width: '100%', fontSize: '18px',
+                          width: '100%',
+                          fontSize: '18px',
                           fontWeight: 400,
                         }}
                         dangerouslySetInnerHTML={{
                           __html: data?.postBy?.content,
                         }}
-
                       />
                       <iframe
                         src={`https://www.facebook.com/plugins/comments.php?href=${locationHref}`}
@@ -209,13 +214,15 @@ const IndividualPost = (props: Props) => {
                 className={classes.image}
               />
 
-              {process.env.PUBLICIDAD7 && <a
-                href="http://galarza.gov.ar/licitaciones"
-                target="_blank"
-                rel="noreferrer"
-              >
-                <img src={process.env.PUBLICIDAD7} /></a>
-              }
+              {process.env.PUBLICIDAD7 && (
+                <a
+                  href="http://galarza.gov.ar/licitaciones"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <img src={process.env.PUBLICIDAD7} />
+                </a>
+              )}
               <HeaderTitle title="NO SE PIERDA" />
               <InfiniteScrollSimple
                 categoryParams={
@@ -226,7 +233,7 @@ const IndividualPost = (props: Props) => {
           </>
         ) : (
           <Grid container>
-            <Grid item lg={11} style={{ maxWidth: '100%' }}>
+            <Grid item lg={11} style={{maxWidth: '100%'}}>
               <Breadcrumb category={category} label={''} />
               {!loading && data?.postBy ? (
                 <>
@@ -257,13 +264,13 @@ const IndividualPost = (props: Props) => {
                   <div
                     id="divContent"
                     style={{
-                      width: '100%', fontSize: '18px',
+                      width: '100%',
+                      fontSize: '18px',
                       fontWeight: 400,
                     }}
                     dangerouslySetInnerHTML={{
                       __html: data?.postBy?.content,
                     }}
-
                   />
                   <iframe
                     src={`https://www.facebook.com/plugins/comments.php?href=${locationHref}`}
@@ -331,7 +338,8 @@ const IndividualPost = (props: Props) => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <img src={process.env.PUBLICIDAD7} /></a>
+                <img src={process.env.PUBLICIDAD7} />
+              </a>
               <HeaderTitle title="NO SE PIERDA" />
               <InfiniteScrollSimple
                 categoryParams={
