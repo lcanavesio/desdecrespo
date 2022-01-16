@@ -33,7 +33,7 @@ const LayoutMobile = () => {
 
   return (
     <section className={classes.container}>
-      <SEO title="Inicio" />
+      <SEO title="Layout - Mobile" />
       <CssBaseline />
       <Grid container className={classes.container}>
         <Grid container lg={12}>
