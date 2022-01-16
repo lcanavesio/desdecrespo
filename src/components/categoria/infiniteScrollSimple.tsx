@@ -9,7 +9,6 @@ import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import { Waypoint } from 'react-waypoint';
 import FeaturedPost from '../post/FeaturedPost';
-import SEO from '../seo';
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -76,7 +75,6 @@ const InfiniteScrollSimple = (props: Props) => {
 
   return (
     <section className={classes.container}>
-      <SEO title="Inicio" />
       <CssBaseline />
 
       <List>

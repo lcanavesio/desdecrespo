@@ -8,7 +8,7 @@ import Breadcrumb from '../breadcrumb/breadcrumb';
 import InfiniteScrollComponent from '../categoria/infiniteScroll';
 import InfiniteScrollSimple from '../categoria/infiniteScrollSimple';
 import HeaderTitle from '../common/headerTitle';
-import SEO from '../seo/seo';
+import SEO from '../seo';
 import PostsRecientes from './PostsRecientes';
 
 const useStyles = makeStyles((theme) => ({
@@ -98,7 +98,6 @@ const IndividualPost = (props: Props) => {
         title={data?.postBy?.title}
         description={data?.postBy?.title}
         image={data?.postBy?.featuredImage?.node?.mediaItemUrl}
-        article={data?.postBy?.content}
       />
       <CssBaseline />
       <Grid container className={classes.container}>
